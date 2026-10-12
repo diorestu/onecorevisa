@@ -1,85 +1,79 @@
-# OneCoreVisa — Official Website & Portal
+# OneCoreVisa — Laravel 12 Web Portal
 
-Website resmi untuk bisnis pengurusan visa, KITAS, serta pendirian perusahaan & bantuan hukum di Indonesia: **OneCoreVisa (One Step Solution)**.
+Website resmi untuk bisnis pengurusan visa, KITAS, serta pendirian usaha & bantuan hukum di Indonesia: **OneCoreVisa (One Step Solution)**.
+Website ini telah dikonversi secara penuh ke **Laravel 12** menggunakan template aset yang berada di folder `/refs`.
 
 ---
 
 ## 🎨 Palette Warna Resmi
 
-- **Deep Navy:** `#0B2942` (Warna utama otoritas, header, footer, background kartu kredibilitas)
-- **Ocean Blue:** `#176B9C` (Warna dinamis brand, tombol aksi utama, sorotan, link aktif)
-- **Light Blue:** `#6EA8C8` (Warna aksen, badge, ikon, border halus, hover efek)
+- **Deep Navy:** `#0B2942` (Warna utama otoritas, header, topbar, footer, badge judul)
+- **Ocean Blue:** `#176B9C` (Warna brand utama, tombol aksi primer, ikon highlight, kartu aktif)
+- **Light Blue:** `#6EA8C8` (Aksen dinamis, badge kode, border interaktif, tag status)
 
 ---
 
-## 📑 Struktur Landing Page
+## 🏗️ Struktur Landing Page
 
-### 1. ONECORE VISA (One Step Solution)
-- **Hero Section**: Value proposition berani dan terpercaya untuk ekspatriat, digital nomad, dan investor asing.
-- **Trust Counters**: 5.200+ Visa & KITAS, 380+ PT PMA didirikan, 99.4% approval success rate, 48+ negara klien.
-- **Akreditasi Resmi**: Kepatuhan Ditjen Imigrasi, BKPM / OSS-RBA, Kemenkumham RI, & PERADI.
-- **OneCore Verified Pass Preview**: Simulasi kartu status izin resmi & fast-track queue.
+### 1. ONECORE VISA (One step solution)
+- **Hero Section:** Slider background dari template `/refs`, headline kuat *"ONECORE VISA (One Step Solution)"*.
+- **Pilar Bisnis:** *Visa & KITAS Specialists* + *Businesses Setup & Legal Assist*.
+- **OneCore Verified Pass:** Kartu simulasi izin digital resmi berstatus 100% legal compliant.
+- **Trust Metrics Bar:** 5.200+ Visa & KITAS, 380+ PT PMA, 99.4% Approval, 48+ Negara Klien.
+- **Akreditasi:** Kepatuhan Ditjen Imigrasi, BKPM OSS-RBA, Kemenkumham RI, & PERADI.
 
-### 2. Check Which Your Preference (Search Kolom & Filter Interaktif)
-- **Kolom Pencarian Real-time**: Pencarian instan berdasarkan nama visa, kode izin, kebutuhan bisnis, dsb.
-- **Kata Kunci Populer**: Quick pills untuk Investor KITAS, PT PMA Setup, Remote Worker (E33G), Tourist B211A, Virtual Office, NIB OSS, dsb.
-- **Filter Kategori**:
+### 2. Check which your preference (search kolom)
+- **Search Kolom Real-Time:** Filter instan berbasis teks untuk menemukan visa, KITAS, PT PMA, atau izin spesifik.
+- **Tombol Pencarian Cepat:** Chip untuk *Investor KITAS*, *PT PMA Setup*, *Remote Worker (E33G)*, *Tourist B211A*, *Spouse KITAS*, *Virtual Office*, *NIB & OSS*.
+- **Filter Tab Kategori:**
   - *All Options*
-  - *Visas & Visit Permits* (e-VOA, B211A)
-  - *KITAS & Long-Term* (Investor E28A/B, Kerja E23, Remote Worker E33G, Lansia E33F, Pasangan E31A)
-  - *Business Setup & PT PMA* (PT PMA 100% Asing, Virtual Office Bali/Jakarta)
-  - *Corporate & Legal Assist* (OSS RBA & NIB, Pajak & Rekening Bank, Kontrak Bisnis)
-- **Wizard Rekomendasi 2-Klik**: Menemukan izin yang paling tepat untuk pengguna yang belum tahu regulasi.
-- **Kartu Hasil Detail**: Masa berlaku, lama pengerjaan, target profil, dokumen syarat, dan tombol konsultasi langsung.
+  - *Visas & Visits* (e-VOA, B211A)
+  - *KITAS & Long-Term* (Investor E28A/B, Kerja E23, Nomad E33G, Pensiun E33F, Keluarga E31A)
+  - *Business Setup & PMA* (PT PMA 100% Asing, Virtual Office Bali/Jakarta)
+  - *Legal & Corporate Assist* (OSS RBA & NIB, Pajak & Rekening Bank, Kontrak Bisnis)
+- **30-Second Match Wizard:** Rekomendasi otomatis berdasarkan 2 pertanyaan mudah (Tujuan & Durasi).
+- **Katalog Kartu Layanan:** Menyajikan waktu pengerjaan (SLA), masa berlaku, dokumen persyaratan (collapsible), keunggulan, serta tombol *"Select & Inquire"*.
 
-### 3. About Us (Mengenal OneCoreVisa)
-- **Filosofi Solusi Satu Pintu (One Step Solution)**: Menghilangkan kerumitan calo & perantara dengan satu firma hukum terakreditasi.
-- **4 Pilar Layanan**: Kepastian Hukum & Integritas, Kecepatan & VIP Fast-Track, Perawatan Siklus Bisnis Penuh, Harga Pasti & Transparan.
-- **Matriks Perbandingan**: Cara konvensional lama vs Keunggulan OneCoreVisa.
-- **Kantor Strategis**: Jakarta Corporate Hub & Bali Expat/Nomad Hub.
+### 3. About us
+- **Filosofi Solusi Satu Pintu:** Menyatukan birokrasi imigrasi dan korporasi di bawah satu firma hukum terakreditasi.
+- **4 Pilar Layanan:** Kepastian Hukum, Kecepatan & VIP Fast-Track, Dukungan Bisnis Penuh, Harga Pasti & Transparan.
+- **Matriks Perbandingan:** Komparasi langsung calo tidak berizin vs keunggulan OneCoreVisa.
+- **Kantor Fisik:** *Jakarta Corporate Hub* (TB Simatupang) & *Bali Expat Hub* (Sunset Road, Badung/Seminyak).
 
-### 4. Our Service (Layanan Kami)
-- **Pilar 1: Layanan Visa & KITAS**
-  - e-VOA Kilat (30/60 Hari)
-  - Visa Kunjungan B211A (Wisata & Bisnis s.d 180 Hari)
-  - KITAS Kerja E23 & RPTKA Tenaga Kerja Asing
-  - KITAS Investor E28A/E28B (Bebas DPKK)
-  - Visa Pekerja Jarak Jauh / Digital Nomad E33G
-  - KITAS Penyatuan Keluarga & Pasangan E31A/E31B
-  - KITAS Pensiun Lansia E33F
-- **Pilar 2: Pendirian Bisnis & Bantuan Hukum**
-  - Pendirian PT PMA (100% Kepemilikan Modal Asing)
-  - Virtual Office & Domisili Resmi (Bali & Jakarta)
-  - OSS-RBA, NIB & Perizinan Sektoral
-  - NPWP Badan & Concierge Pembukaan Rekening Bank Korporat (Mandiri, BCA, Permata)
-  - Penyusunan Kontrak Bisnis, Sewa Properti, & Legal Due Diligence
+### 4. Our service
+- **Tab 1: Layanan Visa & KITAS** (e-VOA, B211A, Working KITAS, Investor KITAS, Remote Worker Visa, Spouse KITAS, Retirement KITAS).
+- **Tab 2: Pendirian Bisnis & Bantuan Hukum** (PT PMA 100% Kepemilikan Asing, Virtual Office, OSS-RBA & NIB, NPWP Badan & Pembukaan Rekening Bank Devisa, Kontrak Bisnis).
 
-### 5. Our Process (4 Langkah Transparan)
-1. **Konsultasi & Analisis Strategis Gratis** (Dalam 2 Jam)
-2. **Verifikasi & Penyusunan Dokumen** (Hari 1 - 2)
-3. **Pengajuan ke Portal Resmi Pemerintah** (Hari 3 - 7)
-4. **Persetujuan, Biometrik VIP & Serah Terima** (Sesuai SLA Garansi)
-
-### Fitur Tambahan:
-- **Dukungan Bilingual Penuh (English & Bahasa Indonesia)** dengan toggle instan di Navbar.
-- **Modal Konsultasi & Lead Form** dengan generator pesan WhatsApp otomatis yang siap kirim.
-- **Widget WhatsApp Melayang** dengan status online dan quick chat.
-- **Testimoni Klien Internasional & Tanya Jawab (FAQ) Accordion**.
+### 5. Our process
+- **Tahap 01:** Konsultasi & Analisis Strategis Gratis (Dalam 2 Jam)
+- **Tahap 02:** Verifikasi & Penyusunan Dokumen (Hari 1 - 2)
+- **Tahap 03:** Pengajuan ke Portal Resmi Pemerintah (Hari 3 - 7)
+- **Tahap 04:** Persetujuan, Biometrik VIP & Serah Terima (Sesuai SLA Garansi)
+- **The OneCore Guarantee:** Dedicated Case Manager, kerahasiaan dokumen di bawah perjanjian NDA legal.
 
 ---
 
-## 🚀 Cara Menjalankan Secara Lokal
+## 🛠️ Komponen & Fitur Laravel 12
+
+- **Framework:** Laravel 12 (`laravel/framework: ^12.0`)
+- **PHP:** PHP 8.4
+- **Template Integration:** Asset CSS, JS, Fonts, dan Gambar dari folder `/refs` dipindahkan ke `public/assets/` dengan custom theme `public/assets/css/onecore-theme.css`.
+- **Controller:** [`app/Http/Controllers/HomeController.php`](app/Http/Controllers/HomeController.php)
+- **Views:**
+  - Layout: [`resources/views/layouts/app.blade.php`](resources/views/layouts/app.blade.php)
+  - Home: [`resources/views/home.blade.php`](resources/views/home.blade.php)
+- **Routes:** [`routes/web.php`](routes/web.php)
+- **Bilingual Switcher:** Mendukung Bahasa Inggris (`EN`) dan Bahasa Indonesia (`ID`) via session (`/lang/{locale}`).
+- **Lead Capture & WhatsApp Integration:** Modal konsultasi langsung memformat pesan WhatsApp calon klien dengan data terstruktur.
+
+---
+
+## 🚀 Menjalankan Project
 
 ```bash
-# Instal dependensi (sudah terinstal)
-npm install
+# Menjalankan server Laravel di port 8080 (atau port pilihan)
+php artisan serve --port=8080
 
-# Jalankan server pengembangan (Hot Reload)
-npm run dev
-
-# Bangun versi produksi
-npm run build
-
-# Pratinjau hasil build
-npm run preview
+# Akses di browser:
+# http://127.0.0.1:8080
 ```

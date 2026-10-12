@@ -1,0 +1,10 @@
+<svg width="240" height="48" viewBox="0 0 240 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shield Emblem -->
+  <rect x="2" y="4" width="40" height="40" rx="10" fill="#0B2942"/>
+  <path d="M22 10L33 15V24C33 30.5 28 35.5 22 37.5C16 35.5 11 30.5 11 24V15L22 10Z" fill="#176B9C" stroke="#6EA8C8" stroke-width="1.8"/>
+  <path d="M18 24L20.8 26.8L26.5 20.5" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Typography -->
+  <text x="50" y="27" font-family="'Open Sans', sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">ONECORE<tspan fill="#6EA8C8">VISA</tspan></text>
+  <text x="50" y="39" font-family="'Poppins', sans-serif" font-size="8.5" font-weight="600" fill="#6EA8C8" letter-spacing="1.2">ONE STEP SOLUTION</text>
+</svg>

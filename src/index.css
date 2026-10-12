@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-navy: #0B2942;
+  --color-brand-navy-dark: #071A2A;
+  --color-brand-navy-light: #123C5E;
+  --color-brand-ocean: #176B9C;
+  --color-brand-ocean-hover: #135A84;
+  --color-brand-ocean-light: #2087C2;
+  --color-brand-skyblue: #6EA8C8;
+  --color-brand-skyblue-light: #E8F3F8;
+  --color-brand-skyblue-subtle: #F3F8FB;
+}
+
+:root {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F8FAFC;
+  color: #1E293B;
+  overflow-x: hidden;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #6EA8C8;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #176B9C;
+}

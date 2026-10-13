@@ -1,0 +1,17 @@
+[
+  {
+    "date": "2026-10-13",
+    "macrostructure": "Narrative Workflow",
+    "theme": "custom brand palette",
+    "enrichment": "none",
+    "brief": "OneCoreVisa preference simulator with nationality and service; brand palette retained for continuity"
+  },
+  {
+    "date": "2026-10-13",
+    "macrostructure": "Catalogue",
+    "theme": "custom",
+    "theme_axes": "light / geometric-sans / cool",
+    "enrichment": "none",
+    "brief": "OneCoreVisa simple visa landing page; white and navy; no gradients"
+  }
+]

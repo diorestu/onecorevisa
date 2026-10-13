@@ -12,370 +12,1030 @@ class HomeController extends Controller
     protected function getData($lang = 'en')
     {
         return [
+            'categories' => [
+                [
+                    'id' => 'visitor-visas',
+                    'title' => $lang === 'en' ? 'Visitor Visas' : 'Visa Kunjungan',
+                    'subtitle' => $lang === 'en' ? 'Single & Multiple Entry' : 'Single & Multiple Entry',
+                    'icon' => 'fa-plane-departure',
+                ],
+                [
+                    'id' => 'visa-extension',
+                    'title' => $lang === 'en' ? 'Visa & KITAS Extension' : 'Perpanjangan Visa & KITAS',
+                    'subtitle' => $lang === 'en' ? 'Stay Permit Extensions' : 'Perpanjangan Masa Izin Tinggal',
+                    'icon' => 'fa-clock-rotate-left',
+                ],
+                [
+                    'id' => 'kitas',
+                    'title' => $lang === 'en' ? 'Work & Longer Stay (KITAS)' : 'Izin Tinggal Terbatas (KITAS)',
+                    'subtitle' => $lang === 'en' ? 'Investor, Worker, Nomad & Family' : 'Investor, Pekerja, Nomad & Keluarga',
+                    'icon' => 'fa-id-card',
+                ],
+                [
+                    'id' => 'kitap',
+                    'title' => $lang === 'en' ? 'Permanent Residency (KITAP)' : 'Izin Tinggal Tetap (KITAP)',
+                    'subtitle' => $lang === 'en' ? '5-Year & Permanent Status' : 'Status 5 Tahun & Permanen',
+                    'icon' => 'fa-award',
+                ],
+                [
+                    'id' => 'company',
+                    'title' => $lang === 'en' ? 'Company Formation' : 'Pendirian Perusahaan',
+                    'subtitle' => $lang === 'en' ? 'PT PMA & Local PT' : 'PT PMA & PT Lokal',
+                    'icon' => 'fa-building',
+                ],
+            ],
             'services' => [
                 [
-                    'id' => 'investor-kitas',
-                    'category' => 'kitas',
-                    'code' => 'Index E28A / E28B',
-                    'title' => $lang === 'en' ? 'Investor KITAS (Multi-Year)' : 'KITAS Investor (Multi-Tahun)',
-                    'shortDesc' => $lang === 'en'
-                        ? 'Long-term residency for foreign shareholders and company directors in Indonesia with zero DPKK work tax fee.'
-                        : 'Izin tinggal jangka panjang bagi pemegang saham dan direktur perusahaan di Indonesia tanpa kewajiban pajak DPKK.',
-                    'duration' => '1 or 2 Years (Renewable up to 5 Years)',
-                    'processingTime' => '7 - 10 Business Days',
-                    'whoFor' => $lang === 'en'
-                        ? 'Foreign investors, PT PMA shareholders (min. IDR 1 Billion share value) and directors.'
-                        : 'Investor asing, pemegang saham PT PMA (min. Rp 1 Miliar lembar saham) & jajaran direksi.',
-                    'tag' => 'Most Popular for Founders',
-                    'badge' => 'High Demand',
-                    'icon' => 'fa-briefcase',
-                    'requirements' => [
-                        'Passport valid for at least 18 months',
-                        'Company Akta Pendirian & Kemenkumham Decree',
-                        'Nomor Induk Berusaha (NIB) & Company Tax ID (NPWP)',
-                        'Proof of share ownership (min. IDR 1B in shares)',
-                        'Personal bank statement (min. USD 2,000 equivalent)'
+                    'id' => 'voa-b1',
+                    'category' => 'visitor-visas',
+                    'code' => 'Index B1',
+                    'title' => 'Visa On Arrival / E-VOA (B1)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '30 Days (Extendable 1x for 30 Days, Max 60 Days)',
+                    'processingTime' => '1 - 3 Working Days',
+                    'visaValidity' => '90 Days from the issuance date of the e-VOA.',
+                    'whatsAllowed' => [
+                        'Tourism, vacation, family/social visits.',
+                        'Attend business meetings, conventions, and exhibitions as a participant.'
                     ],
-                    'perks' => [
-                        'No DPKK government fee (Save $1,200/year)',
-                        'Multi-entry permit included',
-                        'Eligible to open local Indonesian bank accounts',
-                        'Allows buying properties under Hak Pakai',
-                        'Sponsor family members on dependent KITAS'
-                    ]
-                ],
-                [
-                    'id' => 'pt-pma-setup',
-                    'category' => 'business',
-                    'code' => 'Foreign Direct Investment (PMA)',
-                    'title' => $lang === 'en' ? 'PT PMA Establishment (100% Foreign Owned)' : 'Pendirian PT PMA (100% Kepemilikan Asing)',
-                    'shortDesc' => $lang === 'en'
-                        ? 'Complete foreign-owned company incorporation with full legal rights to operate and generate revenue in Indonesia.'
-                        : 'Pendirian perusahaan penanaman modal asing penuh dengan hak legal lengkap untuk beroperasi dan berpenghasilan di Indonesia.',
-                    'duration' => 'Perpetual Corporate Entity',
-                    'processingTime' => '5 - 7 Business Days',
-                    'whoFor' => $lang === 'en'
-                        ? 'Entrepreneurs, global startups, and foreign corporations establishing a presence in Bali or Jakarta.'
-                        : 'Wirausahawan, startup global, dan korporasi asing yang ingin ekspansi ke Bali atau Jakarta.',
-                    'tag' => 'Top Corporate Solution',
-                    'badge' => 'Full Ownership',
-                    'icon' => 'fa-building',
-                    'requirements' => [
-                        'Passports of minimum 2 shareholders (Individual or Corporate)',
-                        'Proposed company name (3 words in English or Indonesian)',
-                        'Standard KBLI business activities selection',
-                        'Office lease agreement or approved Virtual Office contract',
-                        'Board of Directors and Commissioner structure'
+                    'whatsNotAllowed' => [
+                        'Engage in paid employment or work for an Indonesian entity.',
+                        'Overstay the validity period of the stay permit.'
                     ],
-                    'perks' => [
-                        '100% Foreign ownership across most industry sectors',
-                        'Includes NIB, Corporate Tax ID (NPWP), and OSS RBA license',
-                        'Enables issuing Investor KITAS for founders and staff',
-                        'Corporate bank account opening assistance with tier-1 banks',
-                        'Full legal deed approved by Kemenkumham'
-                    ]
-                ],
-                [
-                    'id' => 'remote-worker-visa',
-                    'category' => 'visas',
-                    'code' => 'Index E33G (Digital Nomad)',
-                    'title' => $lang === 'en' ? 'Remote Worker Visa (Digital Nomad)' : 'Visa Pekerja Jarak Jauh (Remote Worker E33G)',
-                    'shortDesc' => $lang === 'en'
-                        ? 'Official 1-year residency visa for digital nomads and remote professionals earning foreign income while living in Indonesia.'
-                        : 'Visa resmi 1 tahun bagi pekerja remote dan digital nomad berpenghasilan luar negeri untuk tinggal di Indonesia.',
-                    'duration' => '1 Year (Renewable)',
-                    'processingTime' => '5 - 7 Business Days',
-                    'whoFor' => $lang === 'en'
-                        ? 'Software engineers, remote consultants, online creators working for clients/employers outside Indonesia.'
-                        : 'Software engineer, konsultan remote, kreator online yang bekerja untuk klien/perusahaan luar negeri.',
-                    'tag' => 'Bali Nomad Favorite',
-                    'badge' => 'Tax Friendly',
-                    'icon' => 'fa-laptop',
-                    'requirements' => [
-                        'Passport valid min. 18 months',
-                        'Proof of employment or contract with offshore employer',
-                        'Proof of overseas annual income min. USD 60,000',
-                        'Bank statement showing minimum USD 2,000',
-                        'White background passport photo'
+                    'documentRequirements' => [
+                        'Passport valid for at least 6 months upon arrival.',
+                        'Recent color photograph.',
+                        'Return or onward flight ticket from Indonesia.'
                     ],
-                    'perks' => [
-                        'Zero local tax on overseas salary / client income',
-                        '1-year multi-entry flexibility',
-                        'Legally reside in Bali, Jakarta, Lombok, etc.',
-                        'Eligible for local mobile subscriptions and rentals',
-                        'No Indonesian company sponsorship required'
-                    ]
-                ],
-                [
-                    'id' => 'working-kitas',
-                    'category' => 'kitas',
-                    'code' => 'Index E23 (Expatriate Work Permit)',
-                    'title' => $lang === 'en' ? 'Working KITAS & Work Permit (E23)' : 'KITAS Kerja & Izin Kerja Tenaga Asing (E23)',
-                    'shortDesc' => $lang === 'en'
-                        ? 'Official work authorization and residency permit for foreign experts employed by Indonesian companies or PT PMA.'
-                        : 'Izin kerja dan izin tinggal resmi bagi tenaga kerja asing (TKA) yang dipekerjakan oleh PT PMA atau perusahaan lokal.',
-                    'duration' => '6 Months or 1 Year (Renewable)',
-                    'processingTime' => '10 - 14 Business Days',
-                    'whoFor' => $lang === 'en'
-                        ? 'Expatriate managers, tech specialists, chefs, teachers, and technical advisors.'
-                        : 'Manajer ekspatriat, spesialis teknis, koki, pengajar, dan konsultan profesional.',
-                    'tag' => 'Corporate Essential',
-                    'badge' => 'Full Work Rights',
-                    'icon' => 'fa-id-card',
-                    'requirements' => [
-                        'Company RPTKA (Expatriate Placement Plan approval)',
-                        'Applicant university degree & relevant resume/CV',
-                        'Minimum 5 years of verified industry experience',
-                        'Payment of DPKK ($100/month to Ministry of Manpower)',
-                        'Passport valid min. 18 months'
-                    ],
-                    'perks' => [
-                        'Full legal permission to receive local Indonesian salary',
-                        'Multi-entry re-entry permit included',
-                        'Spouse and children can obtain Dependent KITAS',
-                        'Driver\'s license (SIM) and local banking eligibility',
-                        'VIP biometric guidance at immigration'
-                    ]
-                ],
-                [
-                    'id' => 'b211a-visit-visa',
-                    'category' => 'visas',
-                    'code' => 'Index C1 / C2 (B211A)',
-                    'title' => $lang === 'en' ? 'Visit Visa B211A (Tourism & Business)' : 'Visa Kunjungan B211A (Wisata & Bisnis)',
-                    'shortDesc' => $lang === 'en'
-                        ? 'The versatile 60-day single entry visa, extendable up to 180 days total without leaving Indonesia.'
-                        : 'Visa kunjungan serbaguna 60 hari yang dapat diperpanjang hingga total 180 hari tanpa perlu keluar dari Indonesia.',
-                    'duration' => '60 Days (Extendable 2x for 60 days each)',
-                    'processingTime' => '3 - 5 Business Days (Express 24h available)',
-                    'whoFor' => $lang === 'en'
-                        ? 'Long-stay tourists, business meeting attendees, prospective investors scouting market opportunities.'
-                        : 'Turis tinggal lama, perjalanan dinas/rapat bisnis, calon investor yang sedang riset pasar.',
-                    'tag' => 'Fastest Approval',
-                    'badge' => 'Up to 180 Days',
-                    'icon' => 'fa-plane',
-                    'requirements' => [
-                        'Passport valid min. 6 months',
-                        'Recent passport-style photograph',
-                        'Bank statement with minimum balance of USD 2,000',
-                        'Return or onward flight ticket',
-                        'Local sponsor letter (OneCoreVisa provides this)'
-                    ],
-                    'perks' => [
-                        'No border run needed for up to 6 months',
-                        'Guaranteed local company sponsorship provided',
-                        'Convertible onshore to KITAS in eligible categories',
-                        '100% online application with digital eVisa delivery',
-                        'Covers business negotiations and conferences'
-                    ]
-                ],
-                [
-                    'id' => 'evoa-express',
-                    'category' => 'visas',
-                    'code' => 'Electronic Visa on Arrival',
-                    'title' => $lang === 'en' ? 'e-VOA Fast-Track (30/60 Days)' : 'e-VOA Kilat (30/60 Hari)',
-                    'shortDesc' => $lang === 'en'
-                        ? 'Instant electronic visa on arrival for citizens of 97 eligible countries. Skip airport queues completely.'
-                        : 'Visa on arrival elektronik kilat untuk warga negara dari 97 negara. Bebas antrean bandara.',
-                    'duration' => '30 Days (Extendable 1x for 30 days)',
-                    'processingTime' => '24 Hours (Express 3 Hours)',
-                    'whoFor' => $lang === 'en'
-                        ? 'Short-term holiday travelers, conference attendees, and quick commercial visits.'
-                        : 'Wisatawan liburan singkat, peserta seminar, dan kunjungan bisnis kilat.',
-                    'tag' => 'Instant Travel',
-                    'badge' => 'Skip Airport Queues',
                     'icon' => 'fa-passport',
+                    'badge' => 'Fast Entry',
+                    'duration' => '30 Days (Extendable 1x for 30 Days, Max 60 Days)',
                     'requirements' => [
-                        'Passport valid min. 6 months',
-                        'Digital passport bio-page scan',
-                        'Flight itinerary / Return ticket',
-                        'Portrait photo on light background'
+                        'Passport valid for at least 6 months upon arrival.',
+                        'Recent color photograph.',
+                        'Return or onward flight ticket from Indonesia.'
                     ],
                     'perks' => [
-                        'Use autogates at Jakarta & Bali airports (no immigration queue)',
-                        'OneCoreVisa handles extension smoothly online',
-                        'Delivered directly to WhatsApp & Email in PDF',
-                        'Zero airport cash currency hassle'
-                    ]
-                ],
-                [
-                    'id' => 'spouse-family-kitas',
-                    'category' => 'kitas',
-                    'code' => 'Index E31A / E31B',
-                    'title' => $lang === 'en' ? 'Spouse & Family KITAS' : 'KITAS Pasangan & Keluarga (Penyatuan Keluarga)',
-                    'shortDesc' => $lang === 'en'
-                        ? 'Residency permit for foreign nationals legally married to Indonesian citizens or dependents of KITAS holders.'
-                        : 'Izin tinggal bagi WNA yang menikah sah dengan WNI atau keluarga tanggungan pemegang KITAS.',
-                    'duration' => '1 Year (Renewable up to Permanent KITAP)',
-                    'processingTime' => '7 - 10 Business Days',
-                    'whoFor' => $lang === 'en'
-                        ? 'Foreign spouses of Indonesian citizens, children, and immediate dependents.'
-                        : 'Suami/istri WNA dari WNI, anak-anak, dan tanggungan langsung.',
-                    'tag' => 'Family Harmony',
-                    'badge' => 'Pathway to KITAP',
-                    'icon' => 'fa-users',
-                    'requirements' => [
-                        'Official Marriage Certificate (Buku Nikah / Catatan Sipil)',
-                        'Indonesian Spouse KTP, KK, and Birth Certificate',
-                        'Indonesian Spouse Bank Statement',
-                        'Foreign Applicant Passport valid min. 18 months',
-                        'Clean criminal and health declaration'
+                        'Tourism, vacation, family/social visits.',
+                        'Attend business meetings, conventions, and exhibitions as a participant.'
                     ],
-                    'perks' => [
-                        'Right to reside peacefully with your family in Indonesia',
-                        'Pathway to 5-Year Permanent Residency (KITAP) after 2 years',
-                        'Exempt from DPKK work tax fee',
-                        'Eligible for Indonesian driver\'s license and local bank accounts',
-                        'Multi-entry travel privileges'
-                    ]
+                    'shortDesc' => '30 Days (Extendable 1x for 30 Days, Max 60 Days)' . ' • ' . '1 - 3 Working Days',
+                    'whoFor' => 'Visa On Arrival / E-VOA (B1)',
+                    'tag' => 'Index B1'
                 ],
                 [
-                    'id' => 'retirement-kitas',
-                    'category' => 'kitas',
-                    'code' => 'Index E33F (55+ Years Old)',
-                    'title' => $lang === 'en' ? 'Retirement KITAS (Index E33F)' : 'KITAS Pensiun Lansia (Usia 55+ Tahun)',
-                    'shortDesc' => $lang === 'en'
-                        ? 'Enjoy your golden years living in tropical paradise with an official multi-year retirement residency permit.'
-                        : 'Nikmati masa pensiun tenang di Bali dan Indonesia dengan izin tinggal resmi tahunan untuk lansia.',
-                    'duration' => '1 Year (Renewable annually up to 5 Years / KITAP)',
-                    'processingTime' => '7 - 10 Business Days',
-                    'whoFor' => $lang === 'en'
-                        ? 'Foreign citizens aged 55 or above seeking long-term living in Bali, Yogyakarta, or Lombok.'
-                        : 'WNA berusia 55 tahun ke atas yang ingin menikmati masa pensiun di Bali atau wilayah Indonesia lainnya.',
-                    'tag' => 'Peaceful Living',
-                    'badge' => 'No Business Needed',
+                    'id' => 'c1-tourist-visa',
+                    'category' => 'visitor-visas',
+                    'code' => 'Index C1',
+                    'title' => 'C1 - Tourist Visit Visa (60 Days)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '60 Days (Extendable 2x, 60 days each, up to 180 days total)',
+                    'processingTime' => 'Regular: 5 - 10 Working Days • Priority: 2 - 4 Working Days',
+                    'visaValidity' => 'Must be used within 90 days from the date of issuance.',
+                    'whatsAllowed' => [
+                        'Tourism, vacation, and visiting friends or family.',
+                        'Attending cultural events, seminars, or non-commercial conferences.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Work locally or receive a salary from an Indonesian entity.',
+                        'Re-enter Indonesia with the same visa after leaving (Single Entry).'
+                    ],
+                    'documentRequirements' => [
+                        'Passport valid for at least 6 months.',
+                        'Recent passport-size color photograph.',
+                        'Bank statement proving minimum funds of USD $2,000 for the last 3 months.',
+                        'Return flight ticket.',
+                        'Local sponsor guarantee (provided by OneCoreVisa).'
+                    ],
                     'icon' => 'fa-umbrella-beach',
+                    'badge' => 'Popular Tourist',
+                    'duration' => '60 Days (Extendable 2x, 60 days each, up to 180 days total)',
                     'requirements' => [
-                        'Passport valid min. 18 months',
-                        'Proof of age 55 years old or older',
-                        'Proof of pension / income (min. USD 3,000/month or USD 36,000 in savings)',
-                        'Health & life insurance coverage in Indonesia',
-                        'Rental lease agreement in Indonesia (min. 1 year)'
+                        'Passport valid for at least 6 months.',
+                        'Recent passport-size color photograph.',
+                        'Bank statement proving minimum funds of USD $2,000 for the last 3 months.',
+                        'Return flight ticket.',
+                        'Local sponsor guarantee (provided by OneCoreVisa).'
                     ],
                     'perks' => [
-                        'Live freely across Indonesia year-round',
-                        'Open local Indonesian bank accounts',
-                        'Multi-entry permit included',
-                        'Can hire domestic helpers / staff legally',
-                        'Eligible for Indonesian driver\'s license'
-                    ]
+                        'Tourism, vacation, and visiting friends or family.',
+                        'Attending cultural events, seminars, or non-commercial conferences.'
+                    ],
+                    'shortDesc' => '60 Days (Extendable 2x, 60 days each, up to 180 days total)' . ' • ' . 'Regular: 5 - 10 Working Days • Priority: 2 - 4 Working Days',
+                    'whoFor' => 'C1 - Tourist Visit Visa (60 Days)',
+                    'tag' => 'Index C1'
                 ],
                 [
-                    'id' => 'virtual-office-domicile',
-                    'category' => 'business',
-                    'code' => 'Bali & Jakarta Prime Address',
-                    'title' => $lang === 'en' ? 'Virtual Office & Domicile Registration' : 'Virtual Office & Surat Keterangan Domisili',
-                    'shortDesc' => $lang === 'en'
-                        ? 'Legally compliant prestigious business address required for PT PMA incorporation and tax administration.'
-                        : 'Alamat bisnis bergengsi dan legal yang memenuhi syarat untuk pendirian PT PMA dan pendaftaran pajak.',
-                    'duration' => '1 Year Subscription (Renewable)',
-                    'processingTime' => '1 - 2 Business Days',
-                    'whoFor' => $lang === 'en'
-                        ? 'Digital businesses, international founders, and startups not requiring physical commercial space.'
-                        : 'Bisnis digital, founder internasional, dan startup yang belum membutuhkan sewa kantor fisik penuh.',
-                    'tag' => 'Cost Efficiency',
-                    'badge' => 'Tax Approved',
-                    'icon' => 'fa-map-location-dot',
+                    'id' => 'c2-business-visa',
+                    'category' => 'visitor-visas',
+                    'code' => 'Index C2',
+                    'title' => 'C2 - Business Visit Visa (60 Days)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '60 Days (Extendable 2x, up to 180 days total)',
+                    'processingTime' => 'Regular: 5 - 10 Working Days • Priority: 2 - 4 Working Days',
+                    'visaValidity' => 'Must be used within 90 days from the date of issuance.',
+                    'whatsAllowed' => [
+                        'Conduct business meetings, negotiations, and discussions with Indonesian partners.',
+                        'Inspect business sites, attend trade fairs, and sign commercial contracts.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Engage in hands-on operational work, manual labor, or sell goods/services locally.',
+                        'Receive compensation or salary from domestic Indonesian sources.'
+                    ],
+                    'documentRequirements' => [
+                        'Passport valid for at least 6 months.',
+                        'Recent color photograph.',
+                        'Business invitation letter from an Indonesian counterpart/sponsor or OneCoreVisa guarantee.',
+                        'Bank statement showing min. USD $2,000 equivalent.',
+                        'Return/onward travel ticket.'
+                    ],
+                    'icon' => 'fa-briefcase',
+                    'badge' => 'Business Meetings',
+                    'duration' => '60 Days (Extendable 2x, up to 180 days total)',
                     'requirements' => [
-                        'Company name and director details',
-                        'Selected city preference (Jakarta CBD or Bali)',
-                        'Intended KBLI business classification'
+                        'Passport valid for at least 6 months.',
+                        'Recent color photograph.',
+                        'Business invitation letter from an Indonesian counterpart/sponsor or OneCoreVisa guarantee.',
+                        'Bank statement showing min. USD $2,000 equivalent.',
+                        'Return/onward travel ticket.'
                     ],
                     'perks' => [
-                        'Save 90% compared to physical commercial leases',
-                        'Approved for OSS RBA, NIB, and NPWP registration',
-                        'Mail and package handling with WhatsApp notifications',
-                        'Access to meeting rooms for VIP clients',
-                        'Official building domicile certificate provided'
-                    ]
+                        'Conduct business meetings, negotiations, and discussions with Indonesian partners.',
+                        'Inspect business sites, attend trade fairs, and sign commercial contracts.'
+                    ],
+                    'shortDesc' => '60 Days (Extendable 2x, up to 180 days total)' . ' • ' . 'Regular: 5 - 10 Working Days • Priority: 2 - 4 Working Days',
+                    'whoFor' => 'C2 - Business Visit Visa (60 Days)',
+                    'tag' => 'Index C2'
                 ],
                 [
-                    'id' => 'oss-rba-nib-permits',
-                    'category' => 'legal',
-                    'code' => 'Online Single Submission RBA',
-                    'title' => $lang === 'en' ? 'OSS RBA, NIB & Sectoral Business Licenses' : 'Perizinan Berusaha OSS-RBA, NIB & Izin Sektoral',
-                    'shortDesc' => $lang === 'en'
-                        ? 'Obtaining your Nomor Induk Berusaha (NIB) and risk-based sectoral licenses (Pariwisata, Perdagangan, IT, etc.).'
-                        : 'Penerbitan Nomor Induk Berusaha (NIB) dan sertifikat standar izin sektoral berbasis risiko.',
-                    'duration' => 'Perpetual / Subject to Industry Regulations',
-                    'processingTime' => '3 - 5 Business Days',
-                    'whoFor' => $lang === 'en'
-                        ? 'Existing or newly formed companies requiring operational permits for villas, F&B, imports, or consulting.'
-                        : 'Perusahaan baru maupun berjalan yang butuh izin operasional villa, resto, ekspor-impor, atau IT.',
-                    'tag' => 'Regulatory Compliance',
-                    'badge' => 'OSS Certified',
-                    'icon' => 'fa-file-signature',
+                    'id' => 'c12-pre-investment-visa',
+                    'category' => 'visitor-visas',
+                    'code' => 'Index C12',
+                    'title' => 'C12 - Pre-Investment Visit Visa (180 Days)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '180 Days (Extendable 1x for an additional 180 days)',
+                    'processingTime' => 'Regular: 10 - 14 Working Days • Priority: 5 - 7 Working Days',
+                    'visaValidity' => 'Must be used within 90 days from the date of issuance.',
+                    'whatsAllowed' => [
+                        'Carry out market research, feasibility studies, and pre-investment planning for setting up a PT PMA.',
+                        'Survey property, office locations, and negotiate with prospective business partners.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Perform operational employee duties or serve as active director prior to obtaining a KITAS.',
+                        'Receive local income or wages in Indonesia.'
+                    ],
+                    'documentRequirements' => [
+                        'Passport valid for at least 6 months.',
+                        'Recent color photograph.',
+                        'Proof of sufficient funds (bank statement min. USD $2,000).',
+                        'Investment intent statement or study plan.'
+                    ],
+                    'icon' => 'fa-chart-line',
+                    'badge' => '180 Days Stay',
+                    'duration' => '180 Days (Extendable 1x for an additional 180 days)',
                     'requirements' => [
-                        'Company Akta & Kemenkumham Decree',
-                        'Company NPWP & Director Tax numbers',
-                        'Selected KBLI codes (5-digit classification)',
-                        'Location verification data'
+                        'Passport valid for at least 6 months.',
+                        'Recent color photograph.',
+                        'Proof of sufficient funds (bank statement min. USD $2,000).',
+                        'Investment intent statement or study plan.'
                     ],
                     'perks' => [
-                        'Operate 100% legally without risk of municipal closure',
-                        'Includes Import Identification Number (API) if needed',
-                        'Customs access code (Kepabeanan)',
-                        'Standard Certificate compliance verification',
-                        'Government audit defense support'
-                    ]
+                        'Carry out market research, feasibility studies, and pre-investment planning for setting up a PT PMA.',
+                        'Survey property, office locations, and negotiate with prospective business partners.'
+                    ],
+                    'shortDesc' => '180 Days (Extendable 1x for an additional 180 days)' . ' • ' . 'Regular: 10 - 14 Working Days • Priority: 5 - 7 Working Days',
+                    'whoFor' => 'C12 - Pre-Investment Visit Visa (180 Days)',
+                    'tag' => 'Index C12'
                 ],
                 [
-                    'id' => 'corporate-tax-bank',
-                    'category' => 'legal',
-                    'code' => 'Tax & Banking Integration',
-                    'title' => $lang === 'en' ? 'Corporate Tax ID & Bank Account Opening' : 'NPWP Perusahaan & Pembukaan Rekening Bank',
-                    'shortDesc' => $lang === 'en'
-                        ? 'Registration of NPWP Badan, EFIN, and VIP concierge assistance to open corporate accounts in top Indonesian banks.'
-                        : 'Pendaftaran NPWP Badan, aktivasi EFIN, serta pendampingan VIP pembukaan rekening bank devisa korporat.',
-                    'duration' => 'Ongoing Corporate Lifecycle',
-                    'processingTime' => '3 - 5 Business Days',
-                    'whoFor' => $lang === 'en'
-                        ? 'PT PMA companies needing foreign exchange accounts (USD/EUR/IDR) and tax compliance setup.'
-                        : 'PT PMA yang memerlukan rekening giro multi-mata uang dan aktivasi pelaporan pajak resmi.',
-                    'tag' => 'Essential Financials',
-                    'badge' => 'Tier-1 Banks',
-                    'icon' => 'fa-landmark',
+                    'id' => 'c6-social-cultural-visa',
+                    'category' => 'visitor-visas',
+                    'code' => 'Index C6 / C6A',
+                    'title' => 'C6 / C6A - Social & Cultural Visit Visa (60 Days)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '60 Days (Extendable 2x, up to 180 days total)',
+                    'processingTime' => 'Regular: 5 - 10 Working Days • Priority: 2 - 4 Working Days',
+                    'visaValidity' => 'Must be used within 90 days from the date of issuance.',
+                    'whatsAllowed' => [
+                        'Visit family, engage in social, cultural, or educational exchange activities.',
+                        'Participate in non-paid volunteering or social organization activities.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Perform commercial work or receive local compensation.'
+                    ],
+                    'documentRequirements' => [
+                        'Passport valid for at least 6 months.',
+                        'Recent color photograph.',
+                        'Bank statement (min. USD $2,000).',
+                        'Social/family sponsorship document (provided by OneCoreVisa).'
+                    ],
+                    'icon' => 'fa-people-group',
+                    'badge' => 'Social & Culture',
+                    'duration' => '60 Days (Extendable 2x, up to 180 days total)',
                     'requirements' => [
-                        'Company Akta, SK Kemenkumham, NIB',
-                        'Director Passport & KITAS copy',
-                        'Company Stamp & Signature Card',
-                        'Initial minimum deposit'
+                        'Passport valid for at least 6 months.',
+                        'Recent color photograph.',
+                        'Bank statement (min. USD $2,000).',
+                        'Social/family sponsorship document (provided by OneCoreVisa).'
                     ],
                     'perks' => [
-                        'VIP introduction to Bank Mandiri, BCA, and Permata',
-                        'Multi-currency corporate accounts (IDR, USD, EUR, AUD)',
-                        'Internet banking and token setup assistance',
-                        'Corporate tax compliance briefing by tax consultants',
-                        'Monthly tax filing readiness'
-                    ]
+                        'Visit family, engage in social, cultural, or educational exchange activities.',
+                        'Participate in non-paid volunteering or social organization activities.'
+                    ],
+                    'shortDesc' => '60 Days (Extendable 2x, up to 180 days total)' . ' • ' . 'Regular: 5 - 10 Working Days • Priority: 2 - 4 Working Days',
+                    'whoFor' => 'C6 / C6A - Social & Cultural Visit Visa (60 Days)',
+                    'tag' => 'Index C6 / C6A'
                 ],
                 [
-                    'id' => 'legal-contracts-drafting',
-                    'category' => 'legal',
-                    'code' => 'Commercial Legal Advisory',
-                    'title' => $lang === 'en' ? 'Contract Drafting & Legal Due Diligence' : 'Penyusunan Kontrak Bisnis & Uji Kelayakan Hukum',
-                    'shortDesc' => $lang === 'en'
-                        ? 'Bilingual drafting of shareholder pacts, employment contracts, villa lease agreements, and corporate due diligence.'
-                        : 'Penyusunan perjanjian dwibahasa (pemegang saham, sewa villa, ketenagakerjaan) dan audit legalitas.',
-                    'duration' => 'Project-based or Monthly Retainer',
-                    'processingTime' => '3 - 5 Business Days',
-                    'whoFor' => $lang === 'en'
-                        ? 'Property leaseholders, foreign business partners, and employers in Indonesia.'
-                        : 'Penyewa properti/tanah di Bali, mitra bisnis asing, dan pengusaha yang mempekerjakan staf.',
-                    'tag' => 'Risk Protection',
-                    'badge' => 'Certified Advocates',
-                    'icon' => 'fa-scale-balanced',
+                    'id' => 'c7-arts-music-visa',
+                    'category' => 'visitor-visas',
+                    'code' => 'Index C7 / C7A',
+                    'title' => 'C7 / C7A - Music, Performing & Arts Visit Visa (60 Days)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '60 Days (According to event duration)',
+                    'processingTime' => '7 - 14 Working Days',
+                    'visaValidity' => 'Must be used within 90 days from the date of issuance.',
+                    'whatsAllowed' => [
+                        'Perform in concerts, cultural shows, art exhibitions, or music festivals in Indonesia.',
+                        'Conduct filming or artistic activities authorized under official event sponsorship.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Work for a local employer beyond the scope of the approved event/performance contract.'
+                    ],
+                    'documentRequirements' => [
+                        'Passport valid for at least 6 months.',
+                        'Event invitation/recommendation from Ministry of Tourism / relevant Indonesian agency.',
+                        'Contract of performance & sponsor documents.'
+                    ],
+                    'icon' => 'fa-guitar',
+                    'badge' => 'Event & Arts',
+                    'duration' => '60 Days (According to event duration)',
                     'requirements' => [
-                        'Commercial transaction brief or deal summary',
-                        'Identification of contracting parties',
-                        'Property land certificates (Sertifikat Hak Milik / HGB) if leasehold'
+                        'Passport valid for at least 6 months.',
+                        'Event invitation/recommendation from Ministry of Tourism / relevant Indonesian agency.',
+                        'Contract of performance & sponsor documents.'
                     ],
                     'perks' => [
-                        'Enforceable bilingual contracts (Indonesian & English)',
-                        'Land title search at BPN to prevent fraud',
-                        'Employment contracts compliant with Omnibus Law',
-                        'Protection of shareholder dividend rights',
-                        'Official legal legal opinion signed by certified lawyer'
-                    ]
+                        'Perform in concerts, cultural shows, art exhibitions, or music festivals in Indonesia.',
+                        'Conduct filming or artistic activities authorized under official event sponsorship.'
+                    ],
+                    'shortDesc' => '60 Days (According to event duration)' . ' • ' . '7 - 14 Working Days',
+                    'whoFor' => 'C7 / C7A - Music, Performing & Arts Visit Visa (60 Days)',
+                    'tag' => 'Index C7 / C7A'
+                ],
+                [
+                    'id' => 'c13-medical-humanitarian-visa',
+                    'category' => 'visitor-visas',
+                    'code' => 'Index C13 / C14',
+                    'title' => 'C13 / C14 - Medical & Humanitarian Visit Visa (60 Days)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '60 Days (Extendable based on medical requirement)',
+                    'processingTime' => '3 - 7 Working Days',
+                    'visaValidity' => 'Must be used within 90 days from issuance date.',
+                    'whatsAllowed' => [
+                        'Undergo medical treatment, health checkups, or therapy at recognized Indonesian hospitals/clinics.',
+                        'Accompany immediate family members undergoing medical treatment.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Conduct commercial business or local employment.'
+                    ],
+                    'documentRequirements' => [
+                        'Passport valid for at least 6 months.',
+                        'Official medical recommendation letter from an Indonesian medical institution.'
+                    ],
+                    'icon' => 'fa-heart-pulse',
+                    'badge' => 'Medical & Care',
+                    'duration' => '60 Days (Extendable based on medical requirement)',
+                    'requirements' => [
+                        'Passport valid for at least 6 months.',
+                        'Official medical recommendation letter from an Indonesian medical institution.'
+                    ],
+                    'perks' => [
+                        'Undergo medical treatment, health checkups, or therapy at recognized Indonesian hospitals/clinics.',
+                        'Accompany immediate family members undergoing medical treatment.'
+                    ],
+                    'shortDesc' => '60 Days (Extendable based on medical requirement)' . ' • ' . '3 - 7 Working Days',
+                    'whoFor' => 'C13 / C14 - Medical & Humanitarian Visit Visa (60 Days)',
+                    'tag' => 'Index C13 / C14'
+                ],
+                [
+                    'id' => 'multiple-entry-d1-d2',
+                    'category' => 'visitor-visas',
+                    'code' => 'Index D1 / D2',
+                    'title' => 'Multiple Entry Visit Visa (D1 / D2 - up to 180 days per visit)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '60 Days per entry (Extendable up to a total of 180 days per visit)',
+                    'processingTime' => 'Regular: up to 14 Working Days • Priority: up to 7 Working Days',
+                    'visaValidity' => 'Valid for 1, 2, or 5 Years.',
+                    'whatsAllowed' => [
+                        'Re-enter Indonesia multiple times during the visa validity period.',
+                        'Conduct business activities, meetings, family visits, and tourism.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Work locally for an Indonesian company or receive local salary.'
+                    ],
+                    'documentRequirements' => [
+                        'Passport valid for at least 6 months (1 year) or longer according to visa duration.',
+                        'Recent color photograph.',
+                        'Personal bank statement (min USD $2,000).'
+                    ],
+                    'icon' => 'fa-route',
+                    'badge' => 'Frequent Flyer',
+                    'duration' => '60 Days per entry (Extendable up to a total of 180 days per visit)',
+                    'requirements' => [
+                        'Passport valid for at least 6 months (1 year) or longer according to visa duration.',
+                        'Recent color photograph.',
+                        'Personal bank statement (min USD $2,000).'
+                    ],
+                    'perks' => [
+                        'Re-enter Indonesia multiple times during the visa validity period.',
+                        'Conduct business activities, meetings, family visits, and tourism.'
+                    ],
+                    'shortDesc' => '60 Days per entry (Extendable up to a total of 180 days per visit)' . ' • ' . 'Regular: up to 14 Working Days • Priority: up to 7 Working Days',
+                    'whoFor' => 'Multiple Entry Visit Visa (D1 / D2 - up to 180 days per visit)',
+                    'tag' => 'Index D1 / D2'
+                ],
+                [
+                    'id' => 'voa-extension',
+                    'category' => 'visa-extension',
+                    'code' => 'Ext. Index B1',
+                    'title' => 'E-Visa VOA Extension',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => 'Additional 30 Days (Total 60 Days)',
+                    'processingTime' => '3 - 5 Working Days',
+                    'visaValidity' => '30 Days from the approval of the extension.',
+                    'whatsAllowed' => [
+                        'Extend official stay permit without having to leave Indonesia.',
+                        'Continue tourism and social activities.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Be extended more than once (maximum total stay of 60 days).'
+                    ],
+                    'documentRequirements' => [
+                        'Original passport & e-VOA file.',
+                        'Recent photograph.',
+                        'Return flight ticket.'
+                    ],
+                    'icon' => 'fa-clock-rotate-left',
+                    'badge' => '+30 Days Ext.',
+                    'duration' => 'Additional 30 Days (Total 60 Days)',
+                    'requirements' => [
+                        'Original passport & e-VOA file.',
+                        'Recent photograph.',
+                        'Return flight ticket.'
+                    ],
+                    'perks' => [
+                        'Extend official stay permit without having to leave Indonesia.',
+                        'Continue tourism and social activities.'
+                    ],
+                    'shortDesc' => 'Additional 30 Days (Total 60 Days)' . ' • ' . '3 - 5 Working Days',
+                    'whoFor' => 'E-Visa VOA Extension',
+                    'tag' => 'Ext. Index B1'
+                ],
+                [
+                    'id' => 'single-entry-extension',
+                    'category' => 'visa-extension',
+                    'code' => 'Ext. C-Series',
+                    'title' => 'Single Entry Visa Extension (Extension Visit Visa)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => 'Additional 60 Days per extension (Extendable up to 2x, total 180 Days)',
+                    'processingTime' => '7 - 10 Working Days (Including Immigration biometric appointment)',
+                    'visaValidity' => '60 Days per extension cycle.',
+                    'whatsAllowed' => [
+                        'Extend stay for tourism, social, or pre-investment visits in Indonesia.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Process extension if the visa has passed its expiration date (overstay).'
+                    ],
+                    'documentRequirements' => [
+                        'Original passport.',
+                        'Proof of original e-Visa.',
+                        'Attendance for photo & fingerprinting at the Immigration Office.'
+                    ],
+                    'icon' => 'fa-calendar-plus',
+                    'badge' => '+60 Days Ext.',
+                    'duration' => 'Additional 60 Days per extension (Extendable up to 2x, total 180 Days)',
+                    'requirements' => [
+                        'Original passport.',
+                        'Proof of original e-Visa.',
+                        'Attendance for photo & fingerprinting at the Immigration Office.'
+                    ],
+                    'perks' => [
+                        'Extend stay for tourism, social, or pre-investment visits in Indonesia.'
+                    ],
+                    'shortDesc' => 'Additional 60 Days per extension (Extendable up to 2x, total 180 Days)' . ' • ' . '7 - 10 Working Days (Including Immigration biometric appointment)',
+                    'whoFor' => 'Single Entry Visa Extension (Extension Visit Visa)',
+                    'tag' => 'Ext. C-Series'
+                ],
+                [
+                    'id' => 'multiple-entry-extension',
+                    'category' => 'visa-extension',
+                    'code' => 'Ext. D-Series',
+                    'title' => 'Multiple Entry Visa Extension',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => 'Additional 60 Days (Extension of stay permit per arrival period)',
+                    'processingTime' => '5 - 7 Working Days',
+                    'visaValidity' => 'Subject to the remaining validity of the main visa.',
+                    'whatsAllowed' => [
+                        'Extend stay permit per entry up to a total of 180 days without leaving the country.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Stay continuously beyond 180 days without making a re-entry/extension.'
+                    ],
+                    'documentRequirements' => [
+                        'Original passport.',
+                        'Proof of active Multiple Entry e-Visa.'
+                    ],
+                    'icon' => 'fa-arrows-rotate',
+                    'badge' => '+60 Days Ext.',
+                    'duration' => 'Additional 60 Days (Extension of stay permit per arrival period)',
+                    'requirements' => [
+                        'Original passport.',
+                        'Proof of active Multiple Entry e-Visa.'
+                    ],
+                    'perks' => [
+                        'Extend stay permit per entry up to a total of 180 days without leaving the country.'
+                    ],
+                    'shortDesc' => 'Additional 60 Days (Extension of stay permit per arrival period)' . ' • ' . '5 - 7 Working Days',
+                    'whoFor' => 'Multiple Entry Visa Extension',
+                    'tag' => 'Ext. D-Series'
+                ],
+                [
+                    'id' => 'kitas-extension',
+                    'category' => 'visa-extension',
+                    'code' => 'KITAS Extension',
+                    'title' => 'KITAS Extension (Working / Investor / Family / Retirement)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => 'Additional 1 Year or 2 Years',
+                    'processingTime' => '10 - 15 Working Days',
+                    'visaValidity' => '1 or 2 Years.',
+                    'whatsAllowed' => [
+                        'Continue stay permit and work/investment/retirement activities seamlessly in Indonesia.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Be extended if the sponsoring company/penjamin is inactive or non-compliant.'
+                    ],
+                    'documentRequirements' => [
+                        'Original passport (valid for min 18 months).',
+                        'Previous KITAS / E-ITAS.',
+                        'Sponsoring company documents (NIB, Deed, Tax, etc.).'
+                    ],
+                    'icon' => 'fa-id-card-clip',
+                    'badge' => 'Annual Renewal',
+                    'duration' => 'Additional 1 Year or 2 Years',
+                    'requirements' => [
+                        'Original passport (valid for min 18 months).',
+                        'Previous KITAS / E-ITAS.',
+                        'Sponsoring company documents (NIB, Deed, Tax, etc.).'
+                    ],
+                    'perks' => [
+                        'Continue stay permit and work/investment/retirement activities seamlessly in Indonesia.'
+                    ],
+                    'shortDesc' => 'Additional 1 Year or 2 Years' . ' • ' . '10 - 15 Working Days',
+                    'whoFor' => 'KITAS Extension (Working / Investor / Family / Retirement)',
+                    'tag' => 'KITAS Extension'
+                ],
+                [
+                    'id' => 'investor-kitas-e28a',
+                    'category' => 'kitas',
+                    'code' => 'Index E28A',
+                    'title' => 'Investor KITAS (E28A)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '1 Year or 2 Years (Extendable)',
+                    'processingTime' => '10 - 20 Working Days',
+                    'visaValidity' => '1 or 2 Years.',
+                    'whatsAllowed' => [
+                        'Manage and lead a PT PMA company in Indonesia as Director/Commissioner.',
+                        'Enter and exit Indonesia freely (Multiple Entry).',
+                        'Sponsor family members (Dependent KITAS).'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Work outside the scope of the sponsoring PT PMA company.'
+                    ],
+                    'documentRequirements' => [
+                        'Passport valid for min 18 months.',
+                        'PT PMA documents (NIB, Deed, Ministry Approval, Tax ID).',
+                        'Minimum shareholding of IDR 10 Billion in PT PMA.'
+                    ],
+                    'icon' => 'fa-money-bill-trend-up',
+                    'badge' => 'Founder & Investor',
+                    'duration' => '1 Year or 2 Years (Extendable)',
+                    'requirements' => [
+                        'Passport valid for min 18 months.',
+                        'PT PMA documents (NIB, Deed, Ministry Approval, Tax ID).',
+                        'Minimum shareholding of IDR 10 Billion in PT PMA.'
+                    ],
+                    'perks' => [
+                        'Manage and lead a PT PMA company in Indonesia as Director/Commissioner.',
+                        'Enter and exit Indonesia freely (Multiple Entry).',
+                        'Sponsor family members (Dependent KITAS).'
+                    ],
+                    'shortDesc' => '1 Year or 2 Years (Extendable)' . ' • ' . '10 - 20 Working Days',
+                    'whoFor' => 'Investor KITAS (E28A)',
+                    'tag' => 'Index E28A'
+                ],
+                [
+                    'id' => 'working-kitas-e23',
+                    'category' => 'kitas',
+                    'code' => 'Index E23',
+                    'title' => 'Working KITAS (E23)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '1 Year (Extendable annually)',
+                    'processingTime' => '15 - 25 Working Days',
+                    'visaValidity' => '1 Year.',
+                    'whatsAllowed' => [
+                        'Work and hold a paid professional position legally in an Indonesian company.',
+                        'Receive local salary and open a local bank account.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Work for another company outside the official sponsoring company.'
+                    ],
+                    'documentRequirements' => [
+                        'Passport valid for min 18 months.',
+                        'Sponsoring company documents (RPTKA, NIB, Business License).',
+                        'University Degree, CV, and Work Experience of the candidate.'
+                    ],
+                    'icon' => 'fa-user-tie',
+                    'badge' => 'Expat Professional',
+                    'duration' => '1 Year (Extendable annually)',
+                    'requirements' => [
+                        'Passport valid for min 18 months.',
+                        'Sponsoring company documents (RPTKA, NIB, Business License).',
+                        'University Degree, CV, and Work Experience of the candidate.'
+                    ],
+                    'perks' => [
+                        'Work and hold a paid professional position legally in an Indonesian company.',
+                        'Receive local salary and open a local bank account.'
+                    ],
+                    'shortDesc' => '1 Year (Extendable annually)' . ' • ' . '15 - 25 Working Days',
+                    'whoFor' => 'Working KITAS (E23)',
+                    'tag' => 'Index E23'
+                ],
+                [
+                    'id' => 'digital-nomad-e33g',
+                    'category' => 'kitas',
+                    'code' => 'Index E33G',
+                    'title' => 'Digital Nomad / Remote Worker Visa (E33G)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '1 Year (Extendable annually)',
+                    'processingTime' => '10 - 15 Working Days',
+                    'visaValidity' => '1 Year.',
+                    'whatsAllowed' => [
+                        'Work remotely for overseas companies/clients from Bali/Indonesia legally.',
+                        'Reside and live in Indonesia for 1 year.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Work for or sell products/services to local Indonesian clients or market.',
+                        'Receive salary from domestic Indonesian sources.'
+                    ],
+                    'documentRequirements' => [
+                        'Passport valid for min 18 months.',
+                        'Employment contract from an overseas company.',
+                        'Proof of income minimum USD $60,000 per year.'
+                    ],
+                    'icon' => 'fa-laptop-code',
+                    'badge' => 'Remote Worker',
+                    'duration' => '1 Year (Extendable annually)',
+                    'requirements' => [
+                        'Passport valid for min 18 months.',
+                        'Employment contract from an overseas company.',
+                        'Proof of income minimum USD $60,000 per year.'
+                    ],
+                    'perks' => [
+                        'Work remotely for overseas companies/clients from Bali/Indonesia legally.',
+                        'Reside and live in Indonesia for 1 year.'
+                    ],
+                    'shortDesc' => '1 Year (Extendable annually)' . ' • ' . '10 - 15 Working Days',
+                    'whoFor' => 'Digital Nomad / Remote Worker Visa (E33G)',
+                    'tag' => 'Index E33G'
+                ],
+                [
+                    'id' => 'retirement-kitas-e33e',
+                    'category' => 'kitas',
+                    'code' => 'Index E33E',
+                    'title' => 'Retirement KITAS (E33E)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '1 Year (Extendable up to 5 years total before converting to KITAP)',
+                    'processingTime' => '10 - 15 Working Days',
+                    'visaValidity' => '1 Year.',
+                    'whatsAllowed' => [
+                        'Live and enjoy retirement in Bali/Indonesia legally.',
+                        'Lease property and open a local bank account.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Engage in paid employment or commercial business in Indonesia.'
+                    ],
+                    'documentRequirements' => [
+                        'Minimum age of 60 years.',
+                        'Passport valid for min 18 months.',
+                        'Proof of pension/funds minimum USD $3,000/month.',
+                        'Lease agreement and statement to hire Indonesian domestic helper.'
+                    ],
+                    'icon' => 'fa-person-cane',
+                    'badge' => 'Retirement 55+',
+                    'duration' => '1 Year (Extendable up to 5 years total before converting to KITAP)',
+                    'requirements' => [
+                        'Minimum age of 60 years.',
+                        'Passport valid for min 18 months.',
+                        'Proof of pension/funds minimum USD $3,000/month.',
+                        'Lease agreement and statement to hire Indonesian domestic helper.'
+                    ],
+                    'perks' => [
+                        'Live and enjoy retirement in Bali/Indonesia legally.',
+                        'Lease property and open a local bank account.'
+                    ],
+                    'shortDesc' => '1 Year (Extendable up to 5 years total before converting to KITAP)' . ' • ' . '10 - 15 Working Days',
+                    'whoFor' => 'Retirement KITAS (E33E)',
+                    'tag' => 'Index E33E'
+                ],
+                [
+                    'id' => 'dependent-kitas-e31',
+                    'category' => 'kitas',
+                    'code' => 'Index E31',
+                    'title' => 'Family of KITAS Holder (Dependent KITAS - E31)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => 'Matches the duration of the main KITAS holder (1 or 2 Years)',
+                    'processingTime' => '10 - 15 Working Days',
+                    'visaValidity' => 'Follows the validity of the Main KITAS.',
+                    'whatsAllowed' => [
+                        'Reside legally accompanying spouse / parents who hold Investor/Working/Retirement KITAS.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Work or earn local income in Indonesia.'
+                    ],
+                    'documentRequirements' => [
+                        'Passport valid for min 18 months.',
+                        'Marriage Certificate (for spouse) / Birth Certificate (for child) translated & legalized.',
+                        'Copy of Main KITAS holder\'s permit.'
+                    ],
+                    'icon' => 'fa-people-roof',
+                    'badge' => 'Family Dependent',
+                    'duration' => 'Matches the duration of the main KITAS holder (1 or 2 Years)',
+                    'requirements' => [
+                        'Passport valid for min 18 months.',
+                        'Marriage Certificate (for spouse) / Birth Certificate (for child) translated & legalized.',
+                        'Copy of Main KITAS holder\'s permit.'
+                    ],
+                    'perks' => [
+                        'Reside legally accompanying spouse / parents who hold Investor/Working/Retirement KITAS.'
+                    ],
+                    'shortDesc' => 'Matches the duration of the main KITAS holder (1 or 2 Years)' . ' • ' . '10 - 15 Working Days',
+                    'whoFor' => 'Family of KITAS Holder (Dependent KITAS - E31)',
+                    'tag' => 'Index E31'
+                ],
+                [
+                    'id' => 'spouse-kitas',
+                    'category' => 'kitas',
+                    'code' => 'Index E31B / Spouse',
+                    'title' => 'Family of Indonesian Citizen (Spouse KITAS)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '1 Year (Extendable, eligible to apply for KITAP after 2 years of marriage)',
+                    'processingTime' => '10 - 15 Working Days',
+                    'visaValidity' => '1 Year.',
+                    'whatsAllowed' => [
+                        'Reside legally in Indonesia with Indonesian spouse.',
+                        'Allowed to engage in activities to support family needs.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Work as a formal employee without a proper work permit.'
+                    ],
+                    'documentRequirements' => [
+                        'Official Marriage Certificate / Buku Nikah.',
+                        'KTP & Family Card (KK) of Indonesian spouse.',
+                        'Foreign spouse passport valid for min 18 months.'
+                    ],
+                    'icon' => 'fa-hand-holding-heart',
+                    'badge' => 'Spouse of WNI',
+                    'duration' => '1 Year (Extendable, eligible to apply for KITAP after 2 years of marriage)',
+                    'requirements' => [
+                        'Official Marriage Certificate / Buku Nikah.',
+                        'KTP & Family Card (KK) of Indonesian spouse.',
+                        'Foreign spouse passport valid for min 18 months.'
+                    ],
+                    'perks' => [
+                        'Reside legally in Indonesia with Indonesian spouse.',
+                        'Allowed to engage in activities to support family needs.'
+                    ],
+                    'shortDesc' => '1 Year (Extendable, eligible to apply for KITAP after 2 years of marriage)' . ' • ' . '10 - 15 Working Days',
+                    'whoFor' => 'Family of Indonesian Citizen (Spouse KITAS)',
+                    'tag' => 'Index E31B / Spouse'
+                ],
+                [
+                    'id' => 'student-visa-e30a',
+                    'category' => 'kitas',
+                    'code' => 'Index E30A',
+                    'title' => 'Student Visa (E30A)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '1 Year (According to study duration)',
+                    'processingTime' => '10 - 20 Working Days',
+                    'visaValidity' => '1 Year.',
+                    'whatsAllowed' => [
+                        'Pursue formal education/study at accredited Indonesian universities or educational institutions.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Work commercially or run a business in Indonesia.'
+                    ],
+                    'documentRequirements' => [
+                        'Letter of Acceptance from the educational institution.',
+                        'Recommendation letter from the Ministry of Education.',
+                        'Passport valid for min 18 months.'
+                    ],
+                    'icon' => 'fa-graduation-cap',
+                    'badge' => 'Education Study',
+                    'duration' => '1 Year (According to study duration)',
+                    'requirements' => [
+                        'Letter of Acceptance from the educational institution.',
+                        'Recommendation letter from the Ministry of Education.',
+                        'Passport valid for min 18 months.'
+                    ],
+                    'perks' => [
+                        'Pursue formal education/study at accredited Indonesian universities or educational institutions.'
+                    ],
+                    'shortDesc' => '1 Year (According to study duration)' . ' • ' . '10 - 20 Working Days',
+                    'whoFor' => 'Student Visa (E30A)',
+                    'tag' => 'Index E30A'
+                ],
+                [
+                    'id' => 'ex-wni-visa-e32a',
+                    'category' => 'kitas',
+                    'code' => 'Index E32A',
+                    'title' => 'Ex-Indonesian Citizens Visa (E32A)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '1 Year or 2 Years',
+                    'processingTime' => '10 - 15 Working Days',
+                    'visaValidity' => '1 or 2 Years.',
+                    'whatsAllowed' => [
+                        'Reside and live back in Indonesia for former Indonesian citizens.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Work commercially without a valid work permit.'
+                    ],
+                    'documentRequirements' => [
+                        'Proof of former Indonesian citizenship (old Indonesian passport / Birth Certificate / Decree of citizenship cancellation).',
+                        'Active foreign passport valid for min 18 months.'
+                    ],
+                    'icon' => 'fa-flag',
+                    'badge' => 'Ex-Indonesian',
+                    'duration' => '1 Year or 2 Years',
+                    'requirements' => [
+                        'Proof of former Indonesian citizenship (old Indonesian passport / Birth Certificate / Decree of citizenship cancellation).',
+                        'Active foreign passport valid for min 18 months.'
+                    ],
+                    'perks' => [
+                        'Reside and live back in Indonesia for former Indonesian citizens.'
+                    ],
+                    'shortDesc' => '1 Year or 2 Years' . ' • ' . '10 - 15 Working Days',
+                    'whoFor' => 'Ex-Indonesian Citizens Visa (E32A)',
+                    'tag' => 'Index E32A'
+                ],
+                [
+                    'id' => 'golden-visa',
+                    'category' => 'kitas',
+                    'code' => 'Golden Visa',
+                    'title' => 'Golden Visa',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '5 Years or 10 Years',
+                    'processingTime' => '15 - 30 Working Days',
+                    'visaValidity' => '5 or 10 Years.',
+                    'whatsAllowed' => [
+                        'Long-term stay permit (5-10 years) without annual extensions.',
+                        'Priority immigration lanes at airports & simplified financial procedures.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Violate the minimum investment commitment required by the government.'
+                    ],
+                    'documentRequirements' => [
+                        'Proof of significant investment (Government Bonds, PT PMA Shares, or State Bank Deposits worth USD $350,000 - $700,000+).',
+                        'Passport valid for min 36 months.'
+                    ],
+                    'icon' => 'fa-gem',
+                    'badge' => '5 - 10 Years VIP',
+                    'duration' => '5 Years or 10 Years',
+                    'requirements' => [
+                        'Proof of significant investment (Government Bonds, PT PMA Shares, or State Bank Deposits worth USD $350,000 - $700,000+).',
+                        'Passport valid for min 36 months.'
+                    ],
+                    'perks' => [
+                        'Long-term stay permit (5-10 years) without annual extensions.',
+                        'Priority immigration lanes at airports & simplified financial procedures.'
+                    ],
+                    'shortDesc' => '5 Years or 10 Years' . ' • ' . '15 - 30 Working Days',
+                    'whoFor' => 'Golden Visa',
+                    'tag' => 'Golden Visa'
+                ],
+                [
+                    'id' => 'investor-kitap',
+                    'category' => 'kitap',
+                    'code' => 'KITAP Investor',
+                    'title' => 'Investor KITAP',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '5 Years (Extendable up to unlimited / permanent status)',
+                    'processingTime' => '1 - 2 Months',
+                    'visaValidity' => '5 Years per extension cycle.',
+                    'whatsAllowed' => [
+                        'Permanent long-term residency in Indonesia without annual KITAS renewal.',
+                        'Hold Foreigner ID Card (KTP WNA) & SIKK.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Abandon the PT PMA investment that serves as the foundation for the KITAP.'
+                    ],
+                    'documentRequirements' => [
+                        'Held an Investor KITAS for at least 3-4 consecutive years.',
+                        'Complete PT PMA documents actively operating.'
+                    ],
+                    'icon' => 'fa-crown',
+                    'badge' => 'Permanent Residency',
+                    'duration' => '5 Years (Extendable up to unlimited / permanent status)',
+                    'requirements' => [
+                        'Held an Investor KITAS for at least 3-4 consecutive years.',
+                        'Complete PT PMA documents actively operating.'
+                    ],
+                    'perks' => [
+                        'Permanent long-term residency in Indonesia without annual KITAS renewal.',
+                        'Hold Foreigner ID Card (KTP WNA) & SIKK.'
+                    ],
+                    'shortDesc' => '5 Years (Extendable up to unlimited / permanent status)' . ' • ' . '1 - 2 Months',
+                    'whoFor' => 'Investor KITAP',
+                    'tag' => 'KITAP Investor'
+                ],
+                [
+                    'id' => 'working-kitap',
+                    'category' => 'kitap',
+                    'code' => 'KITAP Working',
+                    'title' => 'Working KITAP',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '5 Years',
+                    'processingTime' => '1 - 2 Months',
+                    'visaValidity' => '5 Years.',
+                    'whatsAllowed' => [
+                        'Permanent residency and work in executive/expert positions at sponsoring company.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Change employers without updating sponsor legalities.'
+                    ],
+                    'documentRequirements' => [
+                        'Held a Working KITAS for at least 3-4 consecutive years with the same company.'
+                    ],
+                    'icon' => 'fa-certificate',
+                    'badge' => 'Permanent Career',
+                    'duration' => '5 Years',
+                    'requirements' => [
+                        'Held a Working KITAS for at least 3-4 consecutive years with the same company.'
+                    ],
+                    'perks' => [
+                        'Permanent residency and work in executive/expert positions at sponsoring company.'
+                    ],
+                    'shortDesc' => '5 Years' . ' • ' . '1 - 2 Months',
+                    'whoFor' => 'Working KITAP',
+                    'tag' => 'KITAP Working'
+                ],
+                [
+                    'id' => 'family-kitap',
+                    'category' => 'kitap',
+                    'code' => 'KITAP Family',
+                    'title' => 'Family KITAP (Spouse / Dependent)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '5 Years (Spouse KITAP can become permanent upon extension)',
+                    'processingTime' => '1 Month',
+                    'visaValidity' => '5 Years.',
+                    'whatsAllowed' => [
+                        'Permanent residency in Indonesia accompanying Indonesian spouse.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Divorce from Indonesian spouse (may invalidate family KITAP status).'
+                    ],
+                    'documentRequirements' => [
+                        'Married to an Indonesian citizen for at least 2 years and held a Spouse KITAS for 2 consecutive years.'
+                    ],
+                    'icon' => 'fa-house-chimney-user',
+                    'badge' => 'Permanent Spouse',
+                    'duration' => '5 Years (Spouse KITAP can become permanent upon extension)',
+                    'requirements' => [
+                        'Married to an Indonesian citizen for at least 2 years and held a Spouse KITAS for 2 consecutive years.'
+                    ],
+                    'perks' => [
+                        'Permanent residency in Indonesia accompanying Indonesian spouse.'
+                    ],
+                    'shortDesc' => '5 Years (Spouse KITAP can become permanent upon extension)' . ' • ' . '1 Month',
+                    'whoFor' => 'Family KITAP (Spouse / Dependent)',
+                    'tag' => 'KITAP Family'
+                ],
+                [
+                    'id' => 'retirement-kitap',
+                    'category' => 'kitap',
+                    'code' => 'KITAP Retirement',
+                    'title' => 'Retirement KITAP',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => '5 Years',
+                    'processingTime' => '1 - 2 Months',
+                    'visaValidity' => '5 Years.',
+                    'whatsAllowed' => [
+                        'Permanent residency for retirees without annual KITAS management.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Engage in local paid employment in Indonesia.'
+                    ],
+                    'documentRequirements' => [
+                        'Held a Retirement KITAS for at least 5 consecutive years.'
+                    ],
+                    'icon' => 'fa-champagne-glasses',
+                    'badge' => 'Permanent Retiree',
+                    'duration' => '5 Years',
+                    'requirements' => [
+                        'Held a Retirement KITAS for at least 5 consecutive years.'
+                    ],
+                    'perks' => [
+                        'Permanent residency for retirees without annual KITAS management.'
+                    ],
+                    'shortDesc' => '5 Years' . ' • ' . '1 - 2 Months',
+                    'whoFor' => 'Retirement KITAP',
+                    'tag' => 'KITAP Retirement'
+                ],
+                [
+                    'id' => 'pma-company',
+                    'category' => 'company',
+                    'code' => 'PT PMA Setup',
+                    'title' => 'Foreign Investment Company (PMA)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => 'Permanent Business License (Periodic LKPM reporting required)',
+                    'processingTime' => '15 - 30 Working Days (subject to ministry approval)',
+                    'visaValidity' => 'Lifetime / valid for as long as the company actively operates.',
+                    'whatsAllowed' => [
+                        'Own 100% or partial shares in an Indonesian entity as a foreign investor.',
+                        'Conduct official business operations and legal financial transactions in Indonesia.',
+                        'Apply for Investor KITAS (E28A) or Working KITAS for foreign Directors/Commissioners.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Operate in business sectors listed under the Negative Investment List (DNI) / closed to foreign capital.',
+                        'Operate without satisfying the minimum foreign investment capital requirement (equivalent to IDR 10 Billion per KBLI).'
+                    ],
+                    'documentRequirements' => [
+                        'OneCoreVisa application form.',
+                        'Choice of company name (at least 3 options) & business address in Indonesia.',
+                        'Selection of business category (KBLI code).',
+                        'Shareholder breakdown and share percentage allocation.',
+                        'Color passport scan of foreign shareholders / Corporate Deed if shareholder is a corporate entity.'
+                    ],
+                    'icon' => 'fa-building',
+                    'badge' => '100% Foreign Owned',
+                    'duration' => 'Permanent Business License (Periodic LKPM reporting required)',
+                    'requirements' => [
+                        'OneCoreVisa application form.',
+                        'Choice of company name (at least 3 options) & business address in Indonesia.',
+                        'Selection of business category (KBLI code).',
+                        'Shareholder breakdown and share percentage allocation.',
+                        'Color passport scan of foreign shareholders / Corporate Deed if shareholder is a corporate entity.'
+                    ],
+                    'perks' => [
+                        'Own 100% or partial shares in an Indonesian entity as a foreign investor.',
+                        'Conduct official business operations and legal financial transactions in Indonesia.',
+                        'Apply for Investor KITAS (E28A) or Working KITAS for foreign Directors/Commissioners.'
+                    ],
+                    'shortDesc' => 'Permanent Business License (Periodic LKPM reporting required)' . ' • ' . '15 - 30 Working Days (subject to ministry approval)',
+                    'whoFor' => 'Foreign Investment Company (PMA)',
+                    'tag' => 'PT PMA Setup'
+                ],
+                [
+                    'id' => 'pt-local-company',
+                    'category' => 'company',
+                    'code' => 'PT PMDN Setup',
+                    'title' => 'Local Investment Company (PT Local / PMDN)',
+                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'lengthOfStay' => 'Permanent Business License',
+                    'processingTime' => '10 - 20 Working Days',
+                    'visaValidity' => 'Lifetime / valid for as long as the company actively operates.',
+                    'whatsAllowed' => [
+                        'Own and operate a company fully under Indonesian Citizen (WNI) ownership.',
+                        'Conduct business in sectors restricted or exclusive to domestic capital.'
+                    ],
+                    'whatsNotAllowed' => [
+                        'Have direct foreign shareholders (must be 100% WNI owned).',
+                        'Directly issue Investor KITAS for foreigners under share ownership.'
+                    ],
+                    'documentRequirements' => [
+                        'OneCoreVisa application form.',
+                        'Choice of company name (at least 3 options) & registered address.',
+                        'Selection of business category (KBLI code).',
+                        'Shareholder details (WNI) and capital allocation.',
+                        'Scan of KTP (Indonesian ID) & Tax ID (NPWP) of all Indonesian shareholders.'
+                    ],
+                    'icon' => 'fa-shop',
+                    'badge' => 'Local Investment',
+                    'duration' => 'Permanent Business License',
+                    'requirements' => [
+                        'OneCoreVisa application form.',
+                        'Choice of company name (at least 3 options) & registered address.',
+                        'Selection of business category (KBLI code).',
+                        'Shareholder details (WNI) and capital allocation.',
+                        'Scan of KTP (Indonesian ID) & Tax ID (NPWP) of all Indonesian shareholders.'
+                    ],
+                    'perks' => [
+                        'Own and operate a company fully under Indonesian Citizen (WNI) ownership.',
+                        'Conduct business in sectors restricted or exclusive to domestic capital.'
+                    ],
+                    'shortDesc' => 'Permanent Business License' . ' • ' . '10 - 20 Working Days',
+                    'whoFor' => 'Local Investment Company (PT Local / PMDN)',
+                    'tag' => 'PT PMDN Setup'
                 ]
             ],
             'process' => [
@@ -507,6 +1167,43 @@ class HomeController extends Controller
         return view('home', $data);
     }
 
+    public function showService(string $service)
+    {
+        $details = [
+            'visa-extensions' => [
+                'name' => 'Visa Extensions', 'title_id' => 'Perpanjangan Visa', 'image' => 'header-slider2.webp',
+                'intro' => ['Plan the next part of your stay in Indonesia with assistance for your visa extension.', 'Rencanakan kelanjutan masa tinggal Anda di Indonesia dengan bantuan perpanjangan visa.'],
+                'overview' => ['Start by discussing your current visa or stay permit, its expiry date, and how much longer you intend to stay. Our team can help you review the next steps for your circumstances.', 'Mulai dengan mendiskusikan visa atau izin tinggal saat ini, tanggal berakhir, dan rencana tambahan masa tinggal. Tim kami membantu meninjau langkah berikutnya sesuai kondisi Anda.'],
+                'topics' => [['Your current visa or stay permit', 'Visa atau izin tinggal saat ini'], ['The expiry date and your intended stay', 'Tanggal berakhir dan rencana masa tinggal'], ['Your nationality and current location', 'Kewarganegaraan dan lokasi saat ini']],
+            ],
+            'e-visa-voa' => [
+                'name' => 'E-Visa VOA', 'title_id' => 'E-Visa VOA', 'image' => 'about-img.webp',
+                'intro' => ['Prepare for your arrival in Indonesia before you travel.', 'Persiapkan kedatangan Anda di Indonesia sebelum berangkat.'],
+                'overview' => ['Share your nationality, travel purpose, and expected arrival date. Our team can discuss whether E-Visa VOA fits your plans and explain what to prepare before proceeding.', 'Sampaikan kewarganegaraan, tujuan perjalanan, dan rencana tanggal kedatangan. Tim kami dapat mendiskusikan kesesuaian E-Visa VOA dengan rencana Anda dan persiapan sebelum melanjutkan.'],
+                'topics' => [['Your nationality', 'Kewarganegaraan Anda'], ['Your travel purpose and arrival date', 'Tujuan perjalanan dan tanggal kedatangan'], ['Your planned length of stay', 'Rencana lama tinggal']],
+            ],
+            'single-entry-visas' => [
+                'name' => 'Single Entry Visas', 'title_id' => 'Visa Sekali Masuk', 'image' => 'header-slider3.webp',
+                'intro' => ['Explore visa assistance for a planned visit to Indonesia.', 'Kenali bantuan visa untuk kunjungan terencana ke Indonesia.'],
+                'overview' => ['Tell us the purpose of your visit, your travel dates, and your intended stay. We can discuss the single-entry options relevant to your plans and the questions to resolve before applying.', 'Ceritakan tujuan kunjungan, tanggal perjalanan, dan rencana masa tinggal. Kami dapat mendiskusikan pilihan sekali masuk yang relevan serta hal yang perlu dipastikan sebelum pengajuan.'],
+                'topics' => [['Your visit purpose', 'Tujuan kunjungan Anda'], ['Your arrival and departure plans', 'Rencana kedatangan dan keberangkatan'], ['Your nationality and current location', 'Kewarganegaraan dan lokasi saat ini']],
+            ],
+            'multiple-entry-visas' => [
+                'name' => 'Multiple Entry Visas', 'title_id' => 'Visa Beberapa Kali Masuk', 'image' => 'header-slider1.webp',
+                'intro' => ['Plan ahead for regular visits to Indonesia.', 'Rencanakan kunjungan rutin Anda ke Indonesia.'],
+                'overview' => ['Discuss how often you plan to visit, the purpose of each visit, and your travel schedule. Our team can help you explore multiple-entry options and review what your application may involve.', 'Diskusikan frekuensi kunjungan, tujuan setiap kunjungan, dan jadwal perjalanan. Tim kami membantu mengenali pilihan beberapa kali masuk dan meninjau proses pengajuannya.'],
+                'topics' => [['Your visit frequency and travel schedule', 'Frekuensi kunjungan dan jadwal perjalanan'], ['The purpose of your visits', 'Tujuan kunjungan Anda'], ['Your nationality and intended stays', 'Kewarganegaraan dan rencana masa tinggal']],
+            ],
+        ];
+
+        abort_unless(isset($details[$service]), 404);
+
+        return view('services.show', [
+            'lang' => session('locale', 'en'),
+            'serviceDetail' => $details[$service],
+        ]);
+    }
+
     /**
      * Switch language route
      */
@@ -543,7 +1240,7 @@ class HomeController extends Controller
 
         $text = "Halo OneCoreVisa,%0A%0ASaya ingin konsultasi layanan:%0A- Nama: {$name}%0A- WhatsApp: {$whatsapp}%0A- Email: {$email}%0A- Kewarganegaraan: {$nationality}%0A- Layanan: {$service}%0A- Lokasi: {$location}%0A- Catatan: {$notes}%0A%0AMohon bantuan konsultan hukum OneCoreVisa. Terima kasih!";
 
-        $whatsappUrl = "https://wa.me/6281298765432?text={$text}";
+        $whatsappUrl = "https://wa.me/6289672966845?text={$text}";
 
         if ($request->ajax() || $request->wantsJson()) {
             return response()->json([

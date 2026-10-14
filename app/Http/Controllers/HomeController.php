@@ -50,7 +50,7 @@ class HomeController extends Controller
                     'category' => 'visitor-visas',
                     'code' => 'Index B1',
                     'title' => 'Visa On Arrival / E-VOA (B1)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '30 Days (Extendable 1x for 30 Days, Max 60 Days)',
                     'processingTime' => '1 - 3 Working Days',
                     'visaValidity' => '90 Days from the issuance date of the e-VOA.',
@@ -88,7 +88,7 @@ class HomeController extends Controller
                     'category' => 'visitor-visas',
                     'code' => 'Index C1',
                     'title' => 'C1 - Tourist Visit Visa (60 Days)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '60 Days (Extendable 2x, 60 days each, up to 180 days total)',
                     'processingTime' => 'Regular: 5 - 10 Working Days • Priority: 2 - 4 Working Days',
                     'visaValidity' => 'Must be used within 90 days from the date of issuance.',
@@ -105,7 +105,7 @@ class HomeController extends Controller
                         'Recent passport-size color photograph.',
                         'Bank statement proving minimum funds of USD $2,000 for the last 3 months.',
                         'Return flight ticket.',
-                        'Local sponsor guarantee (provided by OneCoreVisa).'
+                        'Local sponsor guarantee.'
                     ],
                     'icon' => 'fa-umbrella-beach',
                     'badge' => 'Popular Tourist',
@@ -115,7 +115,7 @@ class HomeController extends Controller
                         'Recent passport-size color photograph.',
                         'Bank statement proving minimum funds of USD $2,000 for the last 3 months.',
                         'Return flight ticket.',
-                        'Local sponsor guarantee (provided by OneCoreVisa).'
+                        'Local sponsor guarantee.'
                     ],
                     'perks' => [
                         'Tourism, vacation, and visiting friends or family.',
@@ -130,7 +130,7 @@ class HomeController extends Controller
                     'category' => 'visitor-visas',
                     'code' => 'Index C2',
                     'title' => 'C2 - Business Visit Visa (60 Days)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '60 Days (Extendable 2x, up to 180 days total)',
                     'processingTime' => 'Regular: 5 - 10 Working Days • Priority: 2 - 4 Working Days',
                     'visaValidity' => 'Must be used within 90 days from the date of issuance.',
@@ -145,7 +145,7 @@ class HomeController extends Controller
                     'documentRequirements' => [
                         'Passport valid for at least 6 months.',
                         'Recent color photograph.',
-                        'Business invitation letter from an Indonesian counterpart/sponsor or OneCoreVisa guarantee.',
+                        'Business invitation letter from an Indonesian counterpart/sponsor or a sponsor guarantee.',
                         'Bank statement showing min. USD $2,000 equivalent.',
                         'Return/onward travel ticket.'
                     ],
@@ -155,7 +155,7 @@ class HomeController extends Controller
                     'requirements' => [
                         'Passport valid for at least 6 months.',
                         'Recent color photograph.',
-                        'Business invitation letter from an Indonesian counterpart/sponsor or OneCoreVisa guarantee.',
+                        'Business invitation letter from an Indonesian counterpart/sponsor or a sponsor guarantee.',
                         'Bank statement showing min. USD $2,000 equivalent.',
                         'Return/onward travel ticket.'
                     ],
@@ -172,7 +172,7 @@ class HomeController extends Controller
                     'category' => 'visitor-visas',
                     'code' => 'Index C12',
                     'title' => 'C12 - Pre-Investment Visit Visa (180 Days)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '180 Days (Extendable 1x for an additional 180 days)',
                     'processingTime' => 'Regular: 10 - 14 Working Days • Priority: 5 - 7 Working Days',
                     'visaValidity' => 'Must be used within 90 days from the date of issuance.',
@@ -212,7 +212,7 @@ class HomeController extends Controller
                     'category' => 'visitor-visas',
                     'code' => 'Index C6 / C6A',
                     'title' => 'C6 / C6A - Social & Cultural Visit Visa (60 Days)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '60 Days (Extendable 2x, up to 180 days total)',
                     'processingTime' => 'Regular: 5 - 10 Working Days • Priority: 2 - 4 Working Days',
                     'visaValidity' => 'Must be used within 90 days from the date of issuance.',
@@ -227,7 +227,7 @@ class HomeController extends Controller
                         'Passport valid for at least 6 months.',
                         'Recent color photograph.',
                         'Bank statement (min. USD $2,000).',
-                        'Social/family sponsorship document (provided by OneCoreVisa).'
+                        'Social/family sponsorship document.'
                     ],
                     'icon' => 'fa-people-group',
                     'badge' => 'Social & Culture',
@@ -236,7 +236,7 @@ class HomeController extends Controller
                         'Passport valid for at least 6 months.',
                         'Recent color photograph.',
                         'Bank statement (min. USD $2,000).',
-                        'Social/family sponsorship document (provided by OneCoreVisa).'
+                        'Social/family sponsorship document.'
                     ],
                     'perks' => [
                         'Visit family, engage in social, cultural, or educational exchange activities.',
@@ -251,7 +251,7 @@ class HomeController extends Controller
                     'category' => 'visitor-visas',
                     'code' => 'Index C7 / C7A',
                     'title' => 'C7 / C7A - Music, Performing & Arts Visit Visa (60 Days)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '60 Days (According to event duration)',
                     'processingTime' => '7 - 14 Working Days',
                     'visaValidity' => 'Must be used within 90 days from the date of issuance.',
@@ -288,7 +288,7 @@ class HomeController extends Controller
                     'category' => 'visitor-visas',
                     'code' => 'Index C13 / C14',
                     'title' => 'C13 / C14 - Medical & Humanitarian Visit Visa (60 Days)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '60 Days (Extendable based on medical requirement)',
                     'processingTime' => '3 - 7 Working Days',
                     'visaValidity' => 'Must be used within 90 days from issuance date.',
@@ -323,7 +323,7 @@ class HomeController extends Controller
                     'category' => 'visitor-visas',
                     'code' => 'Index D1 / D2',
                     'title' => 'Multiple Entry Visit Visa (D1 / D2 - up to 180 days per visit)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '60 Days per entry (Extendable up to a total of 180 days per visit)',
                     'processingTime' => 'Regular: up to 14 Working Days • Priority: up to 7 Working Days',
                     'visaValidity' => 'Valid for 1, 2, or 5 Years.',
@@ -360,7 +360,7 @@ class HomeController extends Controller
                     'category' => 'visa-extension',
                     'code' => 'Ext. Index B1',
                     'title' => 'E-Visa VOA Extension',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => 'Additional 30 Days (Total 60 Days)',
                     'processingTime' => '3 - 5 Working Days',
                     'visaValidity' => '30 Days from the approval of the extension.',
@@ -397,7 +397,7 @@ class HomeController extends Controller
                     'category' => 'visa-extension',
                     'code' => 'Ext. C-Series',
                     'title' => 'Single Entry Visa Extension (Extension Visit Visa)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => 'Additional 60 Days per extension (Extendable up to 2x, total 180 Days)',
                     'processingTime' => '7 - 10 Working Days (Including Immigration biometric appointment)',
                     'visaValidity' => '60 Days per extension cycle.',
@@ -432,7 +432,7 @@ class HomeController extends Controller
                     'category' => 'visa-extension',
                     'code' => 'Ext. D-Series',
                     'title' => 'Multiple Entry Visa Extension',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => 'Additional 60 Days (Extension of stay permit per arrival period)',
                     'processingTime' => '5 - 7 Working Days',
                     'visaValidity' => 'Subject to the remaining validity of the main visa.',
@@ -465,7 +465,7 @@ class HomeController extends Controller
                     'category' => 'visa-extension',
                     'code' => 'KITAS Extension',
                     'title' => 'KITAS Extension (Working / Investor / Family / Retirement)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => 'Additional 1 Year or 2 Years',
                     'processingTime' => '10 - 15 Working Days',
                     'visaValidity' => '1 or 2 Years.',
@@ -500,7 +500,7 @@ class HomeController extends Controller
                     'category' => 'kitas',
                     'code' => 'Index E28A',
                     'title' => 'Investor KITAS (E28A)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '1 Year or 2 Years (Extendable)',
                     'processingTime' => '10 - 20 Working Days',
                     'visaValidity' => '1 or 2 Years.',
@@ -539,7 +539,7 @@ class HomeController extends Controller
                     'category' => 'kitas',
                     'code' => 'Index E23',
                     'title' => 'Working KITAS (E23)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '1 Year (Extendable annually)',
                     'processingTime' => '15 - 25 Working Days',
                     'visaValidity' => '1 Year.',
@@ -576,7 +576,7 @@ class HomeController extends Controller
                     'category' => 'kitas',
                     'code' => 'Index E33G',
                     'title' => 'Digital Nomad / Remote Worker Visa (E33G)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '1 Year (Extendable annually)',
                     'processingTime' => '10 - 15 Working Days',
                     'visaValidity' => '1 Year.',
@@ -614,7 +614,7 @@ class HomeController extends Controller
                     'category' => 'kitas',
                     'code' => 'Index E33E',
                     'title' => 'Retirement KITAS (E33E)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '1 Year (Extendable up to 5 years total before converting to KITAP)',
                     'processingTime' => '10 - 15 Working Days',
                     'visaValidity' => '1 Year.',
@@ -653,7 +653,7 @@ class HomeController extends Controller
                     'category' => 'kitas',
                     'code' => 'Index E31',
                     'title' => 'Family of KITAS Holder (Dependent KITAS - E31)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => 'Matches the duration of the main KITAS holder (1 or 2 Years)',
                     'processingTime' => '10 - 15 Working Days',
                     'visaValidity' => 'Follows the validity of the Main KITAS.',
@@ -688,7 +688,7 @@ class HomeController extends Controller
                     'category' => 'kitas',
                     'code' => 'Index E31B / Spouse',
                     'title' => 'Family of Indonesian Citizen (Spouse KITAS)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '1 Year (Extendable, eligible to apply for KITAP after 2 years of marriage)',
                     'processingTime' => '10 - 15 Working Days',
                     'visaValidity' => '1 Year.',
@@ -725,7 +725,7 @@ class HomeController extends Controller
                     'category' => 'kitas',
                     'code' => 'Index E30A',
                     'title' => 'Student Visa (E30A)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '1 Year (According to study duration)',
                     'processingTime' => '10 - 20 Working Days',
                     'visaValidity' => '1 Year.',
@@ -760,7 +760,7 @@ class HomeController extends Controller
                     'category' => 'kitas',
                     'code' => 'Index E32A',
                     'title' => 'Ex-Indonesian Citizens Visa (E32A)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '1 Year or 2 Years',
                     'processingTime' => '10 - 15 Working Days',
                     'visaValidity' => '1 or 2 Years.',
@@ -793,7 +793,7 @@ class HomeController extends Controller
                     'category' => 'kitas',
                     'code' => 'Golden Visa',
                     'title' => 'Golden Visa',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '5 Years or 10 Years',
                     'processingTime' => '15 - 30 Working Days',
                     'visaValidity' => '5 or 10 Years.',
@@ -828,7 +828,7 @@ class HomeController extends Controller
                     'category' => 'kitap',
                     'code' => 'KITAP Investor',
                     'title' => 'Investor KITAP',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '5 Years (Extendable up to unlimited / permanent status)',
                     'processingTime' => '1 - 2 Months',
                     'visaValidity' => '5 Years per extension cycle.',
@@ -863,7 +863,7 @@ class HomeController extends Controller
                     'category' => 'kitap',
                     'code' => 'KITAP Working',
                     'title' => 'Working KITAP',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '5 Years',
                     'processingTime' => '1 - 2 Months',
                     'visaValidity' => '5 Years.',
@@ -894,7 +894,7 @@ class HomeController extends Controller
                     'category' => 'kitap',
                     'code' => 'KITAP Family',
                     'title' => 'Family KITAP (Spouse / Dependent)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '5 Years (Spouse KITAP can become permanent upon extension)',
                     'processingTime' => '1 Month',
                     'visaValidity' => '5 Years.',
@@ -925,7 +925,7 @@ class HomeController extends Controller
                     'category' => 'kitap',
                     'code' => 'KITAP Retirement',
                     'title' => 'Retirement KITAP',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => '5 Years',
                     'processingTime' => '1 - 2 Months',
                     'visaValidity' => '5 Years.',
@@ -956,7 +956,7 @@ class HomeController extends Controller
                     'category' => 'company',
                     'code' => 'PT PMA Setup',
                     'title' => 'Foreign Investment Company (PMA)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => 'Permanent Business License (Periodic LKPM reporting required)',
                     'processingTime' => '15 - 30 Working Days (subject to ministry approval)',
                     'visaValidity' => 'Lifetime / valid for as long as the company actively operates.',
@@ -1000,7 +1000,7 @@ class HomeController extends Controller
                     'category' => 'company',
                     'code' => 'PT PMDN Setup',
                     'title' => 'Local Investment Company (PT Local / PMDN)',
-                    'price' => $lang === 'en' ? 'IDR (Competitive / Inquire)' : 'IDR (Konsultasi Tarif Resmi)',
+                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
                     'lengthOfStay' => 'Permanent Business License',
                     'processingTime' => '10 - 20 Working Days',
                     'visaValidity' => 'Lifetime / valid for as long as the company actively operates.',
@@ -1041,39 +1041,30 @@ class HomeController extends Controller
             'process' => [
                 [
                     'step' => '01',
-                    'title' => $lang === 'en' ? 'Free Strategic Assessment' : 'Konsultasi & Analisis Strategis Gratis',
-                    'timeline' => $lang === 'en' ? 'Within 2 Hours' : 'Dalam 2 Jam',
+                    'title' => $lang === 'en' ? 'Start A Consultation' : 'Mulai Konsultasi',
+                    'timeline' => $lang === 'en' ? 'Step 01' : 'Langkah 01',
                     'desc' => $lang === 'en'
-                        ? 'We review your personal or corporate background, stay duration, and business goals to determine the safest, most cost-effective visa or company structure.'
-                        : 'Kami mempelajari profil, durasi tinggal, atau model bisnis Anda untuk merekomendasikan opsi visa atau struktur legal yang paling hemat dan aman.',
-                    'icon' => 'fa-headset'
+                        ? 'Share your nationality, travel plans, and service needs. Our team will help you review the available options.'
+                        : 'Sampaikan kewarganegaraan, rencana perjalanan, dan layanan yang Anda butuhkan. Tim kami akan membantu meninjau pilihan yang tersedia.',
+                    'icon' => 'fa-file-lines'
                 ],
                 [
                     'step' => '02',
-                    'title' => $lang === 'en' ? 'Document Verification & Preparation' : 'Verifikasi & Penyusunan Dokumen',
-                    'timeline' => $lang === 'en' ? 'Day 1 - 2' : 'Hari 1 - 2',
+                    'title' => $lang === 'en' ? 'Prepare Your Application' : 'Siapkan Pengajuan Anda',
+                    'timeline' => $lang === 'en' ? 'Step 02' : 'Langkah 02',
                     'desc' => $lang === 'en'
-                        ? 'Our legal team inspects your documents, performs sworn translations if required, drafts corporate resolutions, and ensures zero discrepancies before submission.'
-                        : 'Tim hukum kami memeriksa kelengkapan berkas, menyusun surat sponsor resmi, terjemahan tersumpah bila dibutuhkan, memastikan berkas 100% valid.',
-                    'icon' => 'fa-file-circle-check'
+                        ? 'We review your documents and explain the requirements, fees, and estimated timing before you proceed.'
+                        : 'Kami meninjau dokumen dan menjelaskan persyaratan, biaya, serta estimasi waktu sebelum Anda melanjutkan.',
+                    'icon' => 'fa-shield-halved'
                 ],
                 [
                     'step' => '03',
-                    'title' => $lang === 'en' ? 'Government Portal Filing & Processing' : 'Pengajuan ke Portal Resmi Pemerintah',
-                    'timeline' => $lang === 'en' ? 'Day 3 - 7' : 'Hari 3 - 7',
+                    'title' => $lang === 'en' ? 'Receive Updates' : 'Terima Pembaruan',
+                    'timeline' => $lang === 'en' ? 'Step 03' : 'Langkah 03',
                     'desc' => $lang === 'en'
-                        ? 'We lodge your application directly with Ditjen Imigrasi, BKPM OSS, or the Ministry of Law and Human Rights (Kemenkumham), closely tracking every milestone.'
-                        : 'Pendaftaran langsung ke sistem Ditjen Imigrasi, BKPM OSS, atau Kemenkumham, serta pemantauan status proses harian.',
-                    'icon' => 'fa-paper-plane'
-                ],
-                [
-                    'step' => '04',
-                    'title' => $lang === 'en' ? 'Approval, VIP Biometrics & Handover' : 'Persetujuan, Biometrik VIP & Serah Terima',
-                    'timeline' => $lang === 'en' ? 'Guaranteed SLA' : 'Sesuai SLA Garansi',
-                    'desc' => $lang === 'en'
-                        ? 'Your official eVisa, e-KITAS, or Corporate Deed & NIB is issued. For KITAS, we provide a VIP escort during your immigration biometric photo session.'
-                        : 'eVisa / e-KITAS atau Akta & NIB resmi terbit. Kami dampingi langsung saat perekaman biometrik di kantor imigrasi hingga tuntas.',
-                    'icon' => 'fa-award'
+                        ? "We keep you informed about your application and guide you through any follow-up requirements and next steps."
+                        : 'Kami memberi pembaruan pengajuan dan mendampingi Anda untuk persyaratan lanjutan serta langkah berikutnya.',
+                    'icon' => 'fa-plane-arrival'
                 ]
             ],
             'faqs' => [
@@ -1163,6 +1154,7 @@ class HomeController extends Controller
 
         $data = $this->getData($lang);
         $data['lang'] = $lang;
+        $data['serviceCategories'] = $this->serviceCategories();
 
         return view('home', $data);
     }
@@ -1170,12 +1162,6 @@ class HomeController extends Controller
     public function showService(string $service)
     {
         $details = [
-            'visa-extensions' => [
-                'name' => 'Visa Extensions', 'title_id' => 'Perpanjangan Visa', 'image' => 'header-slider2.webp',
-                'intro' => ['Plan the next part of your stay in Indonesia with assistance for your visa extension.', 'Rencanakan kelanjutan masa tinggal Anda di Indonesia dengan bantuan perpanjangan visa.'],
-                'overview' => ['Start by discussing your current visa or stay permit, its expiry date, and how much longer you intend to stay. Our team can help you review the next steps for your circumstances.', 'Mulai dengan mendiskusikan visa atau izin tinggal saat ini, tanggal berakhir, dan rencana tambahan masa tinggal. Tim kami membantu meninjau langkah berikutnya sesuai kondisi Anda.'],
-                'topics' => [['Your current visa or stay permit', 'Visa atau izin tinggal saat ini'], ['The expiry date and your intended stay', 'Tanggal berakhir dan rencana masa tinggal'], ['Your nationality and current location', 'Kewarganegaraan dan lokasi saat ini']],
-            ],
             'e-visa-voa' => [
                 'name' => 'E-Visa VOA', 'title_id' => 'E-Visa VOA', 'image' => 'about-img.webp',
                 'intro' => ['Prepare for your arrival in Indonesia before you travel.', 'Persiapkan kedatangan Anda di Indonesia sebelum berangkat.'],
@@ -1196,12 +1182,75 @@ class HomeController extends Controller
             ],
         ];
 
+        $lang = session('locale', 'en');
+        $data = $this->getData($lang);
+        $data['lang'] = $lang;
+        $data['serviceCategories'] = $this->serviceCategories();
+        $details = array_merge($details, $data['serviceCategories']);
         abort_unless(isset($details[$service]), 404);
 
-        return view('services.show', [
-            'lang' => session('locale', 'en'),
-            'serviceDetail' => $details[$service],
-        ]);
+        $legacyServices = [
+            'e-visa-voa' => ['voa-b1'],
+            'single-entry-visas' => ['c1-tourist-visa', 'c2-business-visa', 'c12-pre-investment-visa', 'c6-social-cultural-visa', 'c7-arts-music-visa', 'c13-medical-humanitarian-visa'],
+            'multiple-entry-visas' => ['multiple-entry-d1-d2'],
+        ];
+        $sourceCategory = $details[$service]['sourceCategory'] ?? null;
+        $data['categoryServices'] = array_values(array_filter($data['services'], fn ($item) =>
+            $sourceCategory ? $item['category'] === $sourceCategory : in_array($item['id'], $legacyServices[$service] ?? [], true)
+        ));
+        $data['serviceDetail'] = $details[$service];
+
+        return view('services.show', $data);
+    }
+
+    private function serviceCategories(): array
+    {
+        return [
+            'visitor-visas' => [
+                'name' => 'Visitor Visas', 'title_id' => 'Visa Kunjungan', 'sourceCategory' => 'visitor-visas', 'image' => 'header-slider3.webp',
+                'intro' => ['Single and multiple-entry options for tourism, business visits, cultural activities, and other visits to Indonesia.', 'Pilihan sekali dan beberapa kali masuk untuk wisata, kunjungan bisnis, kegiatan budaya, dan kunjungan lainnya ke Indonesia.'],
+                'benefits' => [['Single & Multiple Entry', 'Sekali & Beberapa Kali Masuk'], ['Tourism & Business Visits', 'Wisata & Kunjungan Bisnis']],
+            ],
+            'visa-extensions' => [
+                'name' => 'Visa & KITAS Extension', 'title_id' => 'Perpanjangan Visa & KITAS', 'sourceCategory' => 'visa-extension', 'image' => 'header-slider2.webp',
+                'intro' => ['Review the next steps for extending your visit visa or renewing your existing stay permit.', 'Tinjau langkah berikutnya untuk memperpanjang visa kunjungan atau memperbarui izin tinggal Anda.'],
+                'benefits' => [['Visit Visa Extensions', 'Perpanjangan Visa Kunjungan'], ['KITAS Renewals', 'Perpanjangan KITAS']],
+            ],
+            'kitas' => [
+                'name' => 'Work & Longer Stay (KITAS)', 'title_id' => 'Kerja & Tinggal Lebih Lama (KITAS)', 'sourceCategory' => 'kitas', 'image' => 'header-slider1.webp',
+                'intro' => ['Explore stay permits for investment, employment, remote work, family, education, and retirement.', 'Kenali izin tinggal untuk investasi, kerja, kerja jarak jauh, keluarga, pendidikan, dan pensiun.'],
+                'benefits' => [['Investor & Working KITAS', 'KITAS Investor & Kerja'], ['Family, Study & Retirement', 'Keluarga, Studi & Pensiun']],
+            ],
+            'kitap' => [
+                'name' => 'Permanent Residency (KITAP)', 'title_id' => 'Izin Tinggal Tetap (KITAP)', 'sourceCategory' => 'kitap', 'image' => 'about-img.webp',
+                'intro' => ['Plan a longer future in Indonesia with residency options for eligible investors, workers, families, and retirees.', 'Rencanakan masa depan di Indonesia melalui pilihan izin tinggal bagi investor, pekerja, keluarga, dan pensiunan yang memenuhi syarat.'],
+                'benefits' => [['Investor & Working KITAP', 'KITAP Investor & Kerja'], ['Family & Retirement KITAP', 'KITAP Keluarga & Pensiun']],
+            ],
+            'company-formation' => [
+                'name' => 'Company Formation', 'title_id' => 'Pendirian Perusahaan', 'sourceCategory' => 'company', 'image' => 'header-slider2.webp',
+                'intro' => ['Prepare your business structure and incorporation documents for a foreign or locally owned company in Indonesia.', 'Siapkan struktur bisnis dan dokumen pendirian perusahaan asing maupun lokal di Indonesia.'],
+                'benefits' => [['Foreign Investment (PT PMA)', 'Penanaman Modal Asing (PT PMA)'], ['Local Company (PT PMDN)', 'Perusahaan Lokal (PT PMDN)']],
+            ],
+        ];
+    }
+
+    public function showServiceLine(string $category, string $service)
+    {
+        $lang = session('locale', 'en');
+        $data = $this->getData($lang);
+        $data['lang'] = $lang;
+        $data['serviceCategories'] = $this->serviceCategories();
+        $categoryDetail = $data['serviceCategories'][$category] ?? null;
+        abort_unless($categoryDetail, 404);
+        $item = collect($data['services'])->first(fn ($item) => $item['id'] === $service && $item['category'] === $categoryDetail['sourceCategory']);
+        abort_unless($item, 404);
+
+        $data['serviceDetail'] = ['name' => $item['title'], 'title_id' => $item['title']];
+        $data['serviceLine'] = $item;
+        $data['categoryDetail'] = $categoryDetail;
+        $data['categorySlug'] = $category;
+
+        return view('services.detail', $data);
     }
 
     /**

@@ -17,13 +17,18 @@
         @foreach($categoryServices as $item)
         @php($lineCategory = collect($serviceCategories)->search(fn ($category) => $category['sourceCategory'] === $item['category']))
         <article class="service-line">
-            <p class="section-label">{{ $item['code'] }}</p>
-            <h3><a href="{{ route('services.detail', [$lineCategory, $item['id']]) }}">{{ $item['title'] }}</a></h3>
-            <dl class="service-line-facts">
-                <div><dt>{{ $t($item['category'] === 'company' ? 'Business Status' : 'Length Of Stay', $item['category'] === 'company' ? 'Status Usaha' : 'Lama Tinggal') }}</dt><dd>{{ $item['lengthOfStay'] }}</dd></div>
-                <div><dt>{{ $t('Processing Time', 'Waktu Proses') }}</dt><dd>{{ $item['processingTime'] }}</dd></div>
-            </dl>
-            <a class="text-link" href="{{ route('services.detail', [$lineCategory, $item['id']]) }}" aria-label="{{ $t('View Details', 'Lihat Detail') }}: {{ $item['title'] }}">{{ $t('View Details', 'Lihat Detail') }} <span aria-hidden="true">↗</span></a>
+            <div class="service-line-media">
+                <img class="service-line-thumbnail" src="{{ asset('assets/images/index/' . $item['thumbnail']) }}" alt="" width="640" height="360" loading="lazy" decoding="async">
+            </div>
+            <div class="service-line-content">
+                <p class="section-label">{{ $item['code'] }}</p>
+                <h3><a href="{{ route('services.detail', [$lineCategory, $item['id']]) }}">{{ $item['title'] }}</a></h3>
+                <dl class="service-line-facts">
+                    <div><dt>{{ $t($item['category'] === 'company' ? 'Business Status' : 'Length Of Stay', $item['category'] === 'company' ? 'Status Usaha' : 'Lama Tinggal') }}</dt><dd>{{ $item['lengthOfStay'] }}</dd></div>
+                    <div><dt>{{ $t('Processing Time', 'Waktu Proses') }}</dt><dd>{{ $item['processingTime'] }}</dd></div>
+                </dl>
+                <a class="text-link" href="{{ route('services.detail', [$lineCategory, $item['id']]) }}" aria-label="{{ $t('View Details', 'Lihat Detail') }}: {{ $item['title'] }}">{{ $t('View Details', 'Lihat Detail') }} <x-icon name="arrow-right" class="cta-icon" /></a>
+            </div>
         </article>
         @endforeach
     </div>

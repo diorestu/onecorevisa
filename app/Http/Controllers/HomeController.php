@@ -47,6 +47,7 @@ class HomeController extends Controller
             'services' => [
                 [
                     'id' => 'voa-b1',
+                    'thumbnail' => 'service-documents.webp',
                     'category' => 'visitor-visas',
                     'code' => 'Index B1',
                     'title' => 'Visa On Arrival / E-VOA (B1)',
@@ -85,6 +86,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'c1-tourist-visa',
+                    'thumbnail' => 'header-slider3.webp',
                     'category' => 'visitor-visas',
                     'code' => 'Index C1',
                     'title' => 'C1 - Tourist Visit Visa (60 Days)',
@@ -127,6 +129,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'c2-business-visa',
+                    'thumbnail' => 'service-business.webp',
                     'category' => 'visitor-visas',
                     'code' => 'Index C2',
                     'title' => 'C2 - Business Visit Visa (60 Days)',
@@ -169,6 +172,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'c12-pre-investment-visa',
+                    'thumbnail' => 'service-business.webp',
                     'category' => 'visitor-visas',
                     'code' => 'Index C12',
                     'title' => 'C12 - Pre-Investment Visit Visa (180 Days)',
@@ -209,6 +213,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'c6-social-cultural-visa',
+                    'thumbnail' => 'service-family.webp',
                     'category' => 'visitor-visas',
                     'code' => 'Index C6 / C6A',
                     'title' => 'C6 / C6A - Social & Cultural Visit Visa (60 Days)',
@@ -248,6 +253,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'c7-arts-music-visa',
+                    'thumbnail' => 'header-slider2.webp',
                     'category' => 'visitor-visas',
                     'code' => 'Index C7 / C7A',
                     'title' => 'C7 / C7A - Music, Performing & Arts Visit Visa (60 Days)',
@@ -285,6 +291,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'c13-medical-humanitarian-visa',
+                    'thumbnail' => 'service-documents.webp',
                     'category' => 'visitor-visas',
                     'code' => 'Index C13 / C14',
                     'title' => 'C13 / C14 - Medical & Humanitarian Visit Visa (60 Days)',
@@ -320,6 +327,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'multiple-entry-d1-d2',
+                    'thumbnail' => 'header-slider1.webp',
                     'category' => 'visitor-visas',
                     'code' => 'Index D1 / D2',
                     'title' => 'Multiple Entry Visit Visa (D1 / D2 - up to 180 days per visit)',
@@ -357,6 +365,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'voa-extension',
+                    'thumbnail' => 'service-documents.webp',
                     'category' => 'visa-extension',
                     'code' => 'Ext. Index B1',
                     'title' => 'E-Visa VOA Extension',
@@ -394,6 +403,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'single-entry-extension',
+                    'thumbnail' => 'header-slider2.webp',
                     'category' => 'visa-extension',
                     'code' => 'Ext. C-Series',
                     'title' => 'Single Entry Visa Extension (Extension Visit Visa)',
@@ -429,6 +439,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'multiple-entry-extension',
+                    'thumbnail' => 'header-slider1.webp',
                     'category' => 'visa-extension',
                     'code' => 'Ext. D-Series',
                     'title' => 'Multiple Entry Visa Extension',
@@ -462,6 +473,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'kitas-extension',
+                    'thumbnail' => 'service-business.webp',
                     'category' => 'visa-extension',
                     'code' => 'KITAS Extension',
                     'title' => 'KITAS Extension (Working / Investor / Family / Retirement)',
@@ -497,6 +509,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'investor-kitas-e28a',
+                    'thumbnail' => 'service-business.webp',
                     'category' => 'kitas',
                     'code' => 'Index E28A',
                     'title' => 'Investor KITAS (E28A)',
@@ -536,6 +549,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'working-kitas-e23',
+                    'thumbnail' => 'service-documents.webp',
                     'category' => 'kitas',
                     'code' => 'Index E23',
                     'title' => 'Working KITAS (E23)',
@@ -573,6 +587,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'digital-nomad-e33g',
+                    'thumbnail' => 'service-remote.webp',
                     'category' => 'kitas',
                     'code' => 'Index E33G',
                     'title' => 'Digital Nomad / Remote Worker Visa (E33G)',
@@ -611,6 +626,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'retirement-kitas-e33e',
+                    'thumbnail' => 'service-retirement.webp',
                     'category' => 'kitas',
                     'code' => 'Index E33E',
                     'title' => 'Retirement KITAS (E33E)',
@@ -650,6 +666,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'dependent-kitas-e31',
+                    'thumbnail' => 'service-family.webp',
                     'category' => 'kitas',
                     'code' => 'Index E31',
                     'title' => 'Family of KITAS Holder (Dependent KITAS - E31)',
@@ -685,6 +702,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'spouse-kitas',
+                    'thumbnail' => 'header-slider3.webp',
                     'category' => 'kitas',
                     'code' => 'Index E31B / Spouse',
                     'title' => 'Family of Indonesian Citizen (Spouse KITAS)',
@@ -722,6 +740,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'student-visa-e30a',
+                    'thumbnail' => 'service-education.webp',
                     'category' => 'kitas',
                     'code' => 'Index E30A',
                     'title' => 'Student Visa (E30A)',
@@ -757,6 +776,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'ex-wni-visa-e32a',
+                    'thumbnail' => 'about-img.webp',
                     'category' => 'kitas',
                     'code' => 'Index E32A',
                     'title' => 'Ex-Indonesian Citizens Visa (E32A)',
@@ -790,6 +810,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'golden-visa',
+                    'thumbnail' => 'service-business.webp',
                     'category' => 'kitas',
                     'code' => 'Golden Visa',
                     'title' => 'Golden Visa',
@@ -825,6 +846,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'investor-kitap',
+                    'thumbnail' => 'service-business.webp',
                     'category' => 'kitap',
                     'code' => 'KITAP Investor',
                     'title' => 'Investor KITAP',
@@ -860,6 +882,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'working-kitap',
+                    'thumbnail' => 'service-documents.webp',
                     'category' => 'kitap',
                     'code' => 'KITAP Working',
                     'title' => 'Working KITAP',
@@ -891,6 +914,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'family-kitap',
+                    'thumbnail' => 'service-family.webp',
                     'category' => 'kitap',
                     'code' => 'KITAP Family',
                     'title' => 'Family KITAP (Spouse / Dependent)',
@@ -922,6 +946,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'retirement-kitap',
+                    'thumbnail' => 'service-retirement.webp',
                     'category' => 'kitap',
                     'code' => 'KITAP Retirement',
                     'title' => 'Retirement KITAP',
@@ -953,6 +978,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'pma-company',
+                    'thumbnail' => 'service-business.webp',
                     'category' => 'company',
                     'code' => 'PT PMA Setup',
                     'title' => 'Foreign Investment Company (PMA)',
@@ -997,6 +1023,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'pt-local-company',
+                    'thumbnail' => 'service-documents.webp',
                     'category' => 'company',
                     'code' => 'PT PMDN Setup',
                     'title' => 'Local Investment Company (PT Local / PMDN)',
@@ -1212,22 +1239,22 @@ class HomeController extends Controller
                 'benefits' => [['Single & Multiple Entry', 'Sekali & Beberapa Kali Masuk'], ['Tourism & Business Visits', 'Wisata & Kunjungan Bisnis']],
             ],
             'visa-extensions' => [
-                'name' => 'Visa & KITAS Extension', 'title_id' => 'Perpanjangan Visa & KITAS', 'sourceCategory' => 'visa-extension', 'image' => 'header-slider2.webp',
+                'name' => 'Visa & KITAS Extension', 'title_id' => 'Perpanjangan Visa & KITAS', 'sourceCategory' => 'visa-extension', 'image' => 'service-documents.webp',
                 'intro' => ['Review the next steps for extending your visit visa or renewing your existing stay permit.', 'Tinjau langkah berikutnya untuk memperpanjang visa kunjungan atau memperbarui izin tinggal Anda.'],
                 'benefits' => [['Visit Visa Extensions', 'Perpanjangan Visa Kunjungan'], ['KITAS Renewals', 'Perpanjangan KITAS']],
             ],
             'kitas' => [
-                'name' => 'Work & Longer Stay (KITAS)', 'title_id' => 'Kerja & Tinggal Lebih Lama (KITAS)', 'sourceCategory' => 'kitas', 'image' => 'header-slider1.webp',
+                'name' => 'Work & Longer Stay (KITAS)', 'title_id' => 'Kerja & Tinggal Lebih Lama (KITAS)', 'sourceCategory' => 'kitas', 'image' => 'service-remote.webp',
                 'intro' => ['Explore stay permits for investment, employment, remote work, family, education, and retirement.', 'Kenali izin tinggal untuk investasi, kerja, kerja jarak jauh, keluarga, pendidikan, dan pensiun.'],
                 'benefits' => [['Investor & Working KITAS', 'KITAS Investor & Kerja'], ['Family, Study & Retirement', 'Keluarga, Studi & Pensiun']],
             ],
             'kitap' => [
-                'name' => 'Permanent Residency (KITAP)', 'title_id' => 'Izin Tinggal Tetap (KITAP)', 'sourceCategory' => 'kitap', 'image' => 'about-img.webp',
+                'name' => 'Permanent Residency (KITAP)', 'title_id' => 'Izin Tinggal Tetap (KITAP)', 'sourceCategory' => 'kitap', 'image' => 'service-retirement.webp',
                 'intro' => ['Plan a longer future in Indonesia with residency options for eligible investors, workers, families, and retirees.', 'Rencanakan masa depan di Indonesia melalui pilihan izin tinggal bagi investor, pekerja, keluarga, dan pensiunan yang memenuhi syarat.'],
                 'benefits' => [['Investor & Working KITAP', 'KITAP Investor & Kerja'], ['Family & Retirement KITAP', 'KITAP Keluarga & Pensiun']],
             ],
             'company-formation' => [
-                'name' => 'Company Formation', 'title_id' => 'Pendirian Perusahaan', 'sourceCategory' => 'company', 'image' => 'header-slider2.webp',
+                'name' => 'Company Formation', 'title_id' => 'Pendirian Perusahaan', 'sourceCategory' => 'company', 'image' => 'service-business.webp',
                 'intro' => ['Prepare your business structure and incorporation documents for a foreign or locally owned company in Indonesia.', 'Siapkan struktur bisnis dan dokumen pendirian perusahaan asing maupun lokal di Indonesia.'],
                 'benefits' => [['Foreign Investment (PT PMA)', 'Penanaman Modal Asing (PT PMA)'], ['Local Company (PT PMDN)', 'Perusahaan Lokal (PT PMDN)']],
             ],

@@ -441,3 +441,62 @@ body:has(dialog[open]) .whatsapp-float { visibility: hidden; }
 .preference-form .ts-wrapper.single .ts-control { flex-wrap: nowrap; }
 .preference-form .ts-control > .country-option { min-width: 0; flex-shrink: 1; }
 .preference-form .ts-wrapper.single.is-searching .ts-control > .item { display: none; }
+
+.service-profile { padding-block: 128px var(--space-3xl); }
+.service-breadcrumbs { margin-bottom: var(--space-lg); font-size: var(--text-sm); color: var(--color-muted); }
+.service-breadcrumbs ol { display: flex; flex-wrap: wrap; align-items: center; gap: 0 12px; margin: 0; padding: 0; list-style: none; }
+.service-breadcrumbs li { display: inline-flex; align-items: center; min-width: 0; gap: 12px; }
+.service-breadcrumbs li + li::before { content: '/'; color: var(--color-muted); }
+.service-breadcrumbs a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-decoration-color: var(--color-rule); text-underline-offset: 4px; }
+.service-breadcrumbs [aria-current] { color: var(--color-ink); font-weight: 600; }
+.service-reading-layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; align-items: start; gap: var(--space-2xl); }
+.service-reading-column { min-width: 0; }
+.service-profile-header .section-label { color: var(--color-accent); margin-bottom: var(--space-sm); }
+.service-profile-header h1 { font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.2; letter-spacing: -.035em; text-wrap: balance; }
+.service-profile-intro { margin-top: var(--space-md); max-width: 65ch; color: var(--color-muted); font-size: var(--text-lg); line-height: 1.75; }
+.service-mobile-enquiry { display: none; }
+.service-section-nav { display: flex; flex-wrap: wrap; gap: var(--space-md); margin-top: var(--space-lg); border-bottom: var(--rule-width) solid var(--color-rule); }
+.service-section-nav a { display: flex; align-items: center; min-height: 48px; padding-block: 10px; font-size: var(--text-sm); font-weight: 600; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 6px; }
+.service-profile-section { padding-block: var(--space-lg); border-bottom: var(--rule-width) solid var(--color-rule); scroll-margin-top: var(--space-sm); }
+.service-profile-section h2 { display: flex; align-items: start; gap: 10px; font-size: clamp(1.3rem, 2vw, 1.625rem); line-height: 1.4; letter-spacing: -.025em; }
+.service-summary-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-lg); margin: var(--space-md) 0 0; }
+.service-summary-facts > div:last-child { grid-column: 1 / -1; }
+.service-summary-facts dt { display: flex; align-items: center; gap: 8px; color: var(--color-muted); font-size: var(--text-sm); }
+.service-summary-facts dd { margin: var(--space-xs) 0 0; line-height: 1.7; }
+.service-fact-icon { width: 20px; height: 20px; flex-shrink: 0; }
+.service-heading-icon { width: 24px; height: 24px; flex-shrink: 0; margin-top: 3px; color: var(--color-accent); }
+.service-activities { display: grid; gap: var(--space-lg); }
+.service-activities ul { margin: var(--space-sm) 0 0; padding-left: 22px; color: var(--color-muted); max-width: 70ch; }
+.service-activities li { padding-left: 4px; line-height: 1.75; }
+.service-activities li + li { margin-top: var(--space-xs); }
+.service-documents-heading > p { margin-top: var(--space-xs); color: var(--color-muted); font-size: var(--text-sm); }
+.service-documents ol { margin: var(--space-md) 0 0; padding-left: 24px; }
+.service-documents li { padding: var(--space-sm) 0 var(--space-sm) var(--space-xs); line-height: 1.75; }
+.service-documents li + li { border-top: var(--rule-width) solid var(--color-rule); }
+.service-documents li::marker { color: var(--color-accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+.service-profile-back { margin-top: var(--space-lg); }
+.service-consultation-card { padding: var(--space-lg); border-radius: var(--radius-service-card); background: var(--color-ink); color: var(--color-paper); }
+.service-consultation-card .section-label { color: var(--color-light); font-size: var(--text-xs); }
+.service-consultation-card h2 { font-size: 1.625rem; line-height: 1.4; letter-spacing: -.025em; }
+.service-consultation-copy { margin-top: var(--space-sm); color: var(--color-rule); font-size: var(--text-sm); line-height: 1.75; }
+.service-quote-info { padding-block: var(--space-md); margin-top: var(--space-md); border-top: var(--rule-width) solid var(--color-muted); }
+.service-quote-info p:first-child { font-size: var(--text-xs); color: var(--color-rule); }
+.service-quote-info p:last-child { font-weight: 600; margin-top: 6px; }
+.service-consultation-card .button { width: 100%; white-space: normal; background: var(--color-paper); color: var(--color-ink); }
+.service-consultation-card :focus-visible { outline-color: var(--color-paper); }
+.service-consultation-note { margin-top: var(--space-sm); color: var(--color-rule); font-size: var(--text-xs); line-height: 1.75; }
+.service-requirements-link { display: flex; justify-content: center; gap: 8px; padding: var(--space-sm) 12px; white-space: normal; text-align: center; font-size: var(--text-xs); }
+@media(hover: hover) {
+  .service-section-nav a:hover { color: var(--color-accent); text-decoration-color: currentColor; }
+  .service-breadcrumbs a:hover { color: var(--color-accent); }
+  .service-consultation-card .button:hover { background: var(--color-rule); }
+}
+@media(min-width: 1001px) and (min-height: 700px) { .service-consultation-panel { position: sticky; top: 124px; } }
+@media(max-width: 1100px) { .service-reading-layout { gap: var(--space-lg); grid-template-columns: minmax(0, 1fr) 300px; } }
+@media(max-width: 1000px) {
+  .service-reading-layout { grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); }
+  .service-mobile-enquiry { display: inline-flex; margin-top: var(--space-md); }
+  .service-consultation-panel { max-width: 600px; width: 100%; }
+}
+@media(max-width: 768px) { .service-profile { padding-top: 96px; } .service-breadcrumbs { margin-bottom: var(--space-md); } .service-profile-intro { font-size: var(--text-body); } .service-summary-facts { grid-template-columns: minmax(0, 1fr); gap: var(--space-md); } }
+@media(max-width: 480px) { .service-section-nav { gap: var(--space-sm); } .service-consultation-card { padding: var(--space-md); } }

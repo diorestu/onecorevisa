@@ -15,6 +15,12 @@
     @case('globe')<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/>@break
     @case('building')<rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1m4 0h1M9 11h1m4 0h1M9 21v-6h6v6"/>@break
     @case('passport')<rect x="5" y="2" width="15" height="20" rx="2"/><path d="M3 6h2m-2 6h2m-2 6h2m4 0h7"/><circle cx="12.5" cy="9" r="4"/><path d="M8.5 9h8m-4-4a8 8 0 0 1 0 8 8 8 0 0 1 0-8"/>@break
+    @case('calendar')<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18m-13 5h2m4 0h2"/>@break
+    @case('clock')<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>@break
+    @case('document')<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Zm0 0v6h6M8 13h8m-8 4h5"/>@break
+    @case('check-circle')<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>@break
+    @case('minus-circle')<circle cx="12" cy="12" r="9"/><path d="M8 12h8"/>@break
+    @case('chevron-left')<path d="m14 6-6 6 6 6"/>@break
     @case('arrow-right')<path d="M4 12h16m-6-6 6 6-6 6"/>@break
     @default<path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/>
 @endswitch

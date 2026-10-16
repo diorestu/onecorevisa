@@ -104,6 +104,7 @@ class ServicePagesTest extends TestCase
     public function test_pricing_preserves_pdf_amounts_and_does_not_reuse_extension_prices_for_new_applications(): void
     {
         $this->get('/services/visitor-visas/c1-tourist-visa')->assertOk()->assertSee('Rp3.580.000');
+        $this->get('/services/visitor-visas/c12-pre-investment-visa')->assertOk()->assertSee('Start from')->assertSee('Rp5.400.000');
         $this->get('/services/kitas/working-kitas-e23')->assertOk()->assertSee('Rp18.000.000')->assertSee('USD 600')->assertSee('6-month option');
         $this->get('/services/kitas/digital-nomad-e33g')->assertOk()->assertSee('Rp17.500.000')->assertDontSee('Rp16.500.000');
         $this->get('/services/company-formation/pma-company')->assertOk()->assertSee('Rp25.000.000');

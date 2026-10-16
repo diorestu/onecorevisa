@@ -4,6 +4,7 @@
 return [
     'c1-tourist-visa' => ['idr' => 3580000, 'source_rows' => [15]],
     'c2-business-visa' => ['idr' => 4200000, 'source_rows' => [16]],
+    'c12-pre-investment-visa' => ['idr' => 5400000, 'source_rows' => [12]],
     'c6-social-cultural-visa' => ['idr' => 5875000, 'source_rows' => [17]],
     'multiple-entry-d1-d2' => ['idr' => 7425000, 'basis' => ['D1 Tourist, 1 year', 'D1 Tourist, 1 tahun'], 'source_rows' => [28]],
     'voa-extension' => ['idr' => 1000000, 'source_rows' => [14]],

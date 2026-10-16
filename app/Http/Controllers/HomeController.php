@@ -556,9 +556,9 @@ class HomeController extends Controller
                     'code' => 'Index E23',
                     'title' => 'Working KITAS (E23)',
                     'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
-                    'lengthOfStay' => '1 Year (Extendable annually)',
+                    'lengthOfStay' => '6 Months, 1 Year or 2 Years',
                     'processingTime' => '15 - 25 Working Days',
-                    'visaValidity' => '1 Year.',
+                    'visaValidity' => '6 Months, 1 Year or 2 Years, depending on the permit.',
                     'whatsAllowed' => [
                         'Work and hold a paid professional position legally in an Indonesian company.',
                         'Receive local salary and open a local bank account.'
@@ -573,7 +573,7 @@ class HomeController extends Controller
                     ],
                     'icon' => 'fa-user-tie',
                     'badge' => 'Expat Professional',
-                    'duration' => '1 Year (Extendable annually)',
+                    'duration' => '6 Months, 1 Year or 2 Years',
                     'requirements' => [
                         'Passport valid for min 18 months.',
                         'Sponsoring company documents (RPTKA, NIB, Business License).',
@@ -583,7 +583,7 @@ class HomeController extends Controller
                         'Work and hold a paid professional position legally in an Indonesian company.',
                         'Receive local salary and open a local bank account.'
                     ],
-                    'shortDesc' => '1 Year (Extendable annually)' . ' • ' . '15 - 25 Working Days',
+                    'shortDesc' => '6 Months, 1 Year or 2 Years' . ' • ' . '15 - 25 Working Days',
                     'whoFor' => 'Working KITAS (E23)',
                     'tag' => 'Index E23'
                 ],
@@ -1273,6 +1273,7 @@ class HomeController extends Controller
 
         $data['serviceDetail'] = ['name' => $item['title'], 'title_id' => $item['title']];
         $data['serviceLine'] = $item;
+        $data['servicePricing'] = config('service_pricing.'.$service);
         $data['categoryDetail'] = $categoryDetail;
         $data['categorySlug'] = $category;
 

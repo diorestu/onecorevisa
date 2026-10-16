@@ -72,7 +72,13 @@
                 <p class="service-consultation-copy">{{ $serviceLine['category'] === 'company' ? $t('Tell us about your company structure, shareholders, and timeline.', 'Ceritakan struktur perusahaan, pemegang saham, dan rencana waktu Anda.') : $t('Share your nationality, current location, and intended stay.', 'Sampaikan kewarganegaraan, lokasi saat ini, dan rencana masa tinggal Anda.') }}</p>
                 <div class="service-quote-info">
                     <p>{{ $t('Service Fee', 'Biaya Layanan') }}</p>
-                    <p>{{ $t('Quoted For Your Application', 'Penawaran Sesuai Pengajuan Anda') }}</p>
+                    @if($servicePricing)
+                        <p class="service-starting-label">Start from</p>
+                        <p class="service-starting-price">Rp{{ number_format($servicePricing['idr'], 0, ',', '.') }}@if(isset($servicePricing['usd']))<span> + USD {{ number_format($servicePricing['usd'], 0, '.', ',') }}</span>@endif</p>
+                        @if(isset($servicePricing['basis']))<p class="service-price-basis">{{ $t(...$servicePricing['basis']) }}</p>@endif
+                    @else
+                        <p>{{ $t('Quoted For Your Application', 'Penawaran Sesuai Pengajuan Anda') }}</p>
+                    @endif
                 </div>
                 <button class="button primary" type="button" data-consultation="{{ $serviceLine['title'] }}"><x-icon name="chat" class="cta-icon" />{{ $t('Request A Quote', 'Minta Penawaran') }}</button>
                 <p class="service-consultation-note">{{ $t('We will confirm eligibility, requirements, fees, and processing estimates before you proceed.', 'Kami akan mengonfirmasi kelayakan, persyaratan, biaya, dan estimasi waktu proses sebelum Anda melanjutkan.') }}</p>

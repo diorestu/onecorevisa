@@ -82,6 +82,35 @@ class ServicePagesTest extends TestCase
         }
     }
 
+    public function test_published_starting_prices_are_only_rendered_on_service_details(): void
+    {
+        $this->get('/')->assertOk()->assertDontSee('Start from')->assertDontSee('Rp3.580.000');
+        foreach (self::CATEGORIES as $category => $services) {
+            $this->get('/services/'.$category)->assertOk()->assertDontSee('Start from');
+            foreach ($services as $service) {
+                $price = config('service_pricing.'.$service);
+                if (! $price) {
+                    continue;
+                }
+                $response = $this->get('/services/'.$category.'/'.$service)->assertOk();
+                $response->assertSee('Start from')->assertSee('Rp'.number_format($price['idr'], 0, ',', '.'));
+                if (isset($price['usd'])) {
+                    $response->assertSee('USD '.number_format($price['usd'], 0, '.', ','));
+                }
+            }
+        }
+    }
+
+    public function test_pricing_preserves_pdf_amounts_and_does_not_reuse_extension_prices_for_new_applications(): void
+    {
+        $this->get('/services/visitor-visas/c1-tourist-visa')->assertOk()->assertSee('Rp3.580.000');
+        $this->get('/services/kitas/working-kitas-e23')->assertOk()->assertSee('Rp18.000.000')->assertSee('USD 600')->assertSee('6-month option');
+        $this->get('/services/kitas/digital-nomad-e33g')->assertOk()->assertSee('Rp17.500.000')->assertDontSee('Rp16.500.000');
+        $this->get('/services/company-formation/pma-company')->assertOk()->assertSee('Rp25.000.000');
+        $this->get('/services/kitas/golden-visa')->assertOk()->assertDontSee('Start from')->assertDontSee('Rp40.000.000')->assertSee('Quoted For Your Application');
+        $this->get('/services/visitor-visas/voa-b1')->assertOk()->assertDontSee('Start from')->assertDontSee('Rp1.000.000');
+    }
+
     public function test_service_consultation_preserves_specific_service_in_whatsapp(): void
     {
         $this->postJson('/consultation', [

@@ -534,6 +534,10 @@ body:has(dialog[open]) .whatsapp-float { visibility: hidden; }
 @media(hover: hover) { .service-line h3 a:hover, .service-line-content > .text-link:hover { text-decoration: none; } }
 
 .footer-main { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1.2fr); gap: var(--space-xl); }
+.service-quote-info .service-starting-label { margin-top: var(--space-xs); font-size: var(--text-sm); font-weight: 400; color: var(--color-rule); }
+.service-quote-info .service-starting-price { margin-top: 4px; font-family: var(--font-display); font-size: clamp(1.5rem, 2.2vw, 1.875rem); font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; }
+.service-starting-price span { display: block; margin-top: 4px; font-size: var(--text-body); }
+.service-quote-info .service-price-basis { margin-top: var(--space-xs); color: var(--color-rule); font-size: var(--text-sm); font-weight: 400; }
 .visa-simulator { position: relative; z-index: 2; margin-top: -64px; padding: var(--space-lg); background: var(--color-paper); border-radius: var(--radius-dialog); box-shadow: var(--shadow-floating-panel); }
 .simulator-layout { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: var(--space-lg); align-items: start; }
 .simulator-country-panel { padding: var(--space-md); border: var(--rule-width) solid var(--color-rule); border-radius: var(--radius-dialog); }

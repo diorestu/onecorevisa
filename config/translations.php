@@ -1,6 +1,10 @@
 <?php
 
 $labels = [
+    ['1-year option', 'Вариант на 1 год', 'Opción de 1 año'],
+    ['6-month option', 'Вариант на 6 месяцев', 'Opción de 6 meses'],
+    ['D1 Tourist, 1 year', 'D1 Tourist, 1 год', 'D1 Tourist, 1 año'],
+    ['Working KITAS extension, 1 year', 'Продление рабочего KITAS, 1 год', 'Prórroga de KITAS de trabajo, 1 año'],
     ['All visa options', 'Все варианты виз', 'Todas las opciones de visado'],
     ['Chat with CS', 'Чат в WhatsApp', 'Abrir WhatsApp'],
     ['For repeat tourist visits. Discuss the stay limit for each entry and available extensions with our team.', 'Для повторных туристических поездок. Обсудите срок пребывания при каждом въезде и продления с нашей командой.', 'Para visitas turísticas frecuentes. Consulta la estancia por entrada y las prórrogas disponibles con nuestro equipo.'],

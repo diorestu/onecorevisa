@@ -578,6 +578,10 @@ body:has(dialog[open]) .whatsapp-float { visibility: hidden; }
 @media(max-width: 900px) { .simulator-layout { grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: var(--space-md); } .simulator-result-panel { padding: var(--space-md); } .simulator-filters, .simulator-options { grid-template-columns: minmax(0, 1fr); } }
 @media(max-width: 700px) { .visa-simulator { margin-top: -32px; padding: var(--space-sm); } .simulator-heading { flex-direction: column; align-items: start; gap: var(--space-sm); } .simulator-layout { grid-template-columns: minmax(0, 1fr); } .simulator-country-list { max-height: 220px; } .simulator-country-panel, .simulator-result-panel { padding: var(--space-sm); } }
 .header-contact-bar { background: var(--color-ink); color: var(--color-paper); }
+.site-header.is-solid .header-contact-bar,
+.site-header:has(.mobile-nav:not([hidden])) .header-contact-bar { background: var(--color-paper); color: var(--color-ink); }
+.header-contact-bar { transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
+@media(prefers-reduced-motion: reduce) { .header-contact-bar { transition: none; } }
 .header-contact-inner { display: flex; justify-content: flex-end; align-items: center; gap: var(--space-md); min-height: 36px; }
 .header-contact-inner a { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; font-size: 12px; white-space: nowrap; }
 .header-contact-inner svg { width: 15px; height: 15px; }

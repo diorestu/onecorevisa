@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Support\SiteSeo;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,6 +12,7 @@ class HomeController extends Controller
      */
     protected function getData($lang = 'en')
     {
+        $lang = $lang === 'id' ? 'id' : 'en';
         return [
             'categories' => [
                 [
@@ -1068,29 +1070,29 @@ class HomeController extends Controller
             'process' => [
                 [
                     'step' => '01',
-                    'title' => $lang === 'en' ? 'Start A Consultation' : 'Mulai Konsultasi',
+                    'title' => $lang === 'en' ? 'Tell us your plans' : 'Ceritakan rencana Anda',
                     'timeline' => $lang === 'en' ? 'Step 01' : 'Langkah 01',
                     'desc' => $lang === 'en'
-                        ? 'Share your nationality, travel plans, and service needs. Our team will help you review the available options.'
-                        : 'Sampaikan kewarganegaraan, rencana perjalanan, dan layanan yang Anda butuhkan. Tim kami akan membantu meninjau pilihan yang tersedia.',
+                        ? 'Share your nationality, travel dates, and purpose.'
+                        : 'Sampaikan kewarganegaraan, tanggal, dan tujuan perjalanan Anda.',
                     'icon' => 'fa-file-lines'
                 ],
                 [
                     'step' => '02',
-                    'title' => $lang === 'en' ? 'Prepare Your Application' : 'Siapkan Pengajuan Anda',
+                    'title' => $lang === 'en' ? 'Prepare your documents' : 'Siapkan dokumen Anda',
                     'timeline' => $lang === 'en' ? 'Step 02' : 'Langkah 02',
                     'desc' => $lang === 'en'
-                        ? 'We review your documents and explain the requirements, fees, and estimated timing before you proceed.'
-                        : 'Kami meninjau dokumen dan menjelaskan persyaratan, biaya, serta estimasi waktu sebelum Anda melanjutkan.',
+                        ? 'We check your documents and explain requirements, fees, and estimated timing.'
+                        : 'Kami memeriksa dokumen serta menjelaskan persyaratan, biaya, dan estimasi waktu.',
                     'icon' => 'fa-shield-halved'
                 ],
                 [
                     'step' => '03',
-                    'title' => $lang === 'en' ? 'Receive Updates' : 'Terima Pembaruan',
+                    'title' => $lang === 'en' ? 'Stay updated' : 'Terima kabar terbaru',
                     'timeline' => $lang === 'en' ? 'Step 03' : 'Langkah 03',
                     'desc' => $lang === 'en'
-                        ? "We keep you informed about your application and guide you through any follow-up requirements and next steps."
-                        : 'Kami memberi pembaruan pengajuan dan mendampingi Anda untuk persyaratan lanjutan serta langkah berikutnya.',
+                        ? 'Get application updates and guidance on what comes next.'
+                        : 'Dapatkan kabar pengajuan dan panduan langkah berikutnya.',
                     'icon' => 'fa-plane-arrival'
                 ]
             ],
@@ -1173,20 +1175,18 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $lang = session('locale', 'en');
-        if ($request->has('lang')) {
-            $lang = in_array($request->lang, ['en', 'id']) ? $request->lang : 'en';
-            session(['locale' => $lang]);
-        }
+        $lang = $this->language($request);
 
         $data = $this->getData($lang);
         $data['lang'] = $lang;
         $data['serviceCategories'] = $this->serviceCategories();
+        unset($data['serviceCategories']['company-formation']);
+        $data['visaSimulatorCountries'] = config('visa_simulator.country_codes');
 
         return view('home', $data);
     }
 
-    public function showService(string $service)
+    public function showService(Request $request, string $service)
     {
         $details = [
             'e-visa-voa' => [
@@ -1209,7 +1209,7 @@ class HomeController extends Controller
             ],
         ];
 
-        $lang = session('locale', 'en');
+        $lang = $this->language($request);
         $data = $this->getData($lang);
         $data['lang'] = $lang;
         $data['serviceCategories'] = $this->serviceCategories();
@@ -1222,8 +1222,7 @@ class HomeController extends Controller
             'multiple-entry-visas' => ['multiple-entry-d1-d2'],
         ];
         $sourceCategory = $details[$service]['sourceCategory'] ?? null;
-        $data['categoryServices'] = array_values(array_filter($data['services'], fn ($item) =>
-            $sourceCategory ? $item['category'] === $sourceCategory : in_array($item['id'], $legacyServices[$service] ?? [], true)
+        $data['categoryServices'] = array_values(array_filter($data['services'], fn ($item) => $sourceCategory ? $item['category'] === $sourceCategory : in_array($item['id'], $legacyServices[$service] ?? [], true)
         ));
         $data['serviceDetail'] = $details[$service];
 
@@ -1234,22 +1233,22 @@ class HomeController extends Controller
     {
         return [
             'visitor-visas' => [
-                'name' => 'Visitor Visas', 'title_id' => 'Visa Kunjungan', 'sourceCategory' => 'visitor-visas', 'image' => 'header-slider3.webp',
+                'name' => 'Visitor Visas', 'title_id' => 'Visa Kunjungan', 'sourceCategory' => 'visitor-visas', 'image' => 'bali-tanah-lot.webp',
                 'intro' => ['Single and multiple-entry options for tourism, business visits, cultural activities, and other visits to Indonesia.', 'Pilihan sekali dan beberapa kali masuk untuk wisata, kunjungan bisnis, kegiatan budaya, dan kunjungan lainnya ke Indonesia.'],
                 'benefits' => [['Single & Multiple Entry', 'Sekali & Beberapa Kali Masuk'], ['Tourism & Business Visits', 'Wisata & Kunjungan Bisnis']],
             ],
             'visa-extensions' => [
-                'name' => 'Visa & KITAS Extension', 'title_id' => 'Perpanjangan Visa & KITAS', 'sourceCategory' => 'visa-extension', 'image' => 'service-documents.webp',
+                'name' => 'Visa & KITAS Extension', 'title_id' => 'Perpanjangan Visa & KITAS', 'sourceCategory' => 'visa-extension', 'image' => 'bali-rice-terraces.webp',
                 'intro' => ['Review the next steps for extending your visit visa or renewing your existing stay permit.', 'Tinjau langkah berikutnya untuk memperpanjang visa kunjungan atau memperbarui izin tinggal Anda.'],
                 'benefits' => [['Visit Visa Extensions', 'Perpanjangan Visa Kunjungan'], ['KITAS Renewals', 'Perpanjangan KITAS']],
             ],
             'kitas' => [
-                'name' => 'Work & Longer Stay (KITAS)', 'title_id' => 'Kerja & Tinggal Lebih Lama (KITAS)', 'sourceCategory' => 'kitas', 'image' => 'service-remote.webp',
+                'name' => 'Work & Longer Stay (KITAS)', 'title_id' => 'Kerja & Tinggal Lebih Lama (KITAS)', 'sourceCategory' => 'kitas', 'image' => 'bali-waterfall.webp',
                 'intro' => ['Explore stay permits for investment, employment, remote work, family, education, and retirement.', 'Kenali izin tinggal untuk investasi, kerja, kerja jarak jauh, keluarga, pendidikan, dan pensiun.'],
                 'benefits' => [['Investor & Working KITAS', 'KITAS Investor & Kerja'], ['Family, Study & Retirement', 'Keluarga, Studi & Pensiun']],
             ],
             'kitap' => [
-                'name' => 'Permanent Residency (KITAP)', 'title_id' => 'Izin Tinggal Tetap (KITAP)', 'sourceCategory' => 'kitap', 'image' => 'service-retirement.webp',
+                'name' => 'Permanent Residency (KITAP)', 'title_id' => 'Izin Tinggal Tetap (KITAP)', 'sourceCategory' => 'kitap', 'image' => 'bali-ulun-danu.webp',
                 'intro' => ['Plan a longer future in Indonesia with residency options for eligible investors, workers, families, and retirees.', 'Rencanakan masa depan di Indonesia melalui pilihan izin tinggal bagi investor, pekerja, keluarga, dan pensiunan yang memenuhi syarat.'],
                 'benefits' => [['Investor & Working KITAP', 'KITAP Investor & Kerja'], ['Family & Retirement KITAP', 'KITAP Keluarga & Pensiun']],
             ],
@@ -1261,9 +1260,9 @@ class HomeController extends Controller
         ];
     }
 
-    public function showServiceLine(string $category, string $service)
+    public function showServiceLine(Request $request, string $category, string $service)
     {
-        $lang = session('locale', 'en');
+        $lang = $this->language($request);
         $data = $this->getData($lang);
         $data['lang'] = $lang;
         $data['serviceCategories'] = $this->serviceCategories();
@@ -1283,12 +1282,62 @@ class HomeController extends Controller
     /**
      * Switch language route
      */
-    public function switchLang($locale)
+    public function switchLang(Request $request, $locale)
     {
-        if (in_array($locale, ['en', 'id'])) {
-            session(['locale' => $locale]);
+        if (! in_array($locale, \App\Support\SiteLanguage::LOCALES, true)) {
+            return redirect()->route('home');
         }
-        return redirect()->back();
+        session(['locale' => $locale]);
+        $previous = url()->previous();
+        $path = parse_url($previous, PHP_URL_HOST) === $request->getHost()
+            ? parse_url($previous, PHP_URL_PATH) : '/';
+
+        return redirect()->to(url($path ?: '/').($locale === 'en' ? '' : '?lang='.$locale));
+    }
+
+    private function language(Request $request): string
+    {
+        $locale = $request->query('lang');
+
+        return in_array($locale, \App\Support\SiteLanguage::LOCALES, true) ? $locale : 'en';
+    }
+
+    private function discoveryPages(): array
+    {
+        $pages = [['path' => '/', 'name' => 'OneCoreVisa']];
+        $categories = $this->serviceCategories();
+        foreach ($categories as $slug => $category) {
+            $pages[] = ['path' => '/services/'.$slug, 'name' => $category['name']];
+        }
+        foreach (['e-visa-voa' => 'E-Visa VOA', 'single-entry-visas' => 'Single Entry Visas', 'multiple-entry-visas' => 'Multiple Entry Visas'] as $slug => $name) {
+            $pages[] = ['path' => '/services/'.$slug, 'name' => $name];
+        }
+        foreach ($this->getData()['services'] as $service) {
+            $categorySlug = collect($categories)->search(fn ($category) => $category['sourceCategory'] === $service['category']);
+            if ($categorySlug !== false) {
+                $pages[] = ['path' => '/services/'.$categorySlug.'/'.$service['id'], 'name' => $service['title']];
+            }
+        }
+
+        return $pages;
+    }
+
+    public function sitemap()
+    {
+        return response()->view('seo.sitemap', ['pages' => $this->discoveryPages()])
+            ->header('Content-Type', 'application/xml; charset=UTF-8');
+    }
+
+    public function robots()
+    {
+        return response("User-agent: *\nAllow: /\nDisallow: /lang/\n\nSitemap: ".SiteSeo::url('/sitemap.xml')."\n")
+            ->header('Content-Type', 'text/plain; charset=UTF-8');
+    }
+
+    public function llms()
+    {
+        return response()->view('seo.llms', ['pages' => $this->discoveryPages()])
+            ->header('Content-Type', 'text/plain; charset=UTF-8');
     }
 
     /**
@@ -1322,7 +1371,7 @@ class HomeController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Consultation inquiry received!',
-                'whatsapp_url' => $whatsappUrl
+                'whatsapp_url' => $whatsappUrl,
             ]);
         }
 

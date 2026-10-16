@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
-@php($t = fn ($en, $id) => $lang === 'id' ? $id : $en)
+@php($t = fn ($en, $id) => \App\Support\SiteLanguage::text($en, $id, $lang))
 <section class="service-category-hero" aria-labelledby="service-page-title">
     <img class="service-category-image" src="{{ asset('assets/images/index/' . $serviceDetail['image']) }}" alt="" width="1600" height="1000" fetchpriority="high">
     <div class="container service-category-content">
-        <a class="text-link service-back-link" href="{{ route('home') }}#services-section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m14 6-6 6 6 6"/></svg>{{ $t('Back To Services', 'Kembali Ke Layanan') }}</a>
+        <a class="text-link service-back-link" href="{{ route('home', ['lang' => $lang]) }}#services-section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m14 6-6 6 6 6"/></svg>{{ $t('Back To Services', 'Kembali Ke Layanan') }}</a>
         <p class="section-label">{{ $t('Our Services', 'Layanan Kami') }}</p>
         <h1 id="service-page-title">{{ $t($serviceDetail['name'], $serviceDetail['title_id']) }}</h1>
         <p class="service-detail-intro">{{ $t(...$serviceDetail['intro']) }}</p>
@@ -22,12 +22,12 @@
             </div>
             <div class="service-line-content">
                 <p class="section-label">{{ $item['code'] }}</p>
-                <h3><a href="{{ route('services.detail', [$lineCategory, $item['id']]) }}">{{ $item['title'] }}</a></h3>
+                <h3><a href="{{ route('services.detail', ['category' => $lineCategory, 'service' => $item['id'], 'lang' => $lang]) }}">{{ $item['title'] }}</a></h3>
                 <dl class="service-line-facts">
                     <div><dt>{{ $t($item['category'] === 'company' ? 'Business Status' : 'Length Of Stay', $item['category'] === 'company' ? 'Status Usaha' : 'Lama Tinggal') }}</dt><dd>{{ $item['lengthOfStay'] }}</dd></div>
                     <div><dt>{{ $t('Processing Time', 'Waktu Proses') }}</dt><dd>{{ $item['processingTime'] }}</dd></div>
                 </dl>
-                <a class="text-link" href="{{ route('services.detail', [$lineCategory, $item['id']]) }}" aria-label="{{ $t('View Details', 'Lihat Detail') }}: {{ $item['title'] }}">{{ $t('View Details', 'Lihat Detail') }} <x-icon name="arrow-right" class="cta-icon" /></a>
+                <a class="text-link" href="{{ route('services.detail', ['category' => $lineCategory, 'service' => $item['id'], 'lang' => $lang]) }}" aria-label="{{ $t('View Details', 'Lihat Detail') }}: {{ $item['title'] }}">{{ $t('View Details', 'Lihat Detail') }} <x-icon name="arrow-right" class="cta-icon" /></a>
             </div>
         </article>
         @endforeach

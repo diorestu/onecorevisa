@@ -12,7 +12,13 @@
   --color-hero-paper: #fffffff0;
   --color-hero-overlay: #0B294299;
   --color-service-glass: #0B2942cc;
+  --color-service-overlay: #0B2942c7;
+  --color-service-overlay-end: #0B2942ed;
+  --color-service-description: #edf3f7;
+  --color-service-check: #087c5b;
+  --color-service-divider: #ffffff42;
   --radius-service-card: 30px;
+  --shadow-floating-panel: 0 16px 40px #0B29421a, 0 2px 8px #0B29420d;
   --color-error: #9D2534;
   --color-focus: var(--color-ink);
   --font-display: 'Poppins', sans-serif;

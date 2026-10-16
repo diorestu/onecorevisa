@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content')
-@php($t = fn ($en, $id) => $lang === 'id' ? $id : $en)
+@php($t = fn ($en, $id) => \App\Support\SiteLanguage::text($en, $id, $lang))
 <div class="service-profile container">
     <nav class="service-breadcrumbs" aria-label="{{ $t('Breadcrumb', 'Jejak Navigasi') }}">
         <ol>
-            <li><a href="{{ route('home') }}#services-section">{{ $t('Services', 'Layanan') }}</a></li>
-            <li><a href="{{ route('services.show', $categorySlug) }}">{{ $t($categoryDetail['name'], $categoryDetail['title_id']) }}</a></li>
+            <li><a href="{{ route('home', ['lang' => $lang]) }}#services-section">{{ $t('Services', 'Layanan') }}</a></li>
+            <li><a href="{{ route('services.show', ['service' => $categorySlug, 'lang' => $lang]) }}">{{ $t($categoryDetail['name'], $categoryDetail['title_id']) }}</a></li>
             <li aria-current="page">{{ $serviceLine['code'] }}</li>
         </ol>
     </nav>
@@ -62,7 +62,7 @@
                 <ol>@foreach($serviceLine['documentRequirements'] as $document)<li>{{ $document }}</li>@endforeach</ol>
             </section>
 
-            <a class="text-link service-back-link service-profile-back" href="{{ route('services.show', $categorySlug) }}"><x-icon name="chevron-left" />{{ $t('Back To', 'Kembali Ke') }} {{ $t($categoryDetail['name'], $categoryDetail['title_id']) }}</a>
+            <a class="text-link service-back-link service-profile-back" href="{{ route('services.show', ['service' => $categorySlug, 'lang' => $lang]) }}"><x-icon name="chevron-left" />{{ $t('Back To', 'Kembali Ke') }} {{ $t($categoryDetail['name'], $categoryDetail['title_id']) }}</a>
         </article>
 
         <aside class="service-consultation-panel" aria-labelledby="service-enquiry-title">

@@ -2,8 +2,29 @@
 
 @section('content')
 @php
-    $t = fn ($en, $id) => $lang === 'id' ? $id : $en;
-    $landingServices = array_map(fn ($category) => [$category['name'], $category['title_id']], $serviceCategories);
+    $t = fn ($en, $id) => \App\Support\SiteLanguage::text($en, $id, $lang);
+    $serviceHighlights = [
+        [
+            'slug' => 'visa-extensions', 'title' => ['Visa Extensions', 'Perpanjangan Visa'], 'image' => 'bali-tanah-lot.webp',
+            'description' => ['Stay longer in Indonesia. Get help with visa extensions, KITAS renewals, and the documents you need.', 'Tinggal lebih lama di Indonesia. Dapatkan bantuan perpanjangan visa, pembaruan KITAS, dan persiapan dokumen Anda.'],
+            'benefits' => [['30–60-day visa extensions', 'Perpanjangan visa 30–60 hari'], ['KITAS renewals', 'Perpanjangan KITAS'], ['Document assistance', 'Bantuan dokumen']],
+        ],
+        [
+            'slug' => 'e-visa-voa', 'title' => ['E-Visa VOA', 'E-Visa VOA'], 'image' => 'bali-ulun-danu.webp',
+            'description' => ['Prepare before you travel. Get help with your online e-VOA application for a short visit to Indonesia.', 'Bersiap sebelum berangkat. Dapatkan bantuan pengajuan e-VOA online untuk kunjungan singkat ke Indonesia.'],
+            'benefits' => [['30-day initial stay', 'Masa tinggal awal 30 hari'], ['Extendable once', 'Dapat diperpanjang sekali'], ['Online application', 'Pengajuan online']],
+        ],
+        [
+            'slug' => 'single-entry-visas', 'title' => ['Single Entry Visas', 'Visa Sekali Masuk'], 'image' => 'bali-waterfall.webp',
+            'description' => ['Plan one visit to Indonesia for tourism, business meetings, or cultural activities. We help you prepare your application.', 'Rencanakan kunjungan ke Indonesia untuk wisata, pertemuan bisnis, atau kegiatan budaya. Kami membantu menyiapkan pengajuan Anda.'],
+            'benefits' => [['60–180-day initial stay', 'Masa tinggal awal 60–180 hari'], ['Multiple visit purposes', 'Beragam tujuan kunjungan'], ['Application guidance', 'Panduan pengajuan']],
+        ],
+        [
+            'slug' => 'multiple-entry-visas', 'title' => ['Multiple Entry Visas', 'Visa Beberapa Kali Masuk'], 'image' => 'bali-rice-terraces.webp',
+            'description' => ['Visit Indonesia regularly for business or leisure. Explore multiple entry options that suit your plans and travel schedule.', 'Kunjungi Indonesia secara rutin untuk bisnis atau wisata. Kenali pilihan visa beberapa kali masuk sesuai rencana perjalanan Anda.'],
+            'benefits' => [['1, 2 or 5-year visa validity', 'Masa berlaku visa 1, 2, atau 5 tahun'], ['Flexible travel planning', 'Rencana perjalanan fleksibel'], ['Business & leisure', 'Bisnis & wisata']],
+        ],
+    ];
     $visaTypes = [
         ['Tourism', 'Wisata', 'Holidays & visits', 'Liburan & kunjungan'],
         ['Business & Investment', 'Bisnis & Investasi', 'Your next business move', 'Langkah bisnis Anda berikutnya'],
@@ -22,34 +43,20 @@
 @endphp
 <section class="hero" id="hero" aria-labelledby="hero-title">
 <div class="container hero-content">
-    <p class="hero-intro">One Step Solution</p>
-    <h1 id="hero-title"><span>{{ $t('Your Trusted Partner', 'Mitra Tepercaya') }}</span> {{ $t('for Visa Assistance', 'untuk Pengurusan Visa Anda') }}</h1>
+    <p class="hero-intro">OneCore (One Step Solution)</p>
+    <h1 id="hero-title"><span>{{ $t('Visa assistance for', 'Bantuan visa untuk') }}</span> {{ $t('your stay in Indonesia.', 'masa tinggal Anda di Indonesia.') }}</h1>
     <div class="hero-bottom">
-        <p>{{ $t('Getting the right Indonesian visa starts with the right guidance. Sunset Visa Agency is a private consultancy helping individuals and businesses understand visa requirements with clear advice, transparent communication, and efficient support at every step.', 'Memilih visa Indonesia yang tepat dimulai dengan panduan yang tepat. Sunset Visa Agency adalah konsultan swasta yang membantu individu dan bisnis memahami persyaratan visa melalui arahan yang jelas, komunikasi transparan, dan pendampingan yang efisien di setiap tahap.') }}</p>
+        <p>{{ $t('From your first visit to a longer stay, OneCore helps you find the right visa and prepare your application. Talk to our team about visa extensions, KITAS, or KITAP.', 'Dari kunjungan pertama hingga rencana tinggal lebih lama, OneCore membantu memilih visa dan menyiapkan pengajuan Anda. Diskusikan perpanjangan visa, KITAS, atau KITAP bersama tim kami.') }}</p>
         <div class="hero-actions">
-            <button class="button primary" type="button" data-consultation="General Consultation">{{ $t('Talk To Our Team', 'Konsultasi Dengan Kami') }}</button>
-            <a class="text-link" href="#preference-section">{{ $t('Explore Visa Options', 'Lihat Pilihan Visa') }} <span aria-hidden="true">↓</span></a>
+            <button class="button primary" type="button" data-consultation="General Consultation">{{ $t('Talk to OneCore', 'Konsultasi dengan OneCore') }}</button>
+            <a class="text-link" href="#visa-simulator">{{ $t('Find My Visa Options', 'Cari Pilihan Visa Saya') }} <span aria-hidden="true">↓</span></a>
         </div>
     </div>
 
 </div>
 </section>
 
-<section class="preference-section container" id="preference-section" aria-labelledby="preference-title">
-    <div class="preference-inner">
-        <div class="section-head preference-cta-head"><div><p class="section-label">{{ $t('Check your preference', 'Pilih kebutuhan Anda') }}</p><h2 id="preference-title">{{ $t('Ready for your next step?', 'Siap untuk langkah berikutnya?') }}</h2></div><p>{{ $t('Choose your nationality and service. Let’s start planning your stay in Indonesia.', 'Pilih kewarganegaraan dan layanan. Mari mulai merencanakan masa tinggal Anda di Indonesia.') }}</p></div>
-        <form id="preference-form" class="preference-form" novalidate>
-            <div class="field"><label for="preference-country">{{ $t('Country of nationality', 'Negara kewarganegaraan') }}</label><select id="preference-country" name="country" autocomplete="country-name" data-placeholder="{{ $t('Search Your Country', 'Cari Negara Anda') }}" required aria-describedby="country-help"><option value="">{{ $t('Search Your Country', 'Cari Negara Anda') }}</option></select><p id="country-help" class="preference-helper" data-default="{{ $t('Type to search, then choose your country.', 'Ketik untuk mencari, lalu pilih negara Anda.') }}" data-error="{{ $t('Choose a country from the list to continue.', 'Pilih negara dari daftar untuk melanjutkan.') }}">{{ $t('Type to search, then choose your country.', 'Ketik untuk mencari, lalu pilih negara Anda.') }}</p></div>
-            <div class="field"><label for="preference-service">{{ $t('Your preferred service', 'Layanan yang Anda pilih') }}</label><div class="select-wrap"><select id="preference-service" name="preferred_service" required aria-describedby="service-help"><option value="">{{ $t('Choose a service', 'Pilih layanan') }}</option><optgroup label="{{ $t('Services', 'Layanan') }}">@foreach($landingServices as $service)<option value="{{ $service[0] }}">{{ $t($service[0], $service[1]) }}</option>@endforeach</optgroup><optgroup label="{{ $t('VISA Types', 'Jenis VISA') }}">@foreach($visaTypes as $visa)<option value="{{ $visa[0] }}">{{ $t($visa[0], $visa[1]) }}</option>@endforeach</optgroup></select></div><p id="service-help" class="preference-helper" data-default="{{ $t('Choose a service or the purpose of your stay.', 'Pilih layanan atau tujuan masa tinggal Anda.') }}" data-error="{{ $t('Choose a service to continue.', 'Pilih layanan untuk melanjutkan.') }}">{{ $t('Choose a service or the purpose of your stay.', 'Pilih layanan atau tujuan masa tinggal Anda.') }}</p></div>
-            <button type="submit" class="button primary"><x-icon name="arrow-right" class="cta-icon" />{{ $t('Start My Consultation', 'Mulai Konsultasi') }}</button>
-        </form>
-        <div id="preference-result" class="preference-result" hidden>
-            <div aria-live="polite" aria-atomic="true"><h3>{{ $t('Your enquiry, ready to discuss.', 'Pilihan Anda siap didiskusikan.') }}</h3><dl class="preference-summary"><div><dt>{{ $t('Nationality', 'Kewarganegaraan') }}</dt><dd id="result-country"></dd></div><div><dt>{{ $t('Service', 'Layanan') }}</dt><dd id="result-service"></dd></div></dl><p>{{ $t('Our team can review the requirements for your nationality and chosen service. This selection is a starting point for your consultation.', 'Tim kami dapat meninjau persyaratan sesuai kewarganegaraan dan layanan pilihan Anda. Pilihan ini menjadi langkah awal konsultasi Anda.') }}</p></div>
-            <button type="button" class="button primary" id="preference-continue">{{ $t('Discuss My Selection', 'Konsultasi Pilihan Saya') }}</button>
-        </div>
-        <noscript><p>{{ $t('Enable JavaScript to try the selection tool, or contact our team directly.', 'Aktifkan JavaScript untuk mencoba simulasi, atau hubungi tim kami langsung.') }} <a class="text-link" href="https://wa.me/6289672966845">WhatsApp</a></p></noscript>
-    </div>
-</section>
+@include('partials.visa-simulator')
 
 <section class="why-section container" id="about-section" aria-labelledby="why-title">
     <div class="why-intro"><p class="section-label">{{ $t('About Us', 'Tentang Kami') }}</p><h2 id="why-title">{{ $t('One team.', 'Satu tim.') }}<br>{{ $t('For your next step.', 'Untuk langkah Anda.') }}</h2><p>{{ $t('OneCoreVisa helps you plan your visit and stay in Indonesia. We bring visa applications, extensions, and stay permit assistance into one conversation, in English or Indonesian.', 'OneCoreVisa membantu merencanakan kunjungan dan masa tinggal Anda di Indonesia. Pengajuan visa, perpanjangan, dan bantuan izin tinggal dapat Anda diskusikan bersama satu tim, dalam bahasa Inggris atau Indonesia.') }}</p><button class="button primary" type="button" data-consultation="General Consultation"><svg class="why-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/></svg>{{ $t('Let’s Talk', 'Mulai Konsultasi') }}</button></div>
@@ -66,16 +73,14 @@
     <div class="container">
         <div class="section-head"><h2 id="services-title">{{ $t('Our services', 'Layanan kami') }}</h2><p>{{ $t('From your first arrival to your next extension.', 'Dari kedatangan pertama hingga perpanjangan berikutnya.') }}</p></div>
         <div class="service-grid">
-            @foreach ($serviceCategories as $slug => $category)
-            <article class="service-item" data-expanded="false">
-                <img class="service-thumbnail" src="{{ asset('assets/images/index/' . $category['image']) }}" alt="" width="640" height="800" loading="lazy">
-                <div class="service-card-content">
-                    <h3><button type="button" class="service-toggle" aria-expanded="false" aria-controls="service-details-{{ $loop->index }}">{{ $t($category['name'], $category['title_id']) }}</button></h3>
-                    <div class="service-card-details" aria-hidden="true" inert id="service-details-{{ $loop->index }}" hidden>
-                        <p>{{ $t(...$category['intro']) }}</p>
-                        <ul class="service-benefits">@foreach($category['benefits'] as $benefit)<li>{{ $t(...$benefit) }}</li>@endforeach</ul>
-                        <a class="button secondary service-learn-more" href="{{ route('services.show', $slug) }}">{{ $t('Explore Services', 'Lihat Layanan') }}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
-                    </div>
+            @foreach ($serviceHighlights as $highlight)
+            <article class="service-feature-card">
+                <img class="service-thumbnail" src="{{ asset('assets/images/index/' . $highlight['image']) }}" alt="" width="640" height="800" loading="lazy">
+                <div class="service-feature-copy">
+                    <h3>{{ $t(...$highlight['title']) }}</h3>
+                    <p>{{ $t(...$highlight['description']) }}</p>
+                    <ul class="service-feature-benefits">@foreach($highlight['benefits'] as $benefit)<li><span class="service-feature-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 12 4 4 8-8"/></svg></span>{{ $t(...$benefit) }}</li>@endforeach</ul>
+                    <a class="service-feature-link" href="{{ route('services.show', ['service' => $highlight['slug'], 'lang' => $lang]) }}" aria-label="{{ $t('Learn more about ' . $highlight['title'][0], 'Selengkapnya tentang ' . $highlight['title'][1]) }}">{{ $t('Learn More', 'Selengkapnya') }}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
                 </div>
             </article>
             @endforeach
@@ -99,10 +104,10 @@
 
 <section class="process-section" id="process-section" aria-labelledby="process-title">
     <div class="container">
-        <div class="section-head"><div><p class="section-label">{{ $t('Our Process', 'Proses Kami') }}</p><h2 id="process-title">{{ $t('Clear Guidance At Every Step.', 'Panduan Jelas Di Setiap Langkah.') }}</h2></div><p>{{ $t('Understand what to prepare and what comes next, from your first consultation to application updates.', 'Pahami persiapan dan langkah berikutnya, dari konsultasi awal hingga pembaruan pengajuan.') }}</p></div>
+        <div class="section-head"><div><p class="section-label">{{ $t('Our Process', 'Proses Kami') }}</p><h2 id="process-title">{{ $t('Your visa, step by step.', 'Urus visa, selangkah demi selangkah.') }}</h2></div><p>{{ $t('From consultation to application updates.', 'Dari konsultasi hingga kabar pengajuan.') }}</p></div>
         <ol class="process-grid">
             @foreach($process as $step)
-            <li><span class="step-number" aria-hidden="true">{{ $step['timeline'] }}</span><h3>{{ $step['title'] }}</h3><p>{{ $step['desc'] }}</p></li>
+            <li><span class="step-number" aria-hidden="true">{{ $t($step['timeline'], $step['timeline']) }}</span><h3>{{ $t($step['title'], $step['title']) }}</h3><p>{{ $t($step['desc'], $step['desc']) }}</p></li>
             @endforeach
         </ol>
     </div>

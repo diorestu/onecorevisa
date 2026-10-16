@@ -14,13 +14,20 @@ class ServicePagesTest extends TestCase
         'company-formation' => ['pma-company', 'pt-local-company'],
     ];
 
-    public function test_home_links_to_all_document_categories_and_whatsapp(): void
+    public function test_home_links_to_featured_services_legality_and_whatsapp(): void
     {
         $response = $this->get('/');
         $response->assertOk()->assertSee('One Step Solution')->assertSee('class="whatsapp-float"', false)->assertSee('https://wa.me/6289672966845');
-        foreach (self::CATEGORIES as $category => $services) {
+        foreach (['visa-extensions', 'e-visa-voa', 'single-entry-visas', 'multiple-entry-visas', 'company-formation'] as $category) {
             $response->assertSee('/services/'.$category);
         }
+        $this->assertSame(4, substr_count($response->getContent(), 'class="service-feature-card"'));
+        $this->assertSame(12, substr_count($response->getContent(), 'class="service-feature-check"'));
+        $response->assertDontSee('class="service-toggle"', false);
+        $response->assertSee('Visa &amp; KITAS Services', false)->assertSee('Legality Services');
+        $response->assertViewHas('serviceCategories', fn ($items) => count($items) === 4 && !isset($items['company-formation']));
+        $response->assertSee('id="visa-simulator"', false)->assertSee('href="#visa-simulator"', false)
+            ->assertDontSee('id="preference-section"', false)->assertDontSee('#preference-section', false);
     }
 
     public function test_all_document_services_have_category_links_and_complete_detail_pages(): void
@@ -41,6 +48,31 @@ class ServicePagesTest extends TestCase
         $this->get('/services/unknown')->assertNotFound();
         $this->get('/services/kitas/voa-b1')->assertNotFound();
         $this->get('/services/visitor-visas/unknown')->assertNotFound();
+    }
+
+    public function test_simulator_uses_an_explicit_official_country_list_and_existing_services(): void
+    {
+        $countries = config('visa_simulator.country_codes');
+        $this->assertCount(97, $countries);
+        $this->assertSame($countries, array_values(array_unique($countries)));
+        $this->assertContains('AU', $countries);
+        $this->assertContains('RU', $countries);
+        $this->assertNotContains('AF', $countries);
+        $this->assertNotContains('ID', $countries);
+        foreach ($countries as $code) {
+            $this->assertFileExists(public_path('assets/images/flags/'.strtolower($code).'.svg'));
+        }
+
+        foreach (['en', 'id', 'ru', 'es'] as $locale) {
+            $response = $this->get('/?lang='.$locale)->assertOk();
+            $response->assertViewHas('visaSimulatorCountries', $countries)
+                ->assertSee('id="visa-simulator"', false)->assertSee(config('visa_simulator.source_url'))
+                ->assertSee('data-service-code="VOA"', false)
+                ->assertSee('data-service-code="C1"', false)
+                ->assertSee('data-service-code="D1"', false)
+                ->assertSee('data-service-code="DIGITAL-NOMAD"', false)
+                ->assertDontSee('id="simulator-consult"', false);
+        }
     }
 
     public function test_existing_category_urls_remain_available(): void

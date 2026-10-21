@@ -18,13 +18,14 @@ menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeM
 document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && !menu.hidden) { closeMenu(); menuToggle.focus(); }
 });
-window.matchMedia('(min-width: 1101px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
+window.matchMedia('(min-width: 1280px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
 document.querySelectorAll('[data-consultation]').forEach(button => {
     button.addEventListener('click', () => {
         returnFocus = menu.contains(button) ? menuToggle : button;
         const service = button.dataset.consultation;
         serviceSelect.value = Array.from(serviceSelect.options).some(option => option.value === service) ? service : 'General Consultation';
         closeMenu();
+        dialog.classList.toggle('visa-modal-motion', button.classList.contains('visa-item'));
         dialog.showModal();
         document.querySelector('#name').focus();
     });
@@ -93,16 +94,6 @@ serviceCards.forEach(card => {
 });
 
 const siteHeader = document.querySelector('.site-header');
-const languageDropdown = document.querySelector('.language-dropdown');
-document.addEventListener('click', event => {
-    if (!languageDropdown.contains(event.target)) languageDropdown.open = false;
-});
-document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && languageDropdown.open) {
-        languageDropdown.open = false;
-        languageDropdown.querySelector('summary').focus();
-    }
-});
 new ResizeObserver(() => {
     document.documentElement.style.setProperty('--header-height', `${siteHeader.getBoundingClientRect().height}px`);
 }).observe(siteHeader);

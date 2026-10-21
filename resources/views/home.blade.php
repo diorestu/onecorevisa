@@ -5,24 +5,24 @@
     $t = fn ($en, $id) => \App\Support\SiteLanguage::text($en, $id, $lang);
     $serviceHighlights = [
         [
-            'slug' => 'visa-extensions', 'title' => ['Visa Extensions', 'Perpanjangan Visa'], 'image' => 'bali-tanah-lot.webp',
-            'description' => ['Stay longer in Indonesia. Get help with visa extensions, KITAS renewals, and the documents you need.', 'Tinggal lebih lama di Indonesia. Dapatkan bantuan perpanjangan visa, pembaruan KITAS, dan persiapan dokumen Anda.'],
-            'benefits' => [['30–60-day visa extensions', 'Perpanjangan visa 30–60 hari'], ['KITAS renewals', 'Perpanjangan KITAS'], ['Document assistance', 'Bantuan dokumen']],
-        ],
-        [
-            'slug' => 'e-visa-voa', 'title' => ['E-Visa VOA', 'E-Visa VOA'], 'image' => 'bali-ulun-danu.webp',
+            'slug' => 'e-visa-voa', 'title' => ['E-Visa', 'E-Visa'], 'image' => 'bali-ulun-danu.webp',
             'description' => ['Prepare before you travel. Get help with your online e-VOA application for a short visit to Indonesia.', 'Bersiap sebelum berangkat. Dapatkan bantuan pengajuan e-VOA online untuk kunjungan singkat ke Indonesia.'],
             'benefits' => [['30-day initial stay', 'Masa tinggal awal 30 hari'], ['Extendable once', 'Dapat diperpanjang sekali'], ['Online application', 'Pengajuan online']],
         ],
         [
-            'slug' => 'single-entry-visas', 'title' => ['Single Entry Visas', 'Visa Sekali Masuk'], 'image' => 'bali-waterfall.webp',
+            'slug' => 'single-entry-visas', 'title' => ['Single Entry Visa', 'Visa Sekali Masuk'], 'image' => 'bali-waterfall.webp',
             'description' => ['Plan one visit to Indonesia for tourism, business meetings, or cultural activities. We help you prepare your application.', 'Rencanakan kunjungan ke Indonesia untuk wisata, pertemuan bisnis, atau kegiatan budaya. Kami membantu menyiapkan pengajuan Anda.'],
             'benefits' => [['60–180-day initial stay', 'Masa tinggal awal 60–180 hari'], ['Multiple visit purposes', 'Beragam tujuan kunjungan'], ['Application guidance', 'Panduan pengajuan']],
         ],
         [
-            'slug' => 'multiple-entry-visas', 'title' => ['Multiple Entry Visas', 'Visa Beberapa Kali Masuk'], 'image' => 'bali-rice-terraces.webp',
+            'slug' => 'multiple-entry-visas', 'title' => ['Multiple Entry Visa', 'Visa Beberapa Kali Masuk'], 'image' => 'bali-rice-terraces.webp',
             'description' => ['Visit Indonesia regularly for business or leisure. Explore multiple entry options that suit your plans and travel schedule.', 'Kunjungi Indonesia secara rutin untuk bisnis atau wisata. Kenali pilihan visa beberapa kali masuk sesuai rencana perjalanan Anda.'],
             'benefits' => [['1, 2 or 5-year visa validity', 'Masa berlaku visa 1, 2, atau 5 tahun'], ['Flexible travel planning', 'Rencana perjalanan fleksibel'], ['Business & leisure', 'Bisnis & wisata']],
+        ],
+        [
+            'slug' => 'visa-extensions', 'title' => ['Visa Extensions', 'Perpanjangan Visa'], 'image' => 'bali-tanah-lot.webp',
+            'description' => ['Stay longer in Indonesia. Get help with visa extensions, KITAS renewals, and the documents you need.', 'Tinggal lebih lama di Indonesia. Dapatkan bantuan perpanjangan visa, pembaruan KITAS, dan persiapan dokumen Anda.'],
+            'benefits' => [['30–60-day visa extensions', 'Perpanjangan visa 30–60 hari'], ['KITAS renewals', 'Perpanjangan KITAS'], ['Document assistance', 'Bantuan dokumen']],
         ],
     ];
     $visaTypes = [
@@ -111,6 +111,11 @@
             @endforeach
         </ol>
     </div>
+</section>
+
+<section class="news-section container" id="news-section" aria-labelledby="news-title">
+    <div class="section-head"><h2 id="news-title">{{ $t('News', 'Berita') }}</h2></div>
+    <p class="news-empty">{{ $t('No news has been published yet. Check back for updates.', 'Belum ada berita yang diterbitkan. Kunjungi kembali untuk informasi terbaru.') }}</p>
 </section>
 
 @endsection

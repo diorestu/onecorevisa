@@ -123,9 +123,10 @@ class SeoTest extends TestCase
             foreach (['/', '/services/kitas', '/services/kitas/investor-kitas-e28a'] as $path) {
                 $response = $this->get($path.'?lang='.$locale)->assertOk();
                 $response->assertSee('<html lang="'.$locale.'">', false)->assertSee($contactLabel)
-                    ->assertSee('class="language-dropdown"', false)->assertSee('@onecorevisa');
+                    ->assertSee('class="language-toggle"', false)->assertSee('@onecorevisa');
                 $xpath = $this->document($response->getContent());
-                $this->assertSame('http://localhost'.$path.'?lang='.$locale, $xpath->evaluate('string(//a[@lang="'.$locale.'"]/@href)'));
+                $this->assertSame('http://localhost'.$path.'?lang=id', $xpath->evaluate('string(//a[@lang="id"]/@href)'));
+                $this->assertSame('http://localhost'.$path, $xpath->evaluate('string(//a[@lang="en"]/@href)'));
                 $this->assertSame('https://onecorevisa.example'.$path.'?lang='.$locale, $xpath->evaluate('string(//link[@rel="canonical"]/@href)'));
             }
             $this->from('/services/kitas')->get('/lang/'.$locale)->assertRedirect('/services/kitas?lang='.$locale);

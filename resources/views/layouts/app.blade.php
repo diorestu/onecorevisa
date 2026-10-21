@@ -2,6 +2,13 @@
     $lang = $lang ?? 'en';
     $t = fn ($en, $id) => \App\Support\SiteLanguage::text($en, $id, $lang);
     $homeUrl = route('home', ['lang' => $lang]);
+    $headerLinks = [
+        [$homeUrl, $t('Home', 'Beranda')],
+        [$homeUrl.'#services-section', $t('Visa & KITAS Services', 'Layanan Visa & KITAS')],
+        [route('services.show', ['service' => 'company-formation', 'lang' => $lang]), $t('Legal Service', 'Layanan Hukum')],
+        [$homeUrl.'#about-section', $t('About Us', 'Tentang Kami')],
+        [$homeUrl.'#news-section', $t('News', 'Berita')],
+    ];
 @endphp
 <!DOCTYPE html>
 <html lang="{{ $lang }}">
@@ -22,10 +29,10 @@
         <div class="header-contact-bar"><div class="container header-contact-inner"><a href="https://wa.me/6289672966845" target="_blank" rel="noopener noreferrer"><x-icon name="whatsapp" /><span>+62 896-7296-6845</span></a><a href="{{ config('social.instagram_url') }}" target="_blank" rel="noopener noreferrer"><x-icon name="instagram" /><span>@onecorevisa</span></a></div></div>
         <div class="container header-inner">
             <a class="brand" href="{{ $homeUrl }}" aria-label="OneCoreVisa — {{ $t('home', 'beranda') }}"><img class="brand-logo-dark" src="{{ asset('assets/images/onecore-logo-horizontal.png') }}" width="822" height="240" alt="OneCore Visa"><img class="brand-logo-white" src="{{ asset('assets/images/onecore-logo-horizontal-white.png') }}" width="822" height="240" alt=""></a>
-            <nav class="desktop-nav" aria-label="{{ $t('Main navigation', 'Navigasi utama') }}"><a href="{{ isset($serviceDetail) ? $homeUrl : '' }}#about-section">{{ $t('About Us', 'Tentang Kami') }}</a><a href="{{ isset($serviceDetail) ? $homeUrl : '' }}#services-section">{{ $t('Visa & KITAS Services', 'Layanan Visa & KITAS') }}</a><a href="{{ route('services.show', ['service' => 'company-formation', 'lang' => $lang]) }}">{{ $t('Legality Services', 'Layanan Legalitas') }}</a><a href="{{ isset($serviceDetail) ? $homeUrl : '' }}#process-section">{{ $t('Our Process', 'Proses Kami') }}</a></nav>
-            <div class="header-actions"><x-language-dropdown :lang="$lang" /><button type="button" class="button primary header-cta" data-consultation="General Consultation"><x-icon name="chat" class="cta-icon" />{{ $t('Contact Us', 'Hubungi Kami') }}</button><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">{{ $t('Menu', 'Menu') }} <span aria-hidden="true">☰</span></button></div>
+            <nav class="desktop-nav" aria-label="{{ $t('Main navigation', 'Navigasi utama') }}">@foreach($headerLinks as [$href, $label])<a href="{{ $href }}">{{ $label }}</a>@endforeach</nav>
+            <div class="header-actions"><x-language-dropdown :lang="$lang" /><button type="button" class="button primary header-cta" data-consultation="General Consultation"><x-icon name="chat" class="cta-icon" />{{ $t('Contact Us', 'Hubungi Kami') }}</button><button class="menu-toggle" type="button" aria-label="{{ $t('Menu', 'Menu') }}" aria-expanded="false" aria-controls="mobile-nav"><span class="menu-toggle-label">{{ $t('Menu', 'Menu') }}</span><span aria-hidden="true">☰</span></button></div>
         </div>
-        <nav class="mobile-nav container" id="mobile-nav" aria-label="{{ $t('Mobile navigation', 'Navigasi ponsel') }}" hidden><a href="{{ isset($serviceDetail) ? $homeUrl : '' }}#about-section">{{ $t('About Us', 'Tentang Kami') }}</a><a href="{{ isset($serviceDetail) ? $homeUrl : '' }}#services-section">{{ $t('Visa & KITAS Services', 'Layanan Visa & KITAS') }}</a><a href="{{ route('services.show', ['service' => 'company-formation', 'lang' => $lang]) }}">{{ $t('Legality Services', 'Layanan Legalitas') }}</a><a href="{{ isset($serviceDetail) ? $homeUrl : '' }}#process-section">{{ $t('Our Process', 'Proses Kami') }}</a><button class="button primary" type="button" data-consultation="General Consultation"><x-icon name="chat" class="cta-icon" />{{ $t('Contact Us', 'Hubungi Kami') }}</button></nav>
+        <nav class="mobile-nav container" id="mobile-nav" aria-label="{{ $t('Mobile navigation', 'Navigasi ponsel') }}" hidden>@foreach($headerLinks as [$href, $label])<a href="{{ $href }}">{{ $label }}</a>@endforeach<button class="button primary" type="button" data-consultation="General Consultation"><x-icon name="chat" class="cta-icon" />{{ $t('Contact Us', 'Hubungi Kami') }}</button></nav>
     </header>
     <main id="main">@yield('content')</main>
     <footer class="site-footer" id="contact">

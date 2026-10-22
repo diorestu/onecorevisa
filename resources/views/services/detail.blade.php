@@ -57,10 +57,17 @@
             <section class="service-profile-section service-documents" id="service-documents" aria-labelledby="service-documents-title">
                 <div class="service-documents-heading">
                     <h2 id="service-documents-title"><x-icon name="document" class="service-heading-icon" />{{ $t('Document Requirements', 'Persyaratan Dokumen') }}</h2>
-                    <p>{{ $t('Prepare these documents for your consultation.', 'Siapkan dokumen berikut untuk konsultasi Anda.') }}</p>
+                    <p>{{ $serviceLine['documentIntro'] ?? $t('Prepare these documents for your consultation.', 'Siapkan dokumen berikut untuk konsultasi Anda.') }}</p>
                 </div>
                 <ol>@foreach($serviceLine['documentRequirements'] as $document)<li>{{ $document }}</li>@endforeach</ol>
             </section>
+
+            @if(!empty($serviceLine['additionalInformation']))
+            <section class="service-profile-section" aria-labelledby="service-additional-title">
+                <h2 id="service-additional-title">{{ $t('Additional Information Required', 'Informasi Tambahan Yang Diperlukan') }}</h2>
+                <ul>@foreach($serviceLine['additionalInformation'] as $information)<li>{{ $information }}</li>@endforeach</ul>
+            </section>
+            @endif
 
             <a class="text-link service-back-link service-profile-back" href="{{ route('services.show', ['service' => $categorySlug, 'lang' => $lang]) }}"><x-icon name="chevron-left" />{{ $t('Back To', 'Kembali Ke') }} {{ $t($categoryDetail['name'], $categoryDetail['title_id']) }}</a>
         </article>
@@ -74,7 +81,7 @@
                     <p>{{ $t('Service Fee', 'Biaya Layanan') }}</p>
                     @if($servicePricing)
                         <p class="service-starting-label">Start from</p>
-                        <p class="service-starting-price">Rp{{ number_format($servicePricing['idr'], 0, ',', '.') }}@if(isset($servicePricing['usd']))<span> + USD {{ number_format($servicePricing['usd'], 0, '.', ',') }}</span>@endif</p>
+                        <p class="service-starting-price">Rp{{ number_format($servicePricing['idr'], 0, ',', '.') }}{{ $servicePricing['marker'] ?? '' }}@if(isset($servicePricing['usd']))<span> + USD {{ number_format($servicePricing['usd'], 0, '.', ',') }}</span>@endif</p>
                         @if(isset($servicePricing['basis']))<p class="service-price-basis">{{ $t(...$servicePricing['basis']) }}</p>@endif
                     @else
                         <p>{{ $t('Quoted For Your Application', 'Penawaran Sesuai Pengajuan Anda') }}</p>

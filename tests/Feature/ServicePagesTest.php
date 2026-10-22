@@ -7,7 +7,7 @@ use Tests\TestCase;
 class ServicePagesTest extends TestCase
 {
     private const CATEGORIES = [
-        'visitor-visas' => ['voa-b1', 'c1-tourist-visa', 'c2-business-visa', 'c12-pre-investment-visa', 'c6-social-cultural-visa', 'c7-arts-music-visa', 'c13-medical-humanitarian-visa', 'multiple-entry-d1-d2'],
+        'visitor-visas' => ['voa-b1', 'c1-tourist-visa', 'c2-business-visa', 'c5-c5a-journalism-content-creator-visa', 'c12-pre-investment-visa', 'c6-social-cultural-visa', 'c7-arts-music-visa', 'c13-medical-humanitarian-visa', 'multiple-entry-d1-d2'],
         'visa-extensions' => ['voa-extension', 'single-entry-extension', 'multiple-entry-extension', 'kitas-extension'],
         'kitas' => ['investor-kitas-e28a', 'working-kitas-e23', 'digital-nomad-e33g', 'retirement-kitas-e33e', 'dependent-kitas-e31', 'spouse-kitas', 'student-visa-e30a', 'ex-wni-visa-e32a', 'golden-visa'],
         'kitap' => ['investor-kitap', 'working-kitap', 'family-kitap', 'retirement-kitap'],
@@ -48,6 +48,29 @@ class ServicePagesTest extends TestCase
         $this->get('/services/unknown')->assertNotFound();
         $this->get('/services/kitas/voa-b1')->assertNotFound();
         $this->get('/services/visitor-visas/unknown')->assertNotFound();
+    }
+
+    public function test_journalism_and_content_creator_visa_is_listed_with_supplied_details(): void
+    {
+        $slug = 'c5-c5a-journalism-content-creator-visa';
+        $path = '/services/visitor-visas/'.$slug;
+        $this->get('/services/single-entry-visas')->assertOk()->assertSee($path);
+        foreach (['en', 'id'] as $lang) {
+            $this->get($path.'?lang='.$lang)->assertOk()
+                ->assertSee('C5/C5A - Journalism Visa & content creator visit visa (60 days)')
+                ->assertSee('Rp5.875.000*')
+                ->assertSee('60 Days (Extendable 2x, up to 180 days total)')
+                ->assertSee('Regular: 5 - 10 Working Days • Priority: 2 - 4 Working Days')
+                ->assertSee('Must be used within 90 days from the date of issuance.')
+                ->assertSee('C5A does not authorize journalistic activities that require a C5 visa or additional authorization.')
+                ->assertSee('C5A Content Creator Visa Application')
+                ->assertSee('A portfolio or samples of your previous content.')
+                ->assertSee('Full name as shown on your passport.')
+                ->assertSee('Details of any brand collaborations or sponsorships, if applicable.')
+                ->assertViewHas('serviceLine', fn ($item) => count($item['documentRequirements']) === 7 && count($item['additionalInformation']) === 6);
+        }
+        $this->get('/sitemap.xml')->assertOk()->assertSee($path);
+        $this->get('/services/kitas/'.$slug)->assertNotFound();
     }
 
     public function test_simulator_uses_an_explicit_official_country_list_and_existing_services(): void

@@ -173,6 +173,55 @@ class HomeController extends Controller
                     'tag' => 'Index C2'
                 ],
                 [
+                    'id' => 'c5-c5a-journalism-content-creator-visa',
+                    'thumbnail' => 'service-documents.webp',
+                    'category' => 'visitor-visas',
+                    'code' => 'Index C5/C5A',
+                    'title' => 'C5/C5A - Journalism Visa & content creator visit visa (60 days)',
+                    'price' => 'Rp5.875.000*',
+                    'lengthOfStay' => '60 Days (Extendable 2x, up to 180 days total)',
+                    'processingTime' => 'Regular: 5 - 10 Working Days • Priority: 2 - 4 Working Days',
+                    'visaValidity' => 'Must be used within 90 days from the date of issuance.',
+                    'whatsAllowed' => [
+                        'Conduct journalistic activities, news reporting, and authorized media coverage (C5).',
+                        'Create social media content, including travel vlogs, photography, and videos, within the permitted visa scope (C5A).',
+                        'Conduct authorized interviews and documentation related to the approved purpose of the visit.',
+                        'Engage in tourism activities and visit friends or family during the authorized stay.',
+                    ],
+                    'whatsNotAllowed' => [
+                        'Activities must remain within the purpose and scope of the visa granted.',
+                        'C5A does not authorize journalistic activities that require a C5 visa or additional authorization.',
+                        'Employment or work activities outside the permitted visa scope are prohibited.',
+                        'Commercial filming, sponsored content, and brand collaborations may require additional verification, permits, or a different visa, depending on the actual activities.',
+                        'Visa holders must comply with Indonesian immigration regulations and all applicable laws.',
+                        'Visa holders must leave Indonesia or obtain an appropriate extension or change of stay status before their authorized stay expires.',
+                    ],
+                    'documentIntro' => 'Please find the following document requirements of C5A Content Creator Visa Application:',
+                    'documentRequirements' => [
+                        'A clear, full-color scan of your passport biodata page, with at least 6 months of validity remaining.',
+                        'A recent color photograph.',
+                        'Your CV or professional profile as a content creator.',
+                        'Links to your active social media accounts (Instagram, TikTok, YouTube, or other platforms).',
+                        'A portfolio or samples of your previous content.',
+                        'A proposed activity plan and schedule for content creation during your stay in Indonesia.',
+                        'Details of the purpose of your visit and the type of content you intend to create.',
+                    ],
+                    'additionalInformation' => [
+                        'Full name as shown on your passport.',
+                        'Nationality.',
+                        'Estimated arrival date in Indonesia.',
+                        'Intended length of stay.',
+                        'Type of content you plan to produce.',
+                        'Details of any brand collaborations or sponsorships, if applicable.',
+                    ],
+                    'icon' => 'fa-camera',
+                    'badge' => 'Journalism & Content Creation',
+                    'duration' => '60 Days (Extendable 2x, up to 180 days total)',
+                    'shortDesc' => '60 Days (Extendable 2x, up to 180 days total) • Regular: 5 - 10 Working Days • Priority: 2 - 4 Working Days',
+                    'whoFor' => 'C5/C5A - Journalism Visa & content creator visit visa (60 days)',
+                    'tag' => 'Index C5/C5A',
+                ],
+                [
                     'id' => 'c12-pre-investment-visa',
                     'thumbnail' => 'service-business.webp',
                     'category' => 'visitor-visas',
@@ -1218,7 +1267,7 @@ class HomeController extends Controller
 
         $legacyServices = [
             'e-visa-voa' => ['voa-b1'],
-            'single-entry-visas' => ['c1-tourist-visa', 'c2-business-visa', 'c12-pre-investment-visa', 'c6-social-cultural-visa', 'c7-arts-music-visa', 'c13-medical-humanitarian-visa'],
+            'single-entry-visas' => ['c1-tourist-visa', 'c2-business-visa', 'c5-c5a-journalism-content-creator-visa', 'c12-pre-investment-visa', 'c6-social-cultural-visa', 'c7-arts-music-visa', 'c13-medical-humanitarian-visa'],
             'multiple-entry-visas' => ['multiple-entry-d1-d2'],
         ];
         $sourceCategory = $details[$service]['sourceCategory'] ?? null;

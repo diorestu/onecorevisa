@@ -10,7 +10,7 @@
             'benefits' => [['E-VOA & visit visas', 'E-VOA & visa kunjungan'], ['Multiple visit purposes', 'Beragam tujuan kunjungan'], ['Application guidance', 'Panduan pengajuan']],
         ],
         [
-            'slug' => 'kitas', 'title' => ['Long Stay Visa KITAS', 'Visa Tinggal Lama KITAS'], 'image' => 'service-remote.webp',
+            'slug' => 'kitas', 'title' => ['Long Stay Visa KITAS', 'Visa Tinggal Lama KITAS'], 'image' => 'service-long-stay-hero.webp',
             'description' => ['Explore multiple-entry visas and KITAS for work, investment, remote work, family, study, or retirement in Indonesia.', 'Kenali visa beberapa kali masuk dan KITAS untuk bekerja, investasi, kerja jarak jauh, keluarga, studi, atau pensiun di Indonesia.'],
             'benefits' => [['Investor & Working KITAS', 'KITAS Investor & Kerja'], ['Family, study & retirement', 'Keluarga, studi & pensiun'], ['Multiple Entry Visas', 'Visa Beberapa Kali Masuk']],
         ],

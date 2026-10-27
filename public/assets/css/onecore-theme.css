@@ -686,3 +686,13 @@ html { scroll-padding-top: calc(var(--header-height, 136px) + 24px); }
 .service-inclusions li + li { margin-top: var(--space-sm); }
 @media(max-width: 1100px) { .legal-services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media(max-width: 600px) { .legal-services-grid { grid-template-columns: minmax(0, 1fr); } }
+
+.service-category-image[src$="/service-long-stay-hero.webp"],
+.service-feature-card .service-thumbnail[src$="/service-long-stay-hero.webp"] { object-position: 74% center; }
+
+.service-line-thumbnail[src$="/service-multiple-extension.webp"],
+.service-line-thumbnail[src$="/service-working-kitas.webp"],
+.service-line-thumbnail[src$="/service-working-extension.webp"],
+.service-line-thumbnail[src$="/service-spouse-kitas.webp"],
+.service-line-thumbnail[src$="/service-ex-indonesian.webp"],
+.service-line-thumbnail[src$="/service-golden-visa.webp"] { object-position: center top; }

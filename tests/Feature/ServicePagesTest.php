@@ -189,6 +189,24 @@ class ServicePagesTest extends TestCase
         $this->get('/services/kitap/d12-pre-investment-visa')->assertNotFound();
     }
 
+    public function test_long_stay_services_use_distinct_photos_and_a_separate_category_image(): void
+    {
+        $response = $this->get('/services/kitas')->assertOk();
+        $items = $response->viewData('categoryServices');
+        $photos = array_column($items, 'thumbnail');
+        $this->assertCount(count($items), array_unique($photos));
+        $hashes = [];
+        foreach ($photos as $photo) {
+            $path = public_path('assets/images/index/'.$photo);
+            $this->assertFileExists($path);
+            $hashes[] = hash_file('sha256', $path);
+        }
+        $this->assertCount(count($items), array_unique($hashes));
+        $hero = $response->viewData('serviceDetail')['image'];
+        $this->assertNotContains($hero, $photos);
+        $this->assertFileExists(public_path('assets/images/index/'.$hero));
+    }
+
     public function test_multiple_entry_services_move_to_long_stay_and_old_links_redirect(): void
     {
         $moved = [

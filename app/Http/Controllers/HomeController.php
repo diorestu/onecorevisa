@@ -422,7 +422,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'multiple-entry-d1-d2',
-                    'thumbnail' => 'header-slider1.webp',
+                    'thumbnail' => 'service-multiple-entry.webp',
                     'category' => 'kitas',
                     'code' => 'Index D1 / D2',
                     'title' => 'Multiple Entry Visit Visa (D1 / D2 - up to 180 days per visit)',
@@ -587,7 +587,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'multiple-entry-extension',
-                    'thumbnail' => 'bali-rice-terraces.webp',
+                    'thumbnail' => 'service-multiple-extension.webp',
                     'category' => 'kitas',
                     'code' => 'Ext. D-Series',
                     'title' => 'Multiple Entry Visa Extension',
@@ -621,7 +621,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'working-kitas-extension',
-                    'thumbnail' => 'service-business.webp',
+                    'thumbnail' => 'service-working-extension.webp',
                     'category' => 'kitas',
                     'code' => 'Working KITAS Extension',
                     'title' => 'Working KITAS Extension',
@@ -749,7 +749,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'working-kitas-e23',
-                    'thumbnail' => 'service-documents.webp',
+                    'thumbnail' => 'service-working-kitas.webp',
                     'category' => 'kitas',
                     'code' => 'Index E23',
                     'title' => 'Working KITAS (E23)',
@@ -902,7 +902,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'spouse-kitas',
-                    'thumbnail' => 'header-slider3.webp',
+                    'thumbnail' => 'service-spouse-kitas.webp',
                     'category' => 'kitas',
                     'code' => 'Index E31B / Spouse',
                     'title' => 'Family of Indonesian Citizen (Spouse KITAS)',
@@ -976,7 +976,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'ex-wni-visa-e32a',
-                    'thumbnail' => 'about-img.webp',
+                    'thumbnail' => 'service-ex-indonesian.webp',
                     'category' => 'kitas',
                     'code' => 'Index E32A',
                     'title' => 'Ex-Indonesian Citizens Visa (E32A)',
@@ -1010,7 +1010,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'golden-visa',
-                    'thumbnail' => 'service-business.webp',
+                    'thumbnail' => 'service-golden-visa.webp',
                     'category' => 'kitas',
                     'code' => 'Golden Visa',
                     'title' => 'Golden Visa',
@@ -1470,7 +1470,7 @@ class HomeController extends Controller
                 'benefits' => [['Visit Visa Extensions', 'Perpanjangan Visa Kunjungan'], ['KITAS Renewals', 'Perpanjangan KITAS']],
             ],
             'kitas' => [
-                'name' => 'Long Stay Visa & KITAS', 'title_id' => 'Visa Tinggal Lama & KITAS', 'sourceCategory' => 'kitas', 'image' => 'bali-waterfall.webp',
+                'name' => 'Long Stay Visa & KITAS', 'title_id' => 'Visa Tinggal Lama & KITAS', 'sourceCategory' => 'kitas', 'image' => 'service-long-stay-hero.webp',
                 'intro' => ['Explore multiple-entry visas and stay permits for investment, employment, remote work, family, education, and retirement.', 'Kenali visa beberapa kali masuk dan izin tinggal untuk investasi, kerja, kerja jarak jauh, keluarga, pendidikan, dan pensiun.'],
                 'serviceOrder' => [
                     'multiple-entry-d1-d2', 'multiple-entry-extension', 'd12-pre-investment-visa',

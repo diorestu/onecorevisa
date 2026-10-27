@@ -6,13 +6,13 @@
     $serviceHighlights = [
         [
             'slug' => 'single-entry-visas', 'title' => ['Single Entry Visa', 'Visa Sekali Masuk'], 'image' => 'bali-waterfall.webp',
-            'description' => ['Explore visitor visa options for tourism, business, cultural activities, and regular visits to Indonesia.', 'Kenali pilihan visa kunjungan untuk wisata, bisnis, kegiatan budaya, dan kunjungan berkala ke Indonesia.'],
+            'description' => ['Explore visitor visa options for tourism, business meetings, and cultural activities in Indonesia.', 'Kenali pilihan visa kunjungan untuk wisata, pertemuan bisnis, dan kegiatan budaya di Indonesia.'],
             'benefits' => [['E-VOA & visit visas', 'E-VOA & visa kunjungan'], ['Multiple visit purposes', 'Beragam tujuan kunjungan'], ['Application guidance', 'Panduan pengajuan']],
         ],
         [
             'slug' => 'kitas', 'title' => ['Long Stay Visa KITAS', 'Visa Tinggal Lama KITAS'], 'image' => 'service-remote.webp',
-            'description' => ['Explore KITAS options for work, investment, remote work, family, study, or retirement in Indonesia.', 'Kenali pilihan KITAS untuk bekerja, investasi, kerja jarak jauh, keluarga, studi, atau pensiun di Indonesia.'],
-            'benefits' => [['Investor & Working KITAS', 'KITAS Investor & Kerja'], ['Family, study & retirement', 'Keluarga, studi & pensiun'], ['Remote worker & Golden Visa', 'Pekerja jarak jauh & Golden Visa']],
+            'description' => ['Explore multiple-entry visas and KITAS for work, investment, remote work, family, study, or retirement in Indonesia.', 'Kenali visa beberapa kali masuk dan KITAS untuk bekerja, investasi, kerja jarak jauh, keluarga, studi, atau pensiun di Indonesia.'],
+            'benefits' => [['Investor & Working KITAS', 'KITAS Investor & Kerja'], ['Family, study & retirement', 'Keluarga, studi & pensiun'], ['Multiple Entry Visas', 'Visa Beberapa Kali Masuk']],
         ],
         [
             'slug' => 'kitap', 'title' => ['Permanent Visa', 'Visa Tinggal Tetap'], 'image' => 'service-retirement.webp',

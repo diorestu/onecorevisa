@@ -7,9 +7,9 @@ use Tests\TestCase;
 class ServicePagesTest extends TestCase
 {
     private const CATEGORIES = [
-        'visitor-visas' => ['voa-b1', 'c1-tourist-visa', 'c2-business-visa', 'c5-c5a-journalism-content-creator-visa', 'c12-pre-investment-visa', 'c6-social-cultural-visa', 'c7-arts-music-visa', 'c13-join-vessel-visa', 'c14-filming-visa', 'multiple-entry-d1-d2'],
-        'visa-extensions' => ['voa-extension', 'single-entry-extension', 'multiple-entry-extension', 'working-kitas-extension', 'investor-kitas-extension', 'family-dependent-kitas-extension', 'retirement-kitas-extension'],
-        'kitas' => ['investor-kitas-e28a', 'working-kitas-e23', 'digital-nomad-e33g', 'retirement-kitas-e33e', 'dependent-kitas-e31', 'spouse-kitas', 'student-visa-e30a', 'ex-wni-visa-e32a', 'golden-visa'],
+        'visitor-visas' => ['voa-b1', 'c1-tourist-visa', 'c2-business-visa', 'c5-c5a-journalism-content-creator-visa', 'c12-pre-investment-visa', 'c6-social-cultural-visa', 'c7-arts-music-visa', 'c13-join-vessel-visa', 'c14-filming-visa'],
+        'visa-extensions' => ['voa-extension', 'single-entry-extension', 'family-dependent-kitas-extension', 'retirement-kitas-extension'],
+        'kitas' => ['multiple-entry-d1-d2', 'multiple-entry-extension', 'd12-pre-investment-visa', 'working-kitas-extension', 'investor-kitas-extension', 'investor-kitas-e28a', 'working-kitas-e23', 'digital-nomad-e33g', 'retirement-kitas-e33e', 'dependent-kitas-e31', 'spouse-kitas', 'student-visa-e30a', 'ex-wni-visa-e32a', 'golden-visa'],
         'kitap' => ['investor-kitap', 'working-kitap', 'family-kitap', 'retirement-kitap'],
         'company-formation' => ['pma-company', 'pt-local-company', 'cv-establishment', 'pt-local-hospitality-setup', 'pt-perorangan', 'nib-oss-process', 'oss-account-assistance', 'company-valuation', 'annual-company-report', 'company-closing-local', 'company-closing-pma', 'recruitment-hr-services', 'hr-compliance', 'payroll-outsourcing', 'accounting-tax-services', 'property-advisory', 'insurance-services', 'legal-contract-advisory', 'building-permit-pbg-slf', 'due-diligence', 'document-review'],
     ];
@@ -149,7 +149,7 @@ class ServicePagesTest extends TestCase
             ->assertSee('C13 - Join Vessel Visa (60 Days)')
             ->assertSee('C14 - Filming Visa (60 Days)')
             ->assertSee('/services/visitor-visas/voa-b1')
-            ->assertSee('/services/visitor-visas/multiple-entry-d1-d2')
+            ->assertDontSee('/services/visitor-visas/multiple-entry-d1-d2')
             ->assertDontSee('Medical &amp; Humanitarian', false);
         $items = $response->viewData('categoryServices');
         $this->assertCount(count($items), array_unique(array_column($items, 'thumbnail')));
@@ -160,6 +160,62 @@ class ServicePagesTest extends TestCase
             $this->get('/services/visitor-visas/'.$slug)->assertOk()->assertDontSee('medical treatment');
             $this->get('/sitemap.xml')->assertOk()->assertSee('/services/visitor-visas/'.$slug);
         }
+    }
+
+    public function test_single_entry_catalog_keeps_short_visit_extensions_and_long_stay_has_unpriced_d12(): void
+    {
+        $response = $this->get('/services/single-entry-visas')->assertOk();
+        $ids = array_column($response->viewData('categoryServices'), 'id');
+        $this->assertSame([
+            'voa-b1', 'voa-extension', 'c1-tourist-visa', 'single-entry-extension', 'c2-business-visa',
+            'c12-pre-investment-visa', 'c6-social-cultural-visa', 'c7-arts-music-visa',
+            'c13-join-vessel-visa', 'c14-filming-visa', 'c5-c5a-journalism-content-creator-visa',
+        ], $ids);
+        foreach (['voa-extension', 'single-entry-extension'] as $slug) {
+            $response->assertSee('/services/visa-extensions/'.$slug);
+            $this->get('/services/visitor-visas/'.$slug)->assertNotFound();
+        }
+        foreach (['en', 'id'] as $lang) {
+            $this->get('/services/kitas/d12-pre-investment-visa?lang='.$lang)->assertOk()
+                ->assertSee('D12 – Pre-Investment Visa')
+                ->assertSee('Conducting pre-investment activities, including field surveys and feasibility studies.')
+                ->assertSee('Available for 1 year or 2 years, depending on the visa option issued. Visa validity is different from the permitted length of stay per entry.')
+                ->assertSee('Personal bank statement for the last 3 months, showing a minimum balance of USD 5,000 or equivalent, subject to confirmation.')
+                ->assertViewHas('serviceLine', fn ($item) => count($item['documentRequirements']) === 7 && count($item['whatsAllowed']) === 4 && count($item['whatsNotAllowed']) === 4)
+                ->assertViewHas('servicePricing', null)->assertDontSee('Start from');
+            $this->get('/services/visa-extensions/single-entry-extension?lang='.$lang)->assertOk()->assertViewHas('servicePricing', null);
+        }
+        $this->get('/sitemap.xml')->assertOk()->assertSee('/services/kitas/d12-pre-investment-visa');
+        $this->get('/services/kitap/d12-pre-investment-visa')->assertNotFound();
+    }
+
+    public function test_multiple_entry_services_move_to_long_stay_and_old_links_redirect(): void
+    {
+        $moved = [
+            'multiple-entry-d1-d2' => 'visitor-visas',
+            'd12-pre-investment-visa' => 'visitor-visas',
+            'multiple-entry-extension' => 'visa-extensions',
+            'investor-kitas-extension' => 'visa-extensions',
+            'working-kitas-extension' => 'visa-extensions',
+        ];
+        foreach (['en', 'id', 'ru', 'es'] as $lang) {
+            $single = $this->get('/services/single-entry-visas?lang='.$lang)->assertOk();
+            $long = $this->get('/services/kitas?lang='.$lang)->assertOk();
+            foreach ($moved as $slug => $oldCategory) {
+                $single->assertDontSee('/'.$slug);
+                $long->assertSee('/services/kitas/'.$slug);
+                $this->get('/services/'.$oldCategory.'/'.$slug.'?lang='.$lang)
+                    ->assertStatus(301)->assertRedirect('/services/kitas/'.$slug.'?lang='.$lang);
+                $this->get('/services/kitas/'.$slug.'?lang='.$lang)->assertOk()
+                    ->assertViewHas('categorySlug', 'kitas')
+                    ->assertViewHas('serviceLine', fn ($item) => $item['category'] === 'kitas');
+            }
+        }
+        $sitemap = $this->get('/sitemap.xml')->assertOk();
+        foreach ($moved as $slug => $oldCategory) {
+            $sitemap->assertSee('/services/kitas/'.$slug)->assertDontSee('/services/'.$oldCategory.'/'.$slug);
+        }
+        $this->get('/services/kitap/multiple-entry-d1-d2')->assertNotFound();
     }
 
     public function test_vessel_and_filming_details_have_supplied_prices_activities_and_documents(): void
@@ -190,9 +246,9 @@ class ServicePagesTest extends TestCase
     public function test_extension_prices_keep_durations_and_imta_supplement_separate(): void
     {
         foreach (['en', 'id'] as $lang) {
-            $this->get('/services/visa-extensions/working-kitas-extension?lang='.$lang)
+            $this->get('/services/kitas/working-kitas-extension?lang='.$lang)
                 ->assertOk()->assertSee('Rp16.000.000')->assertSee('USD 1,200')->assertSee('Rp25.000.000');
-            $this->get('/services/visa-extensions/investor-kitas-extension?lang='.$lang)
+            $this->get('/services/kitas/investor-kitas-extension?lang='.$lang)
                 ->assertOk()->assertSee('Rp18.900.000')->assertSee('Rp23.000.000')->assertDontSee('USD 1,200');
             foreach (['family-dependent-kitas-extension', 'retirement-kitas-extension'] as $slug) {
                 $this->get('/services/visa-extensions/'.$slug.'?lang='.$lang)

@@ -35,7 +35,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'kitap',
-                    'title' => $lang === 'en' ? 'Permanent Residency (KITAP)' : 'Izin Tinggal Tetap (KITAP)',
+                    'title' => $lang === 'en' ? 'Permanent Residency Visas (KITAP)' : 'Izin Tinggal Tetap (KITAP)',
                     'subtitle' => $lang === 'en' ? '5-Year & Permanent Status' : 'Status 5 Tahun & Permanen',
                     'icon' => 'fa-award',
                 ],
@@ -423,7 +423,7 @@ class HomeController extends Controller
                 [
                     'id' => 'multiple-entry-d1-d2',
                     'thumbnail' => 'header-slider1.webp',
-                    'category' => 'visitor-visas',
+                    'category' => 'kitas',
                     'code' => 'Index D1 / D2',
                     'title' => 'Multiple Entry Visit Visa (D1 / D2 - up to 180 days per visit)',
                     'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
@@ -459,8 +459,61 @@ class HomeController extends Controller
                     'tag' => 'Index D1 / D2'
                 ],
                 [
+                    'id' => 'd12-pre-investment-visa',
+                    'thumbnail' => 'service-d12-investment.webp',
+                    'category' => 'kitas',
+                    'code' => 'Index D12',
+                    'title' => 'D12 – Pre-Investment Visa',
+                    'price' => 'Request A Quote',
+                    'lengthOfStay' => '60 Days per entry (Extendable up to a total of 180 days per visit)',
+                    'processingTime' => 'Regular: up to 14 Working Days • Priority: up to 7 Working Days',
+                    'visaValidity' => 'Available for 1 year or 2 years, depending on the visa option issued. Visa validity is different from the permitted length of stay per entry.',
+                    'whatsAllowed' => [
+                        'Conducting pre-investment activities, including field surveys and feasibility studies.',
+                        'Exploring business opportunities in Indonesia.',
+                        'Tourism and visiting friends or family.',
+                        'Multiple entries during the visa validity period.',
+                    ],
+                    'whatsNotAllowed' => [
+                        'Selling goods or services.',
+                        'Receiving wages, salaries, or other compensation from individuals or companies in Indonesia.',
+                        'Engaging in activities outside the permitted scope of the visa.',
+                        'Overstaying the authorized period of stay.',
+                    ],
+                    'documentRequirements' => [
+                        'Passport valid for at least 18 months, subject to confirmation of current requirements.',
+                        'Personal bank statement for the last 3 months, showing a minimum balance of USD 5,000 or equivalent, subject to confirmation.',
+                        'Recent color photograph.',
+                        'Curriculum Vitae (CV), including education and work experience.',
+                        'Travel itinerary outlining planned activities in Indonesia.',
+                        'Supporting letter, invitation, or correspondence from a government agency or private institution explaining the relationship with the applicant.',
+                        'Address of accommodation in Indonesia.',
+                    ],
+                    'icon' => 'fa-chart-line',
+                    'badge' => 'Pre-Investment',
+                    'duration' => '60 Days per entry (Extendable up to a total of 180 days per visit)',
+                    'requirements' => [
+                        'Passport valid for at least 18 months, subject to confirmation of current requirements.',
+                        'Personal bank statement for the last 3 months, showing a minimum balance of USD 5,000 or equivalent, subject to confirmation.',
+                        'Recent color photograph.',
+                        'Curriculum Vitae (CV), including education and work experience.',
+                        'Travel itinerary outlining planned activities in Indonesia.',
+                        'Supporting letter, invitation, or correspondence from a government agency or private institution explaining the relationship with the applicant.',
+                        'Address of accommodation in Indonesia.',
+                    ],
+                    'perks' => [
+                        'Conducting pre-investment activities, including field surveys and feasibility studies.',
+                        'Exploring business opportunities in Indonesia.',
+                        'Tourism and visiting friends or family.',
+                        'Multiple entries during the visa validity period.',
+                    ],
+                    'shortDesc' => '60 Days per entry (Extendable up to a total of 180 days per visit) • Regular: up to 14 Working Days • Priority: up to 7 Working Days',
+                    'whoFor' => 'D12 – Pre-Investment Visa',
+                    'tag' => 'Index D12',
+                ],
+                [
                     'id' => 'voa-extension',
-                    'thumbnail' => 'service-documents.webp',
+                    'thumbnail' => 'bali-tanah-lot.webp',
                     'category' => 'visa-extension',
                     'code' => 'Ext. Index B1',
                     'title' => 'E-Visa VOA Extension',
@@ -498,7 +551,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'single-entry-extension',
-                    'thumbnail' => 'header-slider2.webp',
+                    'thumbnail' => 'bali-waterfall.webp',
                     'category' => 'visa-extension',
                     'code' => 'Ext. C-Series',
                     'title' => 'Single Entry Visa Extension (Extension Visit Visa)',
@@ -534,8 +587,8 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'multiple-entry-extension',
-                    'thumbnail' => 'header-slider1.webp',
-                    'category' => 'visa-extension',
+                    'thumbnail' => 'bali-rice-terraces.webp',
+                    'category' => 'kitas',
                     'code' => 'Ext. D-Series',
                     'title' => 'Multiple Entry Visa Extension',
                     'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
@@ -569,7 +622,7 @@ class HomeController extends Controller
                 [
                     'id' => 'working-kitas-extension',
                     'thumbnail' => 'service-business.webp',
-                    'category' => 'visa-extension',
+                    'category' => 'kitas',
                     'code' => 'Working KITAS Extension',
                     'title' => 'Working KITAS Extension',
                     'price' => 'Request A Quote',
@@ -591,7 +644,7 @@ class HomeController extends Controller
                 [
                     'id' => 'investor-kitas-extension',
                     'thumbnail' => 'service-investment.webp',
-                    'category' => 'visa-extension',
+                    'category' => 'kitas',
                     'code' => 'Investor KITAS Extension',
                     'title' => 'Investor KITAS Extension',
                     'price' => 'Request A Quote',
@@ -1382,12 +1435,22 @@ class HomeController extends Controller
 
         $legacyServices = [
             'e-visa-voa' => ['voa-b1'],
-            'single-entry-visas' => ['voa-b1', 'multiple-entry-d1-d2', 'c1-tourist-visa', 'c2-business-visa', 'c5-c5a-journalism-content-creator-visa', 'c12-pre-investment-visa', 'c6-social-cultural-visa', 'c7-arts-music-visa', 'c13-join-vessel-visa', 'c14-filming-visa'],
+            'single-entry-visas' => [
+                'voa-b1', 'voa-extension', 'c1-tourist-visa', 'single-entry-extension', 'c2-business-visa',
+                'c12-pre-investment-visa', 'c6-social-cultural-visa', 'c7-arts-music-visa',
+                'c13-join-vessel-visa', 'c14-filming-visa',
+                'c5-c5a-journalism-content-creator-visa',
+            ],
             'multiple-entry-visas' => ['multiple-entry-d1-d2'],
         ];
         $sourceCategory = $details[$service]['sourceCategory'] ?? null;
         $data['categoryServices'] = array_values(array_filter($data['services'], fn ($item) => $sourceCategory ? $item['category'] === $sourceCategory : in_array($item['id'], $legacyServices[$service] ?? [], true)
         ));
+        $serviceOrder = $details[$service]['serviceOrder'] ?? ($sourceCategory ? null : ($legacyServices[$service] ?? []));
+        if ($serviceOrder) {
+            $order = array_flip($serviceOrder);
+            usort($data['categoryServices'], fn ($a, $b) => ($order[$a['id']] ?? PHP_INT_MAX) <=> ($order[$b['id']] ?? PHP_INT_MAX));
+        }
         $data['serviceDetail'] = $details[$service];
 
         return view($service === 'company-formation' ? 'services.legal-index' : 'services.show', $data);
@@ -1407,12 +1470,18 @@ class HomeController extends Controller
                 'benefits' => [['Visit Visa Extensions', 'Perpanjangan Visa Kunjungan'], ['KITAS Renewals', 'Perpanjangan KITAS']],
             ],
             'kitas' => [
-                'name' => 'Work & Longer Stay (KITAS)', 'title_id' => 'Kerja & Tinggal Lebih Lama (KITAS)', 'sourceCategory' => 'kitas', 'image' => 'bali-waterfall.webp',
-                'intro' => ['Explore stay permits for investment, employment, remote work, family, education, and retirement.', 'Kenali izin tinggal untuk investasi, kerja, kerja jarak jauh, keluarga, pendidikan, dan pensiun.'],
+                'name' => 'Long Stay Visa & KITAS', 'title_id' => 'Visa Tinggal Lama & KITAS', 'sourceCategory' => 'kitas', 'image' => 'bali-waterfall.webp',
+                'intro' => ['Explore multiple-entry visas and stay permits for investment, employment, remote work, family, education, and retirement.', 'Kenali visa beberapa kali masuk dan izin tinggal untuk investasi, kerja, kerja jarak jauh, keluarga, pendidikan, dan pensiun.'],
+                'serviceOrder' => [
+                    'multiple-entry-d1-d2', 'multiple-entry-extension', 'd12-pre-investment-visa',
+                    'investor-kitas-e28a', 'investor-kitas-extension', 'working-kitas-e23', 'working-kitas-extension',
+                    'digital-nomad-e33g', 'retirement-kitas-e33e', 'dependent-kitas-e31', 'spouse-kitas',
+                    'student-visa-e30a', 'ex-wni-visa-e32a', 'golden-visa',
+                ],
                 'benefits' => [['Investor & Working KITAS', 'KITAS Investor & Kerja'], ['Family, Study & Retirement', 'Keluarga, Studi & Pensiun']],
             ],
             'kitap' => [
-                'name' => 'Permanent Residency (KITAP)', 'title_id' => 'Izin Tinggal Tetap (KITAP)', 'sourceCategory' => 'kitap', 'image' => 'bali-ulun-danu.webp',
+                'name' => 'Permanent Residency Visas (KITAP)', 'title_id' => 'Izin Tinggal Tetap (KITAP)', 'sourceCategory' => 'kitap', 'image' => 'bali-ulun-danu.webp',
                 'intro' => ['Plan a longer future in Indonesia with residency options for eligible investors, workers, families, and retirees.', 'Rencanakan masa depan di Indonesia melalui pilihan izin tinggal bagi investor, pekerja, keluarga, dan pensiunan yang memenuhi syarat.'],
                 'benefits' => [['Investor & Working KITAP', 'KITAP Investor & Kerja'], ['Family & Retirement KITAP', 'KITAP Keluarga & Pensiun']],
             ],
@@ -1435,6 +1504,17 @@ class HomeController extends Controller
         }
         if ($category === 'visitor-visas' && $service === 'c13-medical-humanitarian-visa') {
             return redirect()->route('services.show', ['service' => 'single-entry-visas', 'lang' => $lang], 301);
+        }
+
+        $movedServices = [
+            'multiple-entry-d1-d2' => 'visitor-visas',
+            'd12-pre-investment-visa' => 'visitor-visas',
+            'multiple-entry-extension' => 'visa-extensions',
+            'working-kitas-extension' => 'visa-extensions',
+            'investor-kitas-extension' => 'visa-extensions',
+        ];
+        if (isset($movedServices[$service]) && $category === $movedServices[$service]) {
+            return redirect()->route('services.detail', ['category' => 'kitas', 'service' => $service, 'lang' => $lang], 301);
         }
 
         $categoryDetail = $data['serviceCategories'][$category] ?? null;

@@ -86,3 +86,14 @@ Generated with the built-in Imagegen tool, converted to 1280px-wide WebP with cw
 Final generation prompt:
 
 Use case: photorealistic-natural. Landscape editorial website service thumbnail for OneCoreVisa C12 Pre-Investment Visa and Investor KITAS extension. Realistic candid photograph of two international business investors and an Indonesian property advisor touring an unfurnished contemporary commercial office space in Bali, examining the bright premises and a simple unlabelled floor plan. No meeting around a table. Natural soft daylight, restrained warm-neutral colors, professional clothes, keep subjects central and fully crop-safe for a horizontal 16:9 thumbnail. No text, logos, watermark, flags, readable documents or collage. Return the saved local image path for integrating in a website repository.
+
+
+## d12-investment (2026-10-27)
+
+Saved asset: `public/assets/images/index/service-d12-investment.webp`
+
+Generated with the built-in Imagegen tool, converted to 1280px-wide WebP with cwebp.
+
+Final generation prompt:
+
+Use case: photorealistic-natural. Website service thumbnail for OneCoreVisa D12 Pre-Investment Visa. Wide landscape editorial photograph of two business investors and a local Indonesian advisor conducting an outdoor site survey of a potential commercial development site in tropical Bali, examining a plain paper plan with open land, a modest contemporary building and tropical greenery behind them. Natural candid professional poses, restrained warm neutral daylight, realistic photography. Center subjects for shallow horizontal website card cropping. No text, readable documents, logos, watermark, collage or overlays.

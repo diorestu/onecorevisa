@@ -13,7 +13,7 @@ class HomeController extends Controller
     protected function getData($lang = 'en')
     {
         $lang = $lang === 'id' ? 'id' : 'en';
-        return [
+        $data = [
             'categories' => [
                 [
                     'id' => 'visitor-visas',
@@ -49,7 +49,7 @@ class HomeController extends Controller
             'services' => [
                 [
                     'id' => 'voa-b1',
-                    'thumbnail' => 'service-documents.webp',
+                    'thumbnail' => 'bali-ulun-danu.webp',
                     'category' => 'visitor-visas',
                     'code' => 'Index B1',
                     'title' => 'Visa On Arrival / E-VOA (B1)',
@@ -223,7 +223,7 @@ class HomeController extends Controller
                 ],
                 [
                     'id' => 'c12-pre-investment-visa',
-                    'thumbnail' => 'service-business.webp',
+                    'thumbnail' => 'service-investment.webp',
                     'category' => 'visitor-visas',
                     'code' => 'Index C12',
                     'title' => 'C12 - Pre-Investment Visit Visa (180 Days)',
@@ -341,40 +341,84 @@ class HomeController extends Controller
                     'tag' => 'Index C7 / C7A'
                 ],
                 [
-                    'id' => 'c13-medical-humanitarian-visa',
-                    'thumbnail' => 'service-documents.webp',
+                    'id' => 'c13-join-vessel-visa',
+                    'thumbnail' => 'service-vessel.webp',
                     'category' => 'visitor-visas',
-                    'code' => 'Index C13 / C14',
-                    'title' => 'C13 / C14 - Medical & Humanitarian Visit Visa (60 Days)',
-                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
-                    'lengthOfStay' => '60 Days (Extendable based on medical requirement)',
+                    'code' => 'Index C13',
+                    'title' => 'C13 - Join Vessel Visa (60 Days)',
+                    'price' => 'Request A Quote',
+                    'lengthOfStay' => '60 Days',
                     'processingTime' => '3 - 7 Working Days',
                     'visaValidity' => 'Must be used within 90 days from issuance date.',
                     'whatsAllowed' => [
-                        'Undergo medical treatment, health checkups, or therapy at recognized Indonesian hospitals/clinics.',
-                        'Accompany immediate family members undergoing medical treatment.'
+                        'Join a vessel or other means of transportation located within Indonesian territory.',
+                        'Conduct tourism activities and visit friends or family while in Indonesia.',
                     ],
                     'whatsNotAllowed' => [
-                        'Conduct commercial business or local employment.'
+                        'Conduct business activities outside the scope permitted by the visa.',
                     ],
                     'documentRequirements' => [
                         'Passport valid for at least 6 months.',
-                        'Official medical recommendation letter from an Indonesian medical institution.'
+                        'Official letter or supporting documentation from the relevant company or government authority confirming that the applicant will join a vessel or means of transportation in Indonesia.',
                     ],
-                    'icon' => 'fa-heart-pulse',
-                    'badge' => 'Medical & Care',
-                    'duration' => '60 Days (Extendable based on medical requirement)',
+                    'icon' => 'fa-passport',
+                    'badge' => 'Index C13',
+                    'duration' => '60 Days',
                     'requirements' => [
                         'Passport valid for at least 6 months.',
-                        'Official medical recommendation letter from an Indonesian medical institution.'
+                        'Official letter or supporting documentation from the relevant company or government authority confirming that the applicant will join a vessel or means of transportation in Indonesia.',
                     ],
                     'perks' => [
-                        'Undergo medical treatment, health checkups, or therapy at recognized Indonesian hospitals/clinics.',
-                        'Accompany immediate family members undergoing medical treatment.'
+                        'Join a vessel or other means of transportation located within Indonesian territory.',
+                        'Conduct tourism activities and visit friends or family while in Indonesia.',
                     ],
-                    'shortDesc' => '60 Days (Extendable based on medical requirement)' . ' • ' . '3 - 7 Working Days',
-                    'whoFor' => 'C13 / C14 - Medical & Humanitarian Visit Visa (60 Days)',
-                    'tag' => 'Index C13 / C14'
+                    'shortDesc' => '60 Days • 3 - 7 Working Days',
+                    'whoFor' => 'C13 - Join Vessel Visa (60 Days)',
+                    'tag' => 'Index C13',
+                ],
+                [
+                    'id' => 'c14-filming-visa',
+                    'thumbnail' => 'service-filming.webp',
+                    'category' => 'visitor-visas',
+                    'code' => 'Index C14',
+                    'title' => 'C14 - Filming Visa (60 Days)',
+                    'price' => 'Request A Quote',
+                    'lengthOfStay' => '60 Days',
+                    'processingTime' => '3 - 7 Working Days',
+                    'visaValidity' => 'Must be used within 90 days from issuance date.',
+                    'whatsAllowed' => [
+                        'Produce films, music videos, reality shows, documentaries, television programs, radio programs, and similar productions using locations in Indonesia.',
+                        'Conduct tourism activities and visit friends or family while in Indonesia.',
+                    ],
+                    'whatsNotAllowed' => [
+                        'Conduct business activities outside the scope permitted by the visa.',
+                    ],
+                    'documentRequirements' => [
+                        'Passport valid for at least 6 months.',
+                        'Visa application letter.',
+                        'Travel itinerary and return or onward flight ticket.',
+                        'Sponsorship or guarantee documents from the authorized guarantor.',
+                        'Filming permit or approval from the relevant Indonesian government authority.',
+                        'Additional supporting documents as required for the filming project and visa application.',
+                    ],
+                    'icon' => 'fa-passport',
+                    'badge' => 'Index C14',
+                    'duration' => '60 Days',
+                    'requirements' => [
+                        'Passport valid for at least 6 months.',
+                        'Visa application letter.',
+                        'Travel itinerary and return or onward flight ticket.',
+                        'Sponsorship or guarantee documents from the authorized guarantor.',
+                        'Filming permit or approval from the relevant Indonesian government authority.',
+                        'Additional supporting documents as required for the filming project and visa application.',
+                    ],
+                    'perks' => [
+                        'Produce films, music videos, reality shows, documentaries, television programs, radio programs, and similar productions using locations in Indonesia.',
+                        'Conduct tourism activities and visit friends or family while in Indonesia.',
+                    ],
+                    'shortDesc' => '60 Days • 3 - 7 Working Days',
+                    'whoFor' => 'C14 - Filming Visa (60 Days)',
+                    'tag' => 'Index C14',
                 ],
                 [
                     'id' => 'multiple-entry-d1-d2',
@@ -523,40 +567,92 @@ class HomeController extends Controller
                     'tag' => 'Ext. D-Series'
                 ],
                 [
-                    'id' => 'kitas-extension',
+                    'id' => 'working-kitas-extension',
                     'thumbnail' => 'service-business.webp',
                     'category' => 'visa-extension',
-                    'code' => 'KITAS Extension',
-                    'title' => 'KITAS Extension (Working / Investor / Family / Retirement)',
-                    'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
-                    'lengthOfStay' => 'Additional 1 Year or 2 Years',
-                    'processingTime' => '10 - 15 Working Days',
+                    'code' => 'Working KITAS Extension',
+                    'title' => 'Working KITAS Extension',
+                    'price' => 'Request A Quote',
+                    'lengthOfStay' => '1 or 2 Years',
+                    'processingTime' => 'Confirmed during consultation',
                     'visaValidity' => '1 or 2 Years.',
-                    'whatsAllowed' => [
-                        'Continue stay permit and work/investment/retirement activities seamlessly in Indonesia.'
-                    ],
-                    'whatsNotAllowed' => [
-                        'Be extended if the sponsoring company/penjamin is inactive or non-compliant.'
-                    ],
-                    'documentRequirements' => [
-                        'Original passport (valid for min 18 months).',
-                        'Previous KITAS / E-ITAS.',
-                        'Sponsoring company documents (NIB, Deed, Tax, etc.).'
-                    ],
-                    'icon' => 'fa-id-card-clip',
-                    'badge' => 'Annual Renewal',
-                    'duration' => 'Additional 1 Year or 2 Years',
-                    'requirements' => [
-                        'Original passport (valid for min 18 months).',
-                        'Previous KITAS / E-ITAS.',
-                        'Sponsoring company documents (NIB, Deed, Tax, etc.).'
-                    ],
-                    'perks' => [
-                        'Continue stay permit and work/investment/retirement activities seamlessly in Indonesia.'
-                    ],
-                    'shortDesc' => 'Additional 1 Year or 2 Years' . ' • ' . '10 - 15 Working Days',
-                    'whoFor' => 'KITAS Extension (Working / Investor / Family / Retirement)',
-                    'tag' => 'KITAS Extension'
+                    'whatsAllowed' => ['Discuss renewal of your existing Working KITAS with our team.'],
+                    'whatsNotAllowed' => ['Eligibility and conditions must be confirmed for your existing stay permit.'],
+                    'documentRequirements' => ['Passport.', 'Domicile letter of home address or SKTT (Temporary Residential Registration).', 'Bank statement showing a minimum amount of USD 2,000.'],
+                    'icon' => 'fa-passport',
+                    'badge' => 'Working KITAS Extension',
+                    'duration' => '1 or 2 Years',
+                    'requirements' => ['Passport.', 'Domicile letter of home address or SKTT (Temporary Residential Registration).', 'Bank statement showing a minimum amount of USD 2,000.'],
+                    'perks' => ['Discuss renewal of your existing Working KITAS with our team.'],
+                    'shortDesc' => '1 or 2 Years • Confirmed during consultation',
+                    'whoFor' => 'Working KITAS Extension',
+                    'tag' => 'Working KITAS Extension',
+                ],
+                [
+                    'id' => 'investor-kitas-extension',
+                    'thumbnail' => 'service-investment.webp',
+                    'category' => 'visa-extension',
+                    'code' => 'Investor KITAS Extension',
+                    'title' => 'Investor KITAS Extension',
+                    'price' => 'Request A Quote',
+                    'lengthOfStay' => 'In accordance with the original KITAS validity period.',
+                    'processingTime' => 'Regular: Up to 60 business days • Priority: Up to 40 business days',
+                    'visaValidity' => 'In accordance with the original KITAS validity period.',
+                    'whatsAllowed' => ['Discuss renewal of your existing Investor KITAS with our team.'],
+                    'whatsNotAllowed' => ['Eligibility and conditions must be confirmed for your existing stay permit.'],
+                    'documentRequirements' => ['Passport.', 'Domicile letter of home address or SKTT (Temporary Residential Registration).', 'Bank statement showing a minimum amount of USD 2,000.'],
+                    'icon' => 'fa-passport',
+                    'badge' => 'Investor KITAS Extension',
+                    'duration' => 'In accordance with the original KITAS validity period.',
+                    'requirements' => ['Passport.', 'Domicile letter of home address or SKTT (Temporary Residential Registration).', 'Bank statement showing a minimum amount of USD 2,000.'],
+                    'perks' => ['Discuss renewal of your existing Investor KITAS with our team.'],
+                    'shortDesc' => 'In accordance with the original KITAS validity period. • Regular: Up to 60 business days • Priority: Up to 40 business days',
+                    'whoFor' => 'Investor KITAS Extension',
+                    'tag' => 'Investor KITAS Extension',
+                ],
+                [
+                    'id' => 'family-dependent-kitas-extension',
+                    'thumbnail' => 'service-family.webp',
+                    'category' => 'visa-extension',
+                    'code' => 'Family Dependent KITAS Extension',
+                    'title' => 'Family Dependent KITAS Extension',
+                    'price' => 'Request A Quote',
+                    'lengthOfStay' => 'In accordance with the original KITAS validity period.',
+                    'processingTime' => 'Regular: Up to 14 business days • Priority: Up to 7 business days',
+                    'visaValidity' => 'In accordance with the original KITAS validity period.',
+                    'whatsAllowed' => ['Discuss renewal of your existing Family Dependent KITAS with our team.'],
+                    'whatsNotAllowed' => ['Eligibility and conditions must be confirmed for your existing stay permit.'],
+                    'documentRequirements' => ['Passport.', 'Domicile letter of home address.', 'SKTT (Temporary Residential Registration).', 'Bank statement showing a minimum amount of USD 2,000.'],
+                    'icon' => 'fa-passport',
+                    'badge' => 'Family Dependent KITAS Extension',
+                    'duration' => 'In accordance with the original KITAS validity period.',
+                    'requirements' => ['Passport.', 'Domicile letter of home address.', 'SKTT (Temporary Residential Registration).', 'Bank statement showing a minimum amount of USD 2,000.'],
+                    'perks' => ['Discuss renewal of your existing Family Dependent KITAS with our team.'],
+                    'shortDesc' => 'In accordance with the original KITAS validity period. • Regular: Up to 14 business days • Priority: Up to 7 business days',
+                    'whoFor' => 'Family Dependent KITAS Extension',
+                    'tag' => 'Family Dependent KITAS Extension',
+                ],
+                [
+                    'id' => 'retirement-kitas-extension',
+                    'thumbnail' => 'service-retirement.webp',
+                    'category' => 'visa-extension',
+                    'code' => 'Retirement KITAS Extension',
+                    'title' => 'Retirement KITAS Extension',
+                    'price' => 'Request A Quote',
+                    'lengthOfStay' => 'In accordance with the original KITAS validity period.',
+                    'processingTime' => 'Regular: Up to 14 business days • Priority: Up to 7 business days',
+                    'visaValidity' => 'In accordance with the original KITAS validity period.',
+                    'whatsAllowed' => ['Discuss renewal of your existing Retirement KITAS with our team.'],
+                    'whatsNotAllowed' => ['Eligibility and conditions must be confirmed for your existing stay permit.'],
+                    'documentRequirements' => ['Passport valid for at least 18 months.', 'Domicile letter of home address.', 'SKTT (Temporary Residential Registration).', 'Bank statement showing a minimum amount of USD 2,000.'],
+                    'icon' => 'fa-passport',
+                    'badge' => 'Retirement KITAS Extension',
+                    'duration' => 'In accordance with the original KITAS validity period.',
+                    'requirements' => ['Passport valid for at least 18 months.', 'Domicile letter of home address.', 'SKTT (Temporary Residential Registration).', 'Bank statement showing a minimum amount of USD 2,000.'],
+                    'perks' => ['Discuss renewal of your existing Retirement KITAS with our team.'],
+                    'shortDesc' => 'In accordance with the original KITAS validity period. • Regular: Up to 14 business days • Priority: Up to 7 business days',
+                    'whoFor' => 'Retirement KITAS Extension',
+                    'tag' => 'Retirement KITAS Extension',
                 ],
                 [
                     'id' => 'investor-kitas-e28a',
@@ -605,9 +701,9 @@ class HomeController extends Controller
                     'code' => 'Index E23',
                     'title' => 'Working KITAS (E23)',
                     'price' => $lang === 'en' ? 'Request A Quote' : 'Minta Penawaran',
-                    'lengthOfStay' => '6 Months, 1 Year or 2 Years',
-                    'processingTime' => '15 - 25 Working Days',
-                    'visaValidity' => '6 Months, 1 Year or 2 Years, depending on the permit.',
+                    'lengthOfStay' => '6 months - 2 Years (Extendable annually)',
+                    'processingTime' => '15 - 45 Working Days',
+                    'visaValidity' => '1 Year.',
                     'whatsAllowed' => [
                         'Work and hold a paid professional position legally in an Indonesian company.',
                         'Receive local salary and open a local bank account.'
@@ -622,7 +718,7 @@ class HomeController extends Controller
                     ],
                     'icon' => 'fa-user-tie',
                     'badge' => 'Expat Professional',
-                    'duration' => '6 Months, 1 Year or 2 Years',
+                    'duration' => '6 months - 2 Years (Extendable annually)',
                     'requirements' => [
                         'Passport valid for min 18 months.',
                         'Sponsoring company documents (RPTKA, NIB, Business License).',
@@ -632,7 +728,7 @@ class HomeController extends Controller
                         'Work and hold a paid professional position legally in an Indonesian company.',
                         'Receive local salary and open a local bank account.'
                     ],
-                    'shortDesc' => '6 Months, 1 Year or 2 Years' . ' • ' . '15 - 25 Working Days',
+                    'shortDesc' => '6 months - 2 Years (Extendable annually)' . ' • ' . '15 - 45 Working Days',
                     'whoFor' => 'Working KITAS (E23)',
                     'tag' => 'Index E23'
                 ],
@@ -699,7 +795,7 @@ class HomeController extends Controller
                         'Lease agreement and statement to hire Indonesian domestic helper.'
                     ],
                     'icon' => 'fa-person-cane',
-                    'badge' => 'Retirement 55+',
+                    'badge' => 'Retirement 60+',
                     'duration' => '1 Year (Extendable up to 5 years total before converting to KITAP)',
                     'requirements' => [
                         'Minimum age of 60 years.',
@@ -1217,6 +1313,25 @@ class HomeController extends Controller
                 ]
             ]
         ];
+
+        $legalServices = config('legal_services', []);
+        foreach ($data['services'] as &$item) {
+            if ($item['category'] !== 'company') {
+                continue;
+            }
+            if (isset($legalServices[$item['id']])) {
+                $item = array_replace($item, $legalServices[$item['id']]);
+                unset($legalServices[$item['id']]);
+            } else {
+                $item['group'] = 'formation';
+                $item['legalIcon'] = 'globe';
+                $item['summary'] = 'Prepare your foreign investment company structure and registration documents.';
+            }
+        }
+        unset($item);
+        $data['services'] = array_merge($data['services'], array_values($legalServices));
+
+        return $data;
     }
 
     /**
@@ -1267,7 +1382,7 @@ class HomeController extends Controller
 
         $legacyServices = [
             'e-visa-voa' => ['voa-b1'],
-            'single-entry-visas' => ['c1-tourist-visa', 'c2-business-visa', 'c5-c5a-journalism-content-creator-visa', 'c12-pre-investment-visa', 'c6-social-cultural-visa', 'c7-arts-music-visa', 'c13-medical-humanitarian-visa'],
+            'single-entry-visas' => ['voa-b1', 'multiple-entry-d1-d2', 'c1-tourist-visa', 'c2-business-visa', 'c5-c5a-journalism-content-creator-visa', 'c12-pre-investment-visa', 'c6-social-cultural-visa', 'c7-arts-music-visa', 'c13-join-vessel-visa', 'c14-filming-visa'],
             'multiple-entry-visas' => ['multiple-entry-d1-d2'],
         ];
         $sourceCategory = $details[$service]['sourceCategory'] ?? null;
@@ -1275,7 +1390,7 @@ class HomeController extends Controller
         ));
         $data['serviceDetail'] = $details[$service];
 
-        return view('services.show', $data);
+        return view($service === 'company-formation' ? 'services.legal-index' : 'services.show', $data);
     }
 
     private function serviceCategories(): array
@@ -1302,8 +1417,8 @@ class HomeController extends Controller
                 'benefits' => [['Investor & Working KITAP', 'KITAP Investor & Kerja'], ['Family & Retirement KITAP', 'KITAP Keluarga & Pensiun']],
             ],
             'company-formation' => [
-                'name' => 'Company Formation', 'title_id' => 'Pendirian Perusahaan', 'sourceCategory' => 'company', 'image' => 'service-business.webp',
-                'intro' => ['Prepare your business structure and incorporation documents for a foreign or locally owned company in Indonesia.', 'Siapkan struktur bisnis dan dokumen pendirian perusahaan asing maupun lokal di Indonesia.'],
+                'name' => 'Legal Services', 'title_id' => 'Layanan Legal', 'sourceCategory' => 'company', 'image' => 'service-business.webp',
+                'intro' => ['Company formation, licensing, and corporate support for your business in Indonesia.', 'Pendirian perusahaan, perizinan, dan dukungan korporasi untuk bisnis Anda di Indonesia.'],
                 'benefits' => [['Foreign Investment (PT PMA)', 'Penanaman Modal Asing (PT PMA)'], ['Local Company (PT PMDN)', 'Perusahaan Lokal (PT PMDN)']],
             ],
         ];
@@ -1315,6 +1430,13 @@ class HomeController extends Controller
         $data = $this->getData($lang);
         $data['lang'] = $lang;
         $data['serviceCategories'] = $this->serviceCategories();
+        if ($category === 'visa-extensions' && $service === 'kitas-extension') {
+            return redirect()->route('services.show', ['service' => 'visa-extensions', 'lang' => $lang], 301);
+        }
+        if ($category === 'visitor-visas' && $service === 'c13-medical-humanitarian-visa') {
+            return redirect()->route('services.show', ['service' => 'single-entry-visas', 'lang' => $lang], 301);
+        }
+
         $categoryDetail = $data['serviceCategories'][$category] ?? null;
         abort_unless($categoryDetail, 404);
         $item = collect($data['services'])->first(fn ($item) => $item['id'] === $service && $item['category'] === $categoryDetail['sourceCategory']);
@@ -1326,7 +1448,7 @@ class HomeController extends Controller
         $data['categoryDetail'] = $categoryDetail;
         $data['categorySlug'] = $category;
 
-        return view('services.detail', $data);
+        return view($item['category'] === 'company' ? 'services.legal-detail' : 'services.detail', $data);
     }
 
     /**

@@ -23,6 +23,14 @@
     @case('document')<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Zm0 0v6h6M8 13h8m-8 4h5"/>@break
     @case('check-circle')<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>@break
     @case('minus-circle')<circle cx="12" cy="12" r="9"/><path d="M8 12h8"/>@break
+    @case('key')<circle cx="8" cy="15" r="5"/><path d="m12 11 9-9m-4 4 3 3m-6 0 3 3"/>@break
+    @case('chart')<path d="M3 3v18h18M7 16v-5m5 5V7m5 9V4"/>@break
+    @case('shield')<path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/>@break
+    @case('calculator')<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h1m6 0h1m-8 4h1m6 0h1m-8 4h1m6 0h1"/>@break
+    @case('scales')<path d="M12 3v18m-5 0h10M4 6h16M5 6l-3 7h6L5 6Zm14 0-3 7h6l-3-7Z"/>@break
+    @case('search')<circle cx="10" cy="10" r="7"/><path d="m15 15 6 6"/>@break
+    @case('document-search')<path d="M10 21H5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8l5 5v3M13 2v5h5"/><circle cx="16" cy="16" r="4"/><path d="m19 19 3 3M7 8h2m-2 4h3"/>@break
+    @case('building-close')<path d="M11 21H4V3h14v8M8 7h1m4 0h1m-6 4h1m4 0h1m-5 10v-6h2m5 1 6 6m0-6-6 6"/>@break
     @case('chevron-left')<path d="m14 6-6 6 6 6"/>@break
     @case('arrow-right')<path d="M4 12h16m-6-6 6 6-6 6"/>@break
     @default<path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/>

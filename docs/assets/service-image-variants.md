@@ -54,3 +54,35 @@ Final generation prompt:
 
 Use case: photorealistic-natural. Asset type: landscape website service card thumbnail and category hero for OneCoreVisa, an Indonesian visa consultancy. Create one standalone editorial stock-style photograph, not a collage. Scene: An international university student carrying a notebook and backpack in a bright Indonesian campus courtyard with tropical trees and a contemporary academic building, candid natural moment, hopeful but understated. Style: realistic professional photography, natural skin and materials, restrained warm-neutral color grading, soft daylight, cohesive with a navy and white professional website. Composition: wide landscape 16:9, medium-wide scene, keep faces and meaningful objects comfortably inside the central area and upper middle so the image can be cropped to a shallow horizontal card; do not cut off heads. Avoid: text, captions, logos, watermarks, official seals, readable documents, branded clothing, UI overlays, frames, exaggerated advertising poses.
 
+
+
+## vessel (2026-10-27)
+
+Saved asset: `public/assets/images/index/service-vessel.webp`
+
+Generated with the built-in Imagegen tool, converted to 1280px-wide WebP with cwebp.
+
+Final generation prompt:
+
+Use case: photorealistic-natural. Landscape editorial website service thumbnail for OneCoreVisa C13 Join Vessel Visa. Wide realistic photograph of a professional merchant vessel moored at a tropical Indonesian commercial harbor, ship and gangway clearly visible, soft daylight, restrained natural colors, central subject crop safe for shallow horizontal website cards. No text, logos, watermarks, flags, collage, or overlay. Return the saved local image path for integrating in a website repository.
+
+## filming (2026-10-27)
+
+Saved asset: `public/assets/images/index/service-filming.webp`
+
+Generated with the built-in Imagegen tool, converted to 1280px-wide WebP with cwebp.
+
+Final generation prompt:
+
+Use case: photorealistic-natural. Landscape editorial website service thumbnail for OneCoreVisa C14 Filming Visa. Wide realistic photograph of a small professional film crew with cinema camera on tripod shooting on a lush tropical Indonesian outdoor location, focus on camera and crew working naturally, soft daylight, restrained natural colors, central subject crop safe for shallow horizontal website cards. No text, logos, watermarks, flags, collage, or overlay. Return the saved local image path for integrating in a website repository.
+
+
+## investment (2026-10-27)
+
+Saved asset: `public/assets/images/index/service-investment.webp`
+
+Generated with the built-in Imagegen tool, converted to 1280px-wide WebP with cwebp.
+
+Final generation prompt:
+
+Use case: photorealistic-natural. Landscape editorial website service thumbnail for OneCoreVisa C12 Pre-Investment Visa and Investor KITAS extension. Realistic candid photograph of two international business investors and an Indonesian property advisor touring an unfurnished contemporary commercial office space in Bali, examining the bright premises and a simple unlabelled floor plan. No meeting around a table. Natural soft daylight, restrained warm-neutral colors, professional clothes, keep subjects central and fully crop-safe for a horizontal 16:9 thumbnail. No text, logos, watermark, flags, readable documents or collage. Return the saved local image path for integrating in a website repository.

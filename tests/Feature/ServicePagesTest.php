@@ -7,22 +7,22 @@ use Tests\TestCase;
 class ServicePagesTest extends TestCase
 {
     private const CATEGORIES = [
-        'visitor-visas' => ['voa-b1', 'c1-tourist-visa', 'c2-business-visa', 'c5-c5a-journalism-content-creator-visa', 'c12-pre-investment-visa', 'c6-social-cultural-visa', 'c7-arts-music-visa', 'c13-medical-humanitarian-visa', 'multiple-entry-d1-d2'],
-        'visa-extensions' => ['voa-extension', 'single-entry-extension', 'multiple-entry-extension', 'kitas-extension'],
+        'visitor-visas' => ['voa-b1', 'c1-tourist-visa', 'c2-business-visa', 'c5-c5a-journalism-content-creator-visa', 'c12-pre-investment-visa', 'c6-social-cultural-visa', 'c7-arts-music-visa', 'c13-join-vessel-visa', 'c14-filming-visa', 'multiple-entry-d1-d2'],
+        'visa-extensions' => ['voa-extension', 'single-entry-extension', 'multiple-entry-extension', 'working-kitas-extension', 'investor-kitas-extension', 'family-dependent-kitas-extension', 'retirement-kitas-extension'],
         'kitas' => ['investor-kitas-e28a', 'working-kitas-e23', 'digital-nomad-e33g', 'retirement-kitas-e33e', 'dependent-kitas-e31', 'spouse-kitas', 'student-visa-e30a', 'ex-wni-visa-e32a', 'golden-visa'],
         'kitap' => ['investor-kitap', 'working-kitap', 'family-kitap', 'retirement-kitap'],
-        'company-formation' => ['pma-company', 'pt-local-company'],
+        'company-formation' => ['pma-company', 'pt-local-company', 'cv-establishment', 'pt-local-hospitality-setup', 'pt-perorangan', 'nib-oss-process', 'oss-account-assistance', 'company-valuation', 'annual-company-report', 'company-closing-local', 'company-closing-pma', 'recruitment-hr-services', 'hr-compliance', 'payroll-outsourcing', 'accounting-tax-services', 'property-advisory', 'insurance-services', 'legal-contract-advisory', 'building-permit-pbg-slf', 'due-diligence', 'document-review'],
     ];
 
     public function test_home_links_to_featured_services_legality_and_whatsapp(): void
     {
         $response = $this->get('/');
         $response->assertOk()->assertSee('One Step Solution')->assertSee('class="whatsapp-float"', false)->assertSee('https://wa.me/6289672966845');
-        foreach (['visa-extensions', 'e-visa-voa', 'single-entry-visas', 'multiple-entry-visas', 'company-formation'] as $category) {
+        foreach (['single-entry-visas', 'kitas', 'kitap', 'company-formation'] as $category) {
             $response->assertSee('/services/'.$category);
         }
-        $this->assertSame(4, substr_count($response->getContent(), 'class="service-feature-card"'));
-        $this->assertSame(12, substr_count($response->getContent(), 'class="service-feature-check"'));
+        $this->assertSame(3, substr_count($response->getContent(), 'class="service-feature-card"'));
+        $this->assertSame(9, substr_count($response->getContent(), 'class="service-feature-check"'));
         $response->assertDontSee('class="service-toggle"', false);
         $response->assertSee('Visa &amp; KITAS Services', false)->assertSee('Legality Services');
         $response->assertViewHas('serviceCategories', fn ($items) => count($items) === 4 && !isset($items['company-formation']));
@@ -38,7 +38,12 @@ class ServicePagesTest extends TestCase
             foreach ($services as $service) {
                 $response->assertSee('/services/'.$category.'/'.$service);
                 $detail = $this->get('/services/'.$category.'/'.$service);
-                $detail->assertOk()->assertSee('Document Requirements')->assertSee('Processing Time')->assertSee('Allowed Activities')->assertSee('Restrictions')->assertSee('Request A Quote')->assertDontSee('Competitive / Inquire');
+                $detail->assertOk()->assertSee('Request A Quote')->assertDontSee('Competitive / Inquire');
+                if ($category === 'company-formation') {
+                    $detail->assertDontSee('Length Of Stay')->assertDontSee('Allowed Activities');
+                } else {
+                    $detail->assertSee('Document Requirements')->assertSee('Processing Time')->assertSee('Allowed Activities')->assertSee('Restrictions');
+                }
             }
         }
     }
@@ -116,7 +121,10 @@ class ServicePagesTest extends TestCase
                     continue;
                 }
                 $response = $this->get('/services/'.$category.'/'.$service)->assertOk();
-                $response->assertSee('Start from')->assertSee('Rp'.number_format($price['idr'], 0, ',', '.'));
+                if (empty($price['options'])) {
+                    $response->assertSee('Start from');
+                }
+                $response->assertSee('Rp'.number_format($price['idr'], 0, ',', '.'));
                 if (isset($price['usd'])) {
                     $response->assertSee('USD '.number_format($price['usd'], 0, '.', ','));
                 }
@@ -128,11 +136,96 @@ class ServicePagesTest extends TestCase
     {
         $this->get('/services/visitor-visas/c1-tourist-visa')->assertOk()->assertSee('Rp3.580.000');
         $this->get('/services/visitor-visas/c12-pre-investment-visa')->assertOk()->assertSee('Start from')->assertSee('Rp5.400.000');
-        $this->get('/services/kitas/working-kitas-e23')->assertOk()->assertSee('Rp18.000.000')->assertSee('USD 600')->assertSee('6-month option');
+        $this->get('/services/kitas/working-kitas-e23')->assertOk()->assertSee('Rp18.000.000')->assertSee('USD 600')->assertSee('6 Months');
         $this->get('/services/kitas/digital-nomad-e33g')->assertOk()->assertSee('Rp17.500.000')->assertDontSee('Rp16.500.000');
         $this->get('/services/company-formation/pma-company')->assertOk()->assertSee('Rp25.000.000');
         $this->get('/services/kitas/golden-visa')->assertOk()->assertDontSee('Start from')->assertDontSee('Rp40.000.000')->assertSee('Quoted For Your Application');
-        $this->get('/services/visitor-visas/voa-b1')->assertOk()->assertDontSee('Start from')->assertDontSee('Rp1.000.000');
+        $this->get('/services/visitor-visas/voa-b1')->assertOk()->assertSee('Start from')->assertSee('Rp1.000.000');
+    }
+
+    public function test_single_entry_services_have_distinct_photos_and_separate_vessel_and_filming_pages(): void
+    {
+        $response = $this->get('/services/single-entry-visas')->assertOk()
+            ->assertSee('C13 - Join Vessel Visa (60 Days)')
+            ->assertSee('C14 - Filming Visa (60 Days)')
+            ->assertSee('/services/visitor-visas/voa-b1')
+            ->assertSee('/services/visitor-visas/multiple-entry-d1-d2')
+            ->assertDontSee('Medical &amp; Humanitarian', false);
+        $items = $response->viewData('categoryServices');
+        $this->assertCount(count($items), array_unique(array_column($items, 'thumbnail')));
+        foreach ($items as $item) {
+            $this->assertFileExists(public_path('assets/images/index/'.$item['thumbnail']));
+        }
+        foreach (['c13-join-vessel-visa', 'c14-filming-visa'] as $slug) {
+            $this->get('/services/visitor-visas/'.$slug)->assertOk()->assertDontSee('medical treatment');
+            $this->get('/sitemap.xml')->assertOk()->assertSee('/services/visitor-visas/'.$slug);
+        }
+    }
+
+    public function test_vessel_and_filming_details_have_supplied_prices_activities_and_documents(): void
+    {
+        foreach (['en', 'id'] as $lang) {
+            foreach (['c13-join-vessel-visa' => 2, 'c14-filming-visa' => 6] as $slug => $documentCount) {
+                $response = $this->get('/services/visitor-visas/'.$slug.'?lang='.$lang)->assertOk()
+                    ->assertSee('Rp5.875.000')->assertSee('3 - 7 Working Days')
+                    ->assertSee('Must be used within 90 days from issuance date.')
+                    ->assertSee('Conduct business activities outside the scope permitted by the visa.')
+                    ->assertSee('Conduct tourism activities and visit friends or family while in Indonesia.')
+                    ->assertDontSee('Confirmed during consultation');
+                $this->assertCount($documentCount, $response->viewData('serviceLine')['documentRequirements']);
+            }
+            $this->get('/services/visitor-visas/c13-join-vessel-visa?lang='.$lang)->assertOk()
+                ->assertSee('Join a vessel or other means of transportation located within Indonesian territory.')
+                ->assertSee('Official letter or supporting documentation from the relevant company or government authority confirming that the applicant will join a vessel or means of transportation in Indonesia.');
+            $this->get('/services/visitor-visas/c14-filming-visa?lang='.$lang)->assertOk()
+                ->assertSee('Produce films, music videos, reality shows, documentaries, television programs, radio programs, and similar productions using locations in Indonesia.')
+                ->assertSee('Visa application letter.')
+                ->assertSee('Travel itinerary and return or onward flight ticket.')
+                ->assertSee('Sponsorship or guarantee documents from the authorized guarantor.')
+                ->assertSee('Filming permit or approval from the relevant Indonesian government authority.')
+                ->assertSee('Additional supporting documents as required for the filming project and visa application.');
+        }
+    }
+
+    public function test_extension_prices_keep_durations_and_imta_supplement_separate(): void
+    {
+        foreach (['en', 'id'] as $lang) {
+            $this->get('/services/visa-extensions/working-kitas-extension?lang='.$lang)
+                ->assertOk()->assertSee('Rp16.000.000')->assertSee('USD 1,200')->assertSee('Rp25.000.000');
+            $this->get('/services/visa-extensions/investor-kitas-extension?lang='.$lang)
+                ->assertOk()->assertSee('Rp18.900.000')->assertSee('Rp23.000.000')->assertDontSee('USD 1,200');
+            foreach (['family-dependent-kitas-extension', 'retirement-kitas-extension'] as $slug) {
+                $this->get('/services/visa-extensions/'.$slug.'?lang='.$lang)
+                    ->assertOk()->assertDontSee('Rp16.500.000')->assertDontSee('Start from');
+            }
+        }
+        $this->get('/services/visa-extensions/kitas-extension?lang=id')
+            ->assertRedirect('/services/visa-extensions?lang=id');
+        $this->get('/services/visitor-visas/c13-medical-humanitarian-visa')
+            ->assertRedirect('/services/single-entry-visas?lang=en');
+        $this->get('/services/kitas/kitas-extension')->assertNotFound();
+    }
+
+    public function test_kitas_duration_prices_and_unpriced_services_follow_supplied_catalog(): void
+    {
+        foreach (['en', 'id'] as $lang) {
+            foreach ([
+                'investor-kitas-e28a' => ['Rp19.000.000', 'Rp25.000.000'],
+                'working-kitas-e23' => ['Rp18.000.000', 'USD 600', 'Rp30.000.000', 'USD 1,200', 'Rp33.000.000', 'USD 2,400', '15 - 45 Working Days'],
+                'dependent-kitas-e31' => ['Rp20.000.000', 'Rp25.000.000'],
+                'spouse-kitas' => ['Rp20.000.000', 'Rp25.000.000'],
+                'student-visa-e30a' => ['Rp17.500.000'],
+            ] as $slug => $values) {
+                $response = $this->get('/services/kitas/'.$slug.'?lang='.$lang)->assertOk();
+                foreach ($values as $value) {
+                    $response->assertSee($value);
+                }
+            }
+            foreach (['kitas/ex-wni-visa-e32a', 'kitas/golden-visa', 'kitap/working-kitap'] as $path) {
+                $this->get('/services/'.$path.'?lang='.$lang)->assertOk()->assertDontSee('Start from')
+                    ->assertViewHas('servicePricing', null);
+            }
+        }
     }
 
     public function test_service_consultation_preserves_specific_service_in_whatsapp(): void

@@ -72,26 +72,7 @@
             <a class="text-link service-back-link service-profile-back" href="{{ route('services.show', ['service' => $categorySlug, 'lang' => $lang]) }}"><x-icon name="chevron-left" />{{ $t('Back To', 'Kembali Ke') }} {{ $t($categoryDetail['name'], $categoryDetail['title_id']) }}</a>
         </article>
 
-        <aside class="service-consultation-panel" aria-labelledby="service-enquiry-title">
-            <div class="service-consultation-card">
-                <p class="section-label">One Step Solution</p>
-                <h2 id="service-enquiry-title">{{ $t('Plan Your Application', 'Rencanakan Pengajuan Anda') }}</h2>
-                <p class="service-consultation-copy">{{ $serviceLine['category'] === 'company' ? $t('Tell us about your company structure, shareholders, and timeline.', 'Ceritakan struktur perusahaan, pemegang saham, dan rencana waktu Anda.') : $t('Share your nationality, current location, and intended stay.', 'Sampaikan kewarganegaraan, lokasi saat ini, dan rencana masa tinggal Anda.') }}</p>
-                <div class="service-quote-info">
-                    <p>{{ $t('Service Fee', 'Biaya Layanan') }}</p>
-                    @if($servicePricing)
-                        <p class="service-starting-label">Start from</p>
-                        <p class="service-starting-price">Rp{{ number_format($servicePricing['idr'], 0, ',', '.') }}{{ $servicePricing['marker'] ?? '' }}@if(isset($servicePricing['usd']))<span> + USD {{ number_format($servicePricing['usd'], 0, '.', ',') }}</span>@endif</p>
-                        @if(isset($servicePricing['basis']))<p class="service-price-basis">{{ $t(...$servicePricing['basis']) }}</p>@endif
-                    @else
-                        <p>{{ $t('Quoted For Your Application', 'Penawaran Sesuai Pengajuan Anda') }}</p>
-                    @endif
-                </div>
-                <button class="button primary" type="button" data-consultation="{{ $serviceLine['title'] }}"><x-icon name="chat" class="cta-icon" />{{ $t('Request A Quote', 'Minta Penawaran') }}</button>
-                <p class="service-consultation-note">{{ $t('We will confirm eligibility, requirements, fees, and processing estimates before you proceed.', 'Kami akan mengonfirmasi kelayakan, persyaratan, biaya, dan estimasi waktu proses sebelum Anda melanjutkan.') }}</p>
-            </div>
-            <a class="text-link service-requirements-link" href="#service-documents"><x-icon name="document" class="cta-icon" />{{ $t('View Document Requirements', 'Lihat Persyaratan Dokumen') }}</a>
-        </aside>
+        @include('services.consultation')
     </div>
 </div>
 @endsection

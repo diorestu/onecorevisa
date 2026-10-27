@@ -5,24 +5,19 @@
     $t = fn ($en, $id) => \App\Support\SiteLanguage::text($en, $id, $lang);
     $serviceHighlights = [
         [
-            'slug' => 'e-visa-voa', 'title' => ['E-Visa', 'E-Visa'], 'image' => 'bali-ulun-danu.webp',
-            'description' => ['Prepare before you travel. Get help with your online e-VOA application for a short visit to Indonesia.', 'Bersiap sebelum berangkat. Dapatkan bantuan pengajuan e-VOA online untuk kunjungan singkat ke Indonesia.'],
-            'benefits' => [['30-day initial stay', 'Masa tinggal awal 30 hari'], ['Extendable once', 'Dapat diperpanjang sekali'], ['Online application', 'Pengajuan online']],
-        ],
-        [
             'slug' => 'single-entry-visas', 'title' => ['Single Entry Visa', 'Visa Sekali Masuk'], 'image' => 'bali-waterfall.webp',
-            'description' => ['Plan one visit to Indonesia for tourism, business meetings, or cultural activities. We help you prepare your application.', 'Rencanakan kunjungan ke Indonesia untuk wisata, pertemuan bisnis, atau kegiatan budaya. Kami membantu menyiapkan pengajuan Anda.'],
-            'benefits' => [['60–180-day initial stay', 'Masa tinggal awal 60–180 hari'], ['Multiple visit purposes', 'Beragam tujuan kunjungan'], ['Application guidance', 'Panduan pengajuan']],
+            'description' => ['Explore visitor visa options for tourism, business, cultural activities, and regular visits to Indonesia.', 'Kenali pilihan visa kunjungan untuk wisata, bisnis, kegiatan budaya, dan kunjungan berkala ke Indonesia.'],
+            'benefits' => [['E-VOA & visit visas', 'E-VOA & visa kunjungan'], ['Multiple visit purposes', 'Beragam tujuan kunjungan'], ['Application guidance', 'Panduan pengajuan']],
         ],
         [
-            'slug' => 'multiple-entry-visas', 'title' => ['Multiple Entry Visa', 'Visa Beberapa Kali Masuk'], 'image' => 'bali-rice-terraces.webp',
-            'description' => ['Visit Indonesia regularly for business or leisure. Explore multiple entry options that suit your plans and travel schedule.', 'Kunjungi Indonesia secara rutin untuk bisnis atau wisata. Kenali pilihan visa beberapa kali masuk sesuai rencana perjalanan Anda.'],
-            'benefits' => [['1, 2 or 5-year visa validity', 'Masa berlaku visa 1, 2, atau 5 tahun'], ['Flexible travel planning', 'Rencana perjalanan fleksibel'], ['Business & leisure', 'Bisnis & wisata']],
+            'slug' => 'kitas', 'title' => ['Long Stay Visa KITAS', 'Visa Tinggal Lama KITAS'], 'image' => 'service-remote.webp',
+            'description' => ['Explore KITAS options for work, investment, remote work, family, study, or retirement in Indonesia.', 'Kenali pilihan KITAS untuk bekerja, investasi, kerja jarak jauh, keluarga, studi, atau pensiun di Indonesia.'],
+            'benefits' => [['Investor & Working KITAS', 'KITAS Investor & Kerja'], ['Family, study & retirement', 'Keluarga, studi & pensiun'], ['Remote worker & Golden Visa', 'Pekerja jarak jauh & Golden Visa']],
         ],
         [
-            'slug' => 'visa-extensions', 'title' => ['Visa Extensions', 'Perpanjangan Visa'], 'image' => 'bali-tanah-lot.webp',
-            'description' => ['Stay longer in Indonesia. Get help with visa extensions, KITAS renewals, and the documents you need.', 'Tinggal lebih lama di Indonesia. Dapatkan bantuan perpanjangan visa, pembaruan KITAS, dan persiapan dokumen Anda.'],
-            'benefits' => [['30–60-day visa extensions', 'Perpanjangan visa 30–60 hari'], ['KITAS renewals', 'Perpanjangan KITAS'], ['Document assistance', 'Bantuan dokumen']],
+            'slug' => 'kitap', 'title' => ['Permanent Visa', 'Visa Tinggal Tetap'], 'image' => 'service-retirement.webp',
+            'description' => ['Plan your long-term residency in Indonesia with KITAP options for investors, workers, families, and retirees.', 'Rencanakan izin tinggal jangka panjang di Indonesia dengan pilihan KITAP bagi investor, pekerja, keluarga, dan pensiunan.'],
+            'benefits' => [['Investor & Working KITAP', 'KITAP Investor & Kerja'], ['Family & Retirement KITAP', 'KITAP Keluarga & Pensiun'], ['5-year residency options', 'Pilihan izin tinggal 5 tahun']],
         ],
     ];
     $visaTypes = [
@@ -71,7 +66,7 @@
 <section id="services-section" aria-labelledby="services-title">
 <div class="services-section">
     <div class="container">
-        <div class="section-head"><h2 id="services-title">{{ $t('Our services', 'Layanan kami') }}</h2><p>{{ $t('From your first arrival to your next extension.', 'Dari kedatangan pertama hingga perpanjangan berikutnya.') }}</p></div>
+        <div class="section-head"><h2 id="services-title">{{ $t('Our services', 'Layanan kami') }}</h2><p>{{ $t('From your first arrival to long-term residency.', 'Dari kedatangan pertama hingga izin tinggal jangka panjang.') }}</p></div>
         <div class="service-grid">
             @foreach ($serviceHighlights as $highlight)
             <article class="service-feature-card">

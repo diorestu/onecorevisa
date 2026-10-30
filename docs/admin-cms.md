@@ -21,6 +21,22 @@ npm run build
 
 The public storage disk must be writable and `public/storage` must point to `storage/app/public`. Images accept JPEG, PNG and WebP, up to 5 MB each. Original assets remain in their existing locations. Replaced uploads are retained to avoid deleting shared images.
 
+### SQLite permissions and login 419
+
+SQLite needs write access to both the database file and its parent directory to create journal/WAL files. Running migrations as root can leave the directory owned by root even when the database file belongs to the PHP-FPM user. On the OneCoreVisa aaPanel server, PHP-FPM runs as `www` and the database is `database/database.sqlite`:
+
+```sh
+chown www:www database database/database.sqlite
+chmod 775 database
+chmod 664 database/database.sqlite
+```
+
+Use the actual PHP-FPM user and configured SQLite path on other servers. Do not apply these ownership commands recursively to application source files. Preserve the same write access for existing SQLite journal/WAL sidecar files, if present.
+
+This deployment failure can present as login HTTP 419 with an empty `sessions` table: Laravel's database session handler catches an INSERT exception and attempts an UPDATE, which can affect zero rows without persisting the new session. A root CLI write test can succeed while the web process fails. Check permissions as the PHP-FPM user; do not disable CSRF or regenerate `APP_KEY` to address this problem.
+
+Reference: [SQLite journal-file locations](https://www.sqlite.org/tempfiles.html#rollback_journals).
+
 ## Editing
 
 - **Copywriting:** search existing text and edit EN/ID. Stable keys and template placement are managed by the application. Saving changes public text immediately.
@@ -36,6 +52,8 @@ RU/ES continue using the site's existing public translation behavior; this admin
 ## Verification
 
 Automated verification: `php artisan test`, `vendor/bin/pint --dirty --test`, `npm run build`, and `php artisan view:cache`.
+
+`AdminSessionTest` explicitly enables CSRF checking and verifies that a database-backed session retains its token over HTTPS, accepts a valid administrator login, and still rejects a tokenless login with HTTP 419. Ordinary Laravel feature tests bypass CSRF by default, so the explicit coverage is necessary.
 
 The feature suite exercises explicit admin authorization, login/logout, initial-account creation, idempotent import, EN/ID public edits, all imported service save/render paths, reference-protected categories, image MIME validation, nested uploads, sparse repeater uploads, draft/future/category publication visibility, article sanitization, preview authorization, category filtering and discovery.
 

@@ -156,6 +156,34 @@ class CmsContent
         return $pricing && (isset($pricing['idr']) || ! empty($pricing['options'])) ? $pricing : null;
     }
 
+    public function landingPageCategoryLocations(): array
+    {
+        $categories = $this->categories();
+        $featuredLocales = [];
+        foreach (['en', 'id'] as $locale) {
+            foreach ($this->homepage($locale)['serviceHighlights'] as $highlight) {
+                if (isset($categories[$highlight['slug']])) {
+                    $featuredLocales[$highlight['slug']][$locale] = strtoupper($locale);
+                }
+            }
+        }
+
+        $locations = [];
+        foreach ($categories as $slug => $category) {
+            if (isset($featuredLocales[$slug])) {
+                $locations[$slug][] = 'Sorotan layanan ('.implode(' / ', $featuredLocales[$slug]).')';
+            }
+            $locations[$slug][] = $slug === 'company-formation' ? 'Navigasi dan footer' : 'Form konsultasi';
+        }
+        foreach ($this->latestArticles() as $article) {
+            if ($article->category) {
+                $locations[$article->category->slug] = ['Berita terbaru'];
+            }
+        }
+
+        return $locations;
+    }
+
     public function contact(string $locale = 'en'): array
     {
         return array_replace(['whatsapp' => '6289672966845', 'email' => 'onecorevisa@gmail.com', 'instagram_url' => config('social.instagram_url'), 'instagram_label' => '@onecorevisa'], $this->page('contact', $locale));

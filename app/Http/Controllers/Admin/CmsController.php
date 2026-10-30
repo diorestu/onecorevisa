@@ -52,8 +52,9 @@ class CmsController extends Controller
         }
         $records = $query->orderByDesc('updated_at')->orderBy('id')->paginate(15)->withQueryString();
         $categories = Category::where('type', $module === 'articles' ? 'article' : 'service')->orderBy('sort_order')->get();
+        $landingPageLocations = $module === 'categories' ? app(CmsContent::class)->landingPageCategoryLocations() : [];
 
-        return view('admin.index', compact('module', 'title', 'records', 'categories'));
+        return view('admin.index', compact('module', 'title', 'records', 'categories', 'landingPageLocations'));
     }
 
     public function create(string $module)

@@ -8,8 +8,8 @@ class SiteLanguage
 
     public static function text(string $en, string $id, string $locale): string
     {
-        if ($locale === 'id') {
-            return $id;
+        if (in_array($locale, ['en', 'id'], true)) {
+            return app(CmsContent::class)->copy($en, $id, $locale);
         }
 
         $translations = config('translations.'.$locale, []);

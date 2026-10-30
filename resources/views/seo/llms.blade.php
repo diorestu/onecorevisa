@@ -17,8 +17,9 @@
 
 ## Contact
 
-- Email: onecorevisa@gmail.com
-- WhatsApp: https://wa.me/6289672966845
+@php($contact=app(\App\Support\CmsContent::class)->contact())
+- Email: {{ $contact['email'] }}
+- WhatsApp: https://wa.me/{{ $contact['whatsapp'] }}
 - Consultation languages: English and Indonesian.
 
 ## Reading the service pages

@@ -1,5 +1,8 @@
 @php
     $lang = $lang ?? 'en';
+    $isInnerPage = isset($serviceDetail) || isset($article) || ($articleIndex ?? false);
+    $contact = app(\App\Support\CmsContent::class)->contact($lang);
+    $legalCategoryActive = isset(app(\App\Support\CmsContent::class)->categories()['company-formation']);
     $t = fn ($en, $id) => \App\Support\SiteLanguage::text($en, $id, $lang);
     $homeUrl = route('home', ['lang' => $lang]);
     $headerLinks = [
@@ -9,6 +12,7 @@
         [$homeUrl.'#about-section', $t('About Us', 'Tentang Kami')],
         [$homeUrl.'#news-section', $t('News', 'Berita')],
     ];
+    if (!$legalCategoryActive) $headerLinks = array_values(array_filter($headerLinks, fn($link)=>!str_contains($link[0],'/services/company-formation')));
 @endphp
 <!DOCTYPE html>
 <html lang="{{ $lang }}">
@@ -22,11 +26,12 @@
     <link rel="stylesheet" href="{{ asset('assets/css/tokens.css') }}?v={{ filemtime(public_path('assets/css/tokens.css')) }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/tom-select/tom-select.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/onecore-theme.css') }}?v={{ filemtime(public_path('assets/css/onecore-theme.css')) }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/articles.css') }}?v={{ filemtime(public_path('assets/css/articles.css')) }}">
 </head>
-<body class="{{ isset($serviceDetail) ? 'service-detail-page' : '' }}">
+<body class="{{ $isInnerPage ? 'service-detail-page' : '' }}">
     <a class="skip-link" href="#main">{{ $t('Skip To Content', 'Lewati Ke Konten') }}</a>
-    <header class="site-header {{ isset($serviceDetail) ? 'is-solid' : '' }}">
-        <div class="header-contact-bar"><div class="container header-contact-inner"><a href="https://wa.me/6289672966845" target="_blank" rel="noopener noreferrer"><x-icon name="whatsapp" /><span>+62 896-7296-6845</span></a><a href="{{ config('social.instagram_url') }}" target="_blank" rel="noopener noreferrer"><x-icon name="instagram" /><span>@onecorevisa</span></a></div></div>
+    <header class="site-header {{ $isInnerPage ? 'is-solid' : '' }}">
+        <div class="header-contact-bar"><div class="container header-contact-inner"><a href="https://wa.me/{{ $contact['whatsapp'] }}" target="_blank" rel="noopener noreferrer"><x-icon name="whatsapp" /><span>{{ $contact['whatsapp'] === '6289672966845' ? '+62 896-7296-6845' : '+'.$contact['whatsapp'] }}</span></a><a href="{{ $contact['instagram_url'] }}" target="_blank" rel="noopener noreferrer"><x-icon name="instagram" /><span>{{ $contact['instagram_label'] }}</span></a></div></div>
         <div class="container header-inner">
             <a class="brand" href="{{ $homeUrl }}" aria-label="OneCoreVisa — {{ $t('home', 'beranda') }}"><img class="brand-logo-dark" src="{{ asset('assets/images/onecore-logo-horizontal.png') }}" width="822" height="240" alt="OneCore Visa"><img class="brand-logo-white" src="{{ asset('assets/images/onecore-logo-horizontal-white.png') }}" width="822" height="240" alt=""></a>
             <nav class="desktop-nav" aria-label="{{ $t('Main navigation', 'Navigasi utama') }}">@foreach($headerLinks as [$href, $label])<a href="{{ $href }}">{{ $label }}</a>@endforeach</nav>
@@ -40,23 +45,23 @@
             <div class="footer-main">
                 <div class="footer-brand"><img class="footer-logo" src="{{ asset('assets/images/onecore-logo-horizontal.png') }}" width="822" height="240" alt="OneCore Visa"><p>{{ $t('Your plans. Our guidance.', 'Rencana Anda. Panduan kami.') }}<br>One step solution.</p>
                     <nav class="footer-social" aria-label="{{ $t('Social media', 'Media sosial') }}">
-                        <a href="https://wa.me/6289672966845" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><x-icon name="whatsapp" /></a>
-                        @if(config('social.instagram_url'))<a href="{{ config('social.instagram_url') }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><x-icon name="instagram" /></a>@endif
+                        <a href="https://wa.me/{{ $contact['whatsapp'] }}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><x-icon name="whatsapp" /></a>
+                        @if(config('social.instagram_url'))<a href="{{ $contact['instagram_url'] }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><x-icon name="instagram" /></a>@endif
                     </nav>
                 </div>
                 <div class="footer-links"><h3>{{ $t('Quick links', 'Tautan cepat') }}</h3><nav aria-label="{{ $t('Quick links', 'Tautan cepat') }}">
                     <a href="{{ $homeUrl }}#about-section">{{ $t('About Us', 'Tentang Kami') }}</a>
                     <a href="{{ $homeUrl }}#services-section">{{ $t('Visa & KITAS Services', 'Layanan Visa & KITAS') }}</a>
-                    <a href="{{ route('services.show', ['service' => 'company-formation', 'lang' => $lang]) }}">{{ $t('Legality Services', 'Layanan Legalitas') }}</a>
+                    @if($legalCategoryActive)<a href="{{ route('services.show', ['service' => 'company-formation', 'lang' => $lang]) }}">{{ $t('Legality Services', 'Layanan Legalitas') }}</a>@endif
                     <a href="{{ $homeUrl }}#process-section">{{ $t('Our Process', 'Proses Kami') }}</a>
                     <a href="{{ $homeUrl }}#visa-simulator">{{ $t('Plan your visit', 'Rencanakan kunjungan Anda') }}</a>
                 </nav></div>
-                <div class="footer-contact"><h3>{{ $t('Start a conversation', 'Mulai percakapan') }}</h3><a href="https://wa.me/6289672966845" target="_blank" rel="noopener noreferrer"><x-icon name="whatsapp" /><span>+62 896-7296-6845</span></a><a href="mailto:onecorevisa@gmail.com"><x-icon name="mail" /><span>onecorevisa@gmail.com</span></a></div>
+                <div class="footer-contact"><h3>{{ $t('Start a conversation', 'Mulai percakapan') }}</h3><a href="https://wa.me/{{ $contact['whatsapp'] }}" target="_blank" rel="noopener noreferrer"><x-icon name="whatsapp" /><span>{{ $contact['whatsapp'] === '6289672966845' ? '+62 896-7296-6845' : '+'.$contact['whatsapp'] }}</span></a><a href="mailto:{{ $contact['email'] }}"><x-icon name="mail" /><span>{{ $contact['email'] }}</span></a></div>
             </div>
-            <div class="footer-bottom"><p>© {{ date('Y') }} OneCoreVisa. {{ $t('All rights reserved.', 'Hak cipta dilindungi.') }}</p><nav aria-label="{{ $t('Footer navigation', 'Navigasi footer') }}"><a href="{{ isset($serviceDetail) ? $homeUrl : '' }}#services-section">{{ $t('Services', 'Layanan') }}</a><a href="{{ isset($serviceDetail) ? $homeUrl : '' }}#process-section">{{ $t('How It Works', 'Cara Kerja') }}</a><a href="{{ isset($serviceDetail) ? $homeUrl : '' }}#about-section">{{ $t('About Us', 'Tentang Kami') }}</a></nav></div>
+            <div class="footer-bottom"><p>© {{ date('Y') }} OneCoreVisa. {{ $t('All rights reserved.', 'Hak cipta dilindungi.') }}</p><nav aria-label="{{ $t('Footer navigation', 'Navigasi footer') }}"><a href="{{ $isInnerPage ? $homeUrl : '' }}#services-section">{{ $t('Services', 'Layanan') }}</a><a href="{{ $isInnerPage ? $homeUrl : '' }}#process-section">{{ $t('How It Works', 'Cara Kerja') }}</a><a href="{{ $isInnerPage ? $homeUrl : '' }}#about-section">{{ $t('About Us', 'Tentang Kami') }}</a></nav></div>
         </div>
     </footer>
-    <a class="whatsapp-float" href="https://wa.me/6289672966845" target="_blank" rel="noopener noreferrer" aria-label="{{ $t('Chat On WhatsApp', 'Chat Di WhatsApp') }}" title="{{ $t('Chat On WhatsApp', 'Chat Di WhatsApp') }}">
+    <a class="whatsapp-float" href="https://wa.me/{{ $contact['whatsapp'] }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $t('Chat On WhatsApp', 'Chat Di WhatsApp') }}" title="{{ $t('Chat On WhatsApp', 'Chat Di WhatsApp') }}">
         <x-icon name="whatsapp" />
     </a>
     <dialog id="consultation-dialog" aria-labelledby="consultation-title">
@@ -81,7 +86,7 @@
     </dialog>
     <script src="{{ asset('assets/vendor/tom-select/tom-select.complete.min.js') }}" defer></script>
     <script src="{{ asset('assets/js/onecore-landing.js') }}?v={{ filemtime(public_path('assets/js/onecore-landing.js')) }}" defer></script>
-    @if(!isset($serviceDetail))<script src="{{ asset('assets/js/visa-simulator.js') }}?v={{ filemtime(public_path('assets/js/visa-simulator.js')) }}" defer></script>@endif
+    @if(!$isInnerPage)<script src="{{ asset('assets/js/visa-simulator.js') }}?v={{ filemtime(public_path('assets/js/visa-simulator.js')) }}" defer></script>@endif
     @if ($errors->any())<script>document.addEventListener('DOMContentLoaded', () => { document.querySelector('#consultation-dialog').showModal(); document.querySelector('[aria-invalid="true"]')?.focus(); });</script>@endif
 </body>
 </html>

@@ -75,6 +75,19 @@ class SiteSeo
             $graph[] = ['@type' => 'BreadcrumbList', 'itemListElement' => $crumbs];
         }
 
+        if (isset($data['article']) || ($data['articleIndex'] ?? false)) {
+            $article = $data['article'] ?? null;
+            $translation = $article?->translations[$lang] ?? [];
+            $title = ($article ? (($translation['seo_title'] ?? '') ?: $article->title($lang)) : ($id ? 'Artikel & Berita' : 'Articles & News')).' | OneCoreVisa';
+            $description = Str::limit(($translation['seo_description'] ?? '') ?: ($translation['excerpt'] ?? ($id ? 'Artikel dan berita OneCoreVisa.' : 'Articles and news from OneCoreVisa.')), 157);
+
+            return compact('title', 'description', 'canonical', 'lang') + [
+                'alternates' => ['en' => self::url($path), 'id' => self::url($path, 'id'), 'x-default' => self::url($path)],
+                'image' => $article?->image ? CmsContent::image($article->image) : self::url('/assets/images/onecore-og.png'),
+                'graph' => ['@context' => 'https://schema.org', '@type' => $article ? 'Article' : 'CollectionPage', 'headline' => $title, 'description' => $description, 'url' => $canonical, 'inLanguage' => $lang],
+            ];
+        }
+
         return compact('title', 'description', 'canonical', 'lang') + [
             'alternates' => ['en' => self::url($path), 'id' => self::url($path, 'id'), 'ru' => self::url($path, 'ru'), 'es' => self::url($path, 'es'), 'x-default' => self::url($path)],
             'image' => self::url('/assets/images/onecore-og.png'),

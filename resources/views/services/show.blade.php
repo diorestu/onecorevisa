@@ -2,7 +2,7 @@
 @section('content')
 @php($t = fn ($en, $id) => \App\Support\SiteLanguage::text($en, $id, $lang))
 <section class="service-category-hero" aria-labelledby="service-page-title">
-    <img class="service-category-image" src="{{ asset('assets/images/index/' . $serviceDetail['image']) }}" alt="" width="1600" height="1000" fetchpriority="high">
+    <img class="service-category-image" src="{{ \App\Support\CmsContent::image($serviceDetail['image']) }}" alt="" width="1600" height="1000" fetchpriority="high">
     <div class="container service-category-content">
         <a class="text-link service-back-link" href="{{ route('home', ['lang' => $lang]) }}#services-section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m14 6-6 6 6 6"/></svg>{{ $t('Back To Services', 'Kembali Ke Layanan') }}</a>
         <p class="section-label">{{ $t('Our Services', 'Layanan Kami') }}</p>
@@ -18,7 +18,7 @@
         @php($lineCategory = collect($serviceCategories)->search(fn ($category) => $category['sourceCategory'] === $item['category']))
         <article class="service-line">
             <div class="service-line-media">
-                <img class="service-line-thumbnail" src="{{ asset('assets/images/index/' . $item['thumbnail']) }}" alt="" width="640" height="360" loading="lazy" decoding="async">
+                <img class="service-line-thumbnail" src="{{ \App\Support\CmsContent::image($item['thumbnail']) }}" alt="" width="640" height="360" loading="lazy" decoding="async">
             </div>
             <div class="service-line-content">
                 <p class="section-label">{{ $item['code'] }}</p>

@@ -16,7 +16,7 @@
         <div class="section-head"><h2 id="{{ $anchor }}-title">{{ $t($en, $id) }}</h2></div>
         <div class="legal-services-grid">
             @foreach(array_filter($categoryServices, fn ($item) => $item['group'] === $group) as $item)
-            @php($pricing = config('service_pricing.'.$item['id']))
+            @php($pricing = app(\App\Support\CmsContent::class)->pricing($item['id']))
             <article class="legal-service-card">
                 <x-icon :name="$item['legalIcon']" class="legal-service-icon" />
                 <h3><a href="{{ route('services.detail', ['category' => 'company-formation', 'service' => $item['id'], 'lang' => $lang]) }}">{{ $item['title'] }}</a></h3>

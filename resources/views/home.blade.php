@@ -3,42 +3,13 @@
 @section('content')
 @php
     $t = fn ($en, $id) => \App\Support\SiteLanguage::text($en, $id, $lang);
-    $serviceHighlights = [
-        [
-            'slug' => 'single-entry-visas', 'title' => ['Single Entry Visa', 'Visa Sekali Masuk'], 'image' => 'bali-waterfall.webp',
-            'description' => ['Explore visitor visa options for tourism, business meetings, and cultural activities in Indonesia.', 'Kenali pilihan visa kunjungan untuk wisata, pertemuan bisnis, dan kegiatan budaya di Indonesia.'],
-            'benefits' => [['E-VOA & visit visas', 'E-VOA & visa kunjungan'], ['Multiple visit purposes', 'Beragam tujuan kunjungan'], ['Application guidance', 'Panduan pengajuan']],
-        ],
-        [
-            'slug' => 'kitas', 'title' => ['Long Stay Visa KITAS', 'Visa Tinggal Lama KITAS'], 'image' => 'service-long-stay-hero.webp',
-            'description' => ['Explore multiple-entry visas and KITAS for work, investment, remote work, family, study, or retirement in Indonesia.', 'Kenali visa beberapa kali masuk dan KITAS untuk bekerja, investasi, kerja jarak jauh, keluarga, studi, atau pensiun di Indonesia.'],
-            'benefits' => [['Investor & Working KITAS', 'KITAS Investor & Kerja'], ['Family, study & retirement', 'Keluarga, studi & pensiun'], ['Multiple Entry Visas', 'Visa Beberapa Kali Masuk']],
-        ],
-        [
-            'slug' => 'kitap', 'title' => ['Permanent Visa', 'Visa Tinggal Tetap'], 'image' => 'service-retirement.webp',
-            'description' => ['Plan your long-term residency in Indonesia with KITAP options for investors, workers, families, and retirees.', 'Rencanakan izin tinggal jangka panjang di Indonesia dengan pilihan KITAP bagi investor, pekerja, keluarga, dan pensiunan.'],
-            'benefits' => [['Investor & Working KITAP', 'KITAP Investor & Kerja'], ['Family & Retirement KITAP', 'KITAP Keluarga & Pensiun'], ['5-year residency options', 'Pilihan izin tinggal 5 tahun']],
-        ],
-    ];
-    $visaTypes = [
-        ['Tourism', 'Wisata', 'Holidays & visits', 'Liburan & kunjungan'],
-        ['Business & Investment', 'Bisnis & Investasi', 'Your next business move', 'Langkah bisnis Anda berikutnya'],
-        ['Work & Employment', 'Kerja & Ketenagakerjaan', 'Your career in Indonesia', 'Karier Anda di Indonesia'],
-        ['Retirement', 'Pensiun', 'A new pace of life', 'Babak kehidupan yang baru'],
-        ['Family Dependent', 'Keluarga', 'Stay together in Indonesia', 'Tinggal bersama keluarga'],
-        ['Education & Training', 'Pendidikan & Pelatihan', 'Learning & development', 'Belajar & pengembangan diri'],
-        ['Professional', 'Profesional', 'Professional activities', 'Kegiatan profesional'],
-        ['Performer', 'Pelaku Pertunjukan', 'Arts & performances', 'Seni & pertunjukan'],
-        ['Second Home', 'Second Home', 'Make Indonesia your base', 'Jadikan Indonesia tempat tinggal'],
-        ['Golden Visa', 'Golden Visa', 'Explore long-term options', 'Pilihan tinggal jangka panjang'],
-        ['Global Talent', 'Global Talent', 'Bring your expertise', 'Bawa keahlian Anda'],
-        ['Ex-Indonesian Citizen', 'Eks Warga Negara Indonesia', 'Reconnect with Indonesia', 'Terhubung kembali dengan Indonesia'],
-        ['Permanent Residency', 'Izin Tinggal Tetap', 'Plan for a longer future', 'Rencanakan masa depan di Indonesia'],
-    ];
+    extract(app(\App\Support\CmsContent::class)->homepage($lang));
 @endphp
 <section class="hero" id="hero" aria-labelledby="hero-title">
+@php($hero=app(\App\Support\CmsContent::class)->page('hero',$lang))
+@if(!empty($hero['image']))<img class="cms-hero-background" src="{{ \App\Support\CmsContent::image($hero['image']) }}" alt="" width="1600" height="1000" fetchpriority="high">@endif
 <div class="container hero-content">
-    <p class="hero-intro">OneCore (One Step Solution)</p>
+    <p class="hero-intro">{{ app(\App\Support\CmsContent::class)->page('hero',$lang,['brand'=>'OneCore (One Step Solution)'])['brand'] }}</p>
     <h1 id="hero-title"><span>{{ $t('Visa assistance for', 'Bantuan visa untuk') }}</span> {{ $t('your stay in Indonesia.', 'masa tinggal Anda di Indonesia.') }}</h1>
     <div class="hero-bottom">
         <p>{{ $t('From your first visit to a longer stay, OneCore helps you find the right visa and prepare your application. Talk to our team about visa extensions, KITAS, or KITAP.', 'Dari kunjungan pertama hingga rencana tinggal lebih lama, OneCore membantu memilih visa dan menyiapkan pengajuan Anda. Diskusikan perpanjangan visa, KITAS, atau KITAP bersama tim kami.') }}</p>
@@ -70,7 +41,7 @@
         <div class="service-grid">
             @foreach ($serviceHighlights as $highlight)
             <article class="service-feature-card">
-                <img class="service-thumbnail" src="{{ asset('assets/images/index/' . $highlight['image']) }}" alt="" width="640" height="800" loading="lazy">
+                <img class="service-thumbnail" src="{{ \App\Support\CmsContent::image($highlight['image']) }}" alt="" width="640" height="800" loading="lazy">
                 <div class="service-feature-copy">
                     <h3>{{ $t(...$highlight['title']) }}</h3>
                     <p>{{ $t(...$highlight['description']) }}</p>
@@ -90,7 +61,7 @@
     <div class="visa-grid">
         @foreach ($visaTypes as $visa)
         <button type="button" class="visa-item" data-consultation="{{ $visa[0] }}">
-            <x-icon :name="$visaIcons[$loop->index]" class="visa-icon" /><span class="visa-item-copy"><span class="visa-name">{{ $t($visa[0], $visa[1]) }}</span><span class="visa-desc">{{ $t($visa[2], $visa[3]) }}</span></span><span class="visa-arrow" aria-hidden="true">↗</span>
+            <x-icon :name="$visaIcons[$loop->index] ?? 'globe'" class="visa-icon" /><span class="visa-item-copy"><span class="visa-name">{{ $t($visa[0], $visa[1]) }}</span><span class="visa-desc">{{ $t($visa[2], $visa[3]) }}</span></span><span class="visa-arrow" aria-hidden="true">↗</span>
         </button>
         @endforeach
     </div>
@@ -109,8 +80,13 @@
 </section>
 
 <section class="news-section container" id="news-section" aria-labelledby="news-title">
-    <div class="section-head"><h2 id="news-title">{{ $t('News', 'Berita') }}</h2></div>
-    <p class="news-empty">{{ $t('No news has been published yet. Check back for updates.', 'Belum ada berita yang diterbitkan. Kunjungi kembali untuk informasi terbaru.') }}</p>
+    <div class="section-head"><h2 id="news-title">{{ $t('News', 'Berita') }}</h2><a class="text-link" href="{{ route('articles.index',['lang'=>$lang==='id'?'id':'en']) }}">{{ $t('All articles','Semua artikel') }}</a></div>
+    @php($articles=app(\App\Support\CmsContent::class)->latestArticles())
+    @if($articles->isNotEmpty())@include('articles.cards')@else<p class="news-empty">{{ $t('No news has been published yet. Check back for updates.', 'Belum ada berita yang diterbitkan. Kunjungi kembali untuk informasi terbaru.') }}</p>@endif
 </section>
+
+@if(app(\App\Support\CmsContent::class)->ready() && !empty($faqs))
+<section class="cms-faq container" aria-labelledby="faq-title"><h2 id="faq-title">{{ $t('Frequently asked questions','Pertanyaan umum') }}</h2>@foreach($faqs as $faq)<details><summary>{{ $faq['q'] }}</summary><p>{{ $faq['a'] }}</p></details>@endforeach</section>
+@endif
 
 @endsection
